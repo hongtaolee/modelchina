@@ -1,0 +1,45 @@
+<div id="content">
+<div id="preview">
+<div class="big_title"><%= @enterprise.name %>发布的招聘信息。。。。。。</div>
+<div  id="preview_list">
+<% for job in @jobs%>
+<table class="job_table">
+    <tr class="job_table_head"><th colspan=4><%= job.work %></th></tr>
+    <tr><td class="odd">发布日期：</td><td class="even"><%= format_datetime(job.created_at) %></td><td class="odd">工作地点：</td><td class="even"><%=job.address%></td></tr>
+    <tr><td class="odd">招聘人数：</td><td class="even"><%= job.number%></td><td class="odd">薪水范围：</td><td class="even"><%=job.salary%></td></tr>
+    <tr><td class="odd">职位描述：</td><td class="even" colspan=3><%= job.content %></td></tr>
+</table>
+<% end %>
+<div class="more"><%= link_to_pages %></div>
+</div>
+</div>
+
+</div>
+<div id="sidebar">
+    <div class="brief" id="model_brief_id">
+        <h3><%= @enterprise.name%></h3>
+        <ul class="brief_list">
+            <li>网址：<%= @enterprise.site%></li>
+            <li>传真：<%= @enterprise.fax%></li>            
+            <li>办公地址：<%= @enterprise.office %>
+            <li>邮编：<%= @enterprise.zip%></li>
+            <li>简介：<%= @enterprise.description %></li>
+        </ul>
+    </div>   
+    <%= corner('model_brief_id','#FFF6EE','#FFF',true)%>
+    <div class="featurebox model_link" id="model_link_id">
+        <div class="title">联系方式</div>
+        <% @agency = User.find(@enterprise.user_id)%>
+        <% if @current_user.nil? %>
+            <div class="left_sidebar_remark"><%= link_to '登陆', :controller=>'user', :action=>'login'%>后，才能查看联系方式……</div>        
+        <% else %>
+        <ul class="right_sider_list">
+            <li>电话：<%=@agency.phone %></li>
+            <li>手机：<%=@agency.mobile %></li>
+            <li>email：<%=@agency.email %></li>
+            <li>MSN：<%=@agency.msn %></li>
+            <li>QQ：<%=@agency.qq %></li>
+        </ul>
+        <% end %>
+    </div>
+</div>

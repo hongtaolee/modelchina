@@ -1,0 +1,20 @@
+<table class="message_table" id="message_content_<%= params[:id] %>">
+    <tr class="message_table_head"><th>主&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;题：</th><th style="text-align:left;"><%= @message.title%></th></tr>
+    <tr><td class="odd">发送日期：</td><td class="even"><%= format_datetime(@message.created_at) %></td></tr>
+    <tr><td class="odd">发 送 者：</td><td class="even"><%= @message.send_name %></td></tr>
+    <tr><td class="even" colspan=2 >
+        <div class="message_content">   
+            <div style="line-height:16px;padding:10px;" id="message_text_<%= params[:id]%>"><%= @message.content %></div>
+            <div id="message_reply_#{params[:id]}" style="padding:10px;">
+                <%=form_tag :controller => 'messages', :action => 'reply'%>
+                <input type="hidden" name="from" value="<%= @message.id%>">
+                <%=hidden_field('message', 'receive_name',:value => @message.send_name)%><br/>
+                <%=hidden_field('message', 'title' ,:value => "回复：#{@message.title}") %><br/>
+                <%=text_area('message', 'content', :style => "border:1px solid #DDD; width:500px; height:80px;" , :value => '') %><br/>
+                <input type="submit" value="回复该消息" style="height:24px;margin-top:10px;margin-right:10px;line-height:24px;"></input>
+                <a href="#" onclick="new Element.toggle('message_content_<%= params[:id] %>');">关闭</a> 
+                <%=end_form_tag%>
+            </div> 
+        </div>
+    </td></tr>
+</table>

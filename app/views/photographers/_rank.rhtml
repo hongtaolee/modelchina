@@ -1,0 +1,6 @@
+<div class="rank_star">
+    <ul class="star-rating">
+        <li class="current-rating" style="width:<%= @photographer.rank > 0 ? @photographer.rank*20/@photographer.rank_count : 0 %>px;">平均得分<%= @photographer.rank > 0 ? @photographer.rank/@photographer.rank_count : 0 %></li>
+    </ul>
+</div>
+<span class="rank_success">评分成功！共有<%=@photographer.rank_count%>人参与评分,平均得分<%=@photographer.rank/@photographer.rank_count%>分 ！</span>

@@ -1,0 +1,115 @@
+<div id="content">
+    <div id="main_search">
+        <div class="big_title">模特大搜索。。。。。。</div>
+        <div id="search_form">
+            <form action="/models/search" class="two_columns" method="post" name="creator">
+                <div class="search_input">
+                    <body onload="init_city('<%= params[:model_province] %>','<%= params[:model_city] %>')">
+                    <label>所在地</label>
+                    <select id="province" name="province" onChange="select()"></select> —   
+                    <select id="city" name="city"></select>
+                </div>
+                <div class="search_input">
+                    <label>类别</label>
+                    <select name='category1'>
+                        <%= options_from_collection_for_select(Const.find(:all, :conditions => ["table_name =? and field_name =? ", "models", "category1"]), "field_value", "text_name", params[:category1]) %>
+                    </select> — 
+                    <select name='category2'>
+                        <%= options_from_collection_for_select(Const.find(:all, :conditions => ["table_name =? and field_name =? ", "models", "category2"]), "field_value", "text_name", params[:category2]) %>
+                    </select> 
+                </div>
+                <div class="search_input">
+                    <label>身高</label>
+                    <select name='minheight'>
+                        <%= options_from_collection_for_select(Const.find(:all, :conditions => ["table_name =? and field_name =? ", "models", "height"]), "field_value", "text_name", params[:minheight]) %>
+                    </select> —  
+                    <select name='maxheight'>
+                        <%= options_from_collection_for_select(Const.find(:all, :conditions => ["table_name =? and field_name =? ", "models", "height"]), "field_value", "text_name", params[:maxheight]) %>
+                    </select>  
+                </div>
+                <div class="search_input">
+                    <label>体重</label>
+                    <select name='minweight'>
+                        <%= options_from_collection_for_select(Const.find(:all, :conditions => ["table_name =? and field_name =? ", "models", "weight"]), "field_value", "text_name", params[:minweight]) %>
+                    </select> —    
+                    <select name='maxweight'>
+                        <%= options_from_collection_for_select(Const.find(:all, :conditions => ["table_name =? and field_name =? ", "models", "weight"]), "field_value", "text_name", params[:maxweight]) %>
+                    </select>  
+                </div>
+                <div class="search_input">
+                    <label>胸围</label>
+                    <select name='minchest'>
+                          <%= options_from_collection_for_select(Const.find(:all, :conditions => ["table_name =? and field_name =? ", "models", "chest"]), "field_value", "text_name", params[:minchest]) %>
+                    </select> —    
+                    <select name='maxchest'>
+                          <%= options_from_collection_for_select(Const.find(:all, :conditions => ["table_name =? and field_name =? ", "models", "chest"]), "field_value", "text_name", params[:maxchest]) %>
+                    </select>  
+                </div>
+                <div class="search_input">
+                    <label>臀围</label>
+                    <select name='minhips'>
+                          <%= options_from_collection_for_select(Const.find(:all, :conditions => ["table_name =? and field_name =? ", "models", "hips"]), "field_value", "text_name", params[:minhips]) %>
+                    </select> —   
+                    <select name='maxhips'>
+                          <%= options_from_collection_for_select(Const.find(:all, :conditions => ["table_name =? and field_name =? ", "models", "hips"]), "field_value", "text_name", params[:maxhips]) %>
+                    </select>  
+                </div>
+                <div class="search_input">
+                    <label>腰围</label>
+                    <select name='minwaist'>
+                          <%= options_from_collection_for_select(Const.find(:all, :conditions => ["table_name =? and field_name =? ", "models", "waist"]), "field_value", "text_name", params[:minwaist]) %>
+                    </select> —   
+                    <select name='maxwaist'>
+                          <%= options_from_collection_for_select(Const.find(:all, :conditions => ["table_name =? and field_name =? ", "models", "waist"]), "field_value", "text_name", params[:maxwaist]) %>
+                    </select>  
+                </div>
+                <div class="search_input">
+                    <label>鞋码</label>
+                    <select name='minshoes'>
+                          <%= options_from_collection_for_select(Const.find(:all, :conditions => ["table_name =? and field_name =? ", "models", "shoes"]), "field_value", "text_name", params[:minshoes]) %>
+                    </select> —   
+                    <select name='maxshoes'>
+                          <%= options_from_collection_for_select(Const.find(:all, :conditions => ["table_name =? and field_name =? ", "models", "shoes"]), "field_value", "text_name", params[:maxshoes]) %>
+                    </select>  
+                </div>
+                <input type="submit" value="查询" name="submit" class="search_submit"/>
+            </form>
+        </div>
+    </div>
+<div id="preview">
+<div class="big_title">标签<font color="red"><%=params[:id]%></font>下的模特。。。。。。</div>
+<div  id="preview_list">
+<% for model in @models%>
+<table class="model_item">
+  <tr>
+    <td valign="middle" align="center" class="model_item_img">
+        <div><%= link_to_avata(model)%></div>
+    </td>
+    <td valign="middle" class="model_item_info">
+      <div class="preview_name"><%= link_to model.name,:controller => 'models',:action=>'show',:id=>model.id %></div>
+      <div class="rank_star">
+        <ul class="star-rating">
+            <li class="current-rating" style="width:<%= model.rank_count > 0 ? model.rank*20/model.rank_count : 0 %>px;"></li>
+        </ul>
+      </div>
+      <div class="clear"></div> 
+      <ul class="preview_detail">
+        <li>身高：<%= model.height%> cm</li>
+        <li>三围：<%= model.chest %>/<%= model.waist %>/<%= model.hips%> cm</li> 
+        <li>评论 <span class="count"><%= model.comments_count %></span> / 浏览 <span class="count"><%= model.read_count %></span>
+      </ul>
+    </td>
+  </tr>
+</table>
+<% end %>
+<div class="more"><%= link_to_pages %></div>
+</div>
+</div>
+</div>
+<div id="sidebar">
+    <%= render :partial => 'sidebar/notice' %>
+    <div class="sider_link">&gt;&gt;<%= link_to '搜索合意的模特',:controller=>'models',:action=>'search' %></div>
+    <div class="sider_link">&gt;&gt;<%= link_to '找个感兴趣的小组逛逛',:controller=>'groups',:action=>'list' %></div>    
+    <%= render :partial => 'sidebar/mclass' %>
+    <%= render :partial => 'sidebar/tag' %>
+</div>

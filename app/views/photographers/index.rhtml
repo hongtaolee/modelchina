@@ -1,0 +1,58 @@
+<div id="content">
+    <div id="preview">
+        <div class="big_title">最新加入的摄影师。。。。。。</div>
+        <div  id="preview_list">
+        <% for photographer in @new_photographers%>
+        <div class="picbox2">
+          <table><tr><td><%= link_to_avata(photographer,'80x80')%></td></tr></table>
+          <p><%= link_to photographer.name,:controller => 'photographers',:action=>'show',:id=>photographer.id %></p>
+        </div>
+        <% end %>
+        <div class="clear"></div>
+        </div>
+    </div>
+    <div id="preview">
+        <div class="big_title">最受欢迎的摄影师。。。。。。</div>
+        <div  id="preview_list">
+            <% for photographer in @photographers%>
+            <table class="model_item">
+              <tr>
+                <td valign="middle" align="center" class="model_item_img">
+                    <div><%= link_to_avata(photographer)%></div>
+                </td>
+                <td valign="middle" class="model_item_info">
+                  <div class="preview_name"><%= link_to photographer.name,:controller => 'photographers',:action=>'show',:id=>photographer.id %></div>
+                  <div class="rank_star">
+                    <ul class="star-rating">
+                        <li class="current-rating" style="width:<%= photographer.rank_count > 0 ? photographer.rank*20/photographer.rank_count : 0 %>px;"></li>
+                    </ul>
+                  </div>
+                  <div class="clear"></div> 
+                  <ul class="preview_detail">
+                    <li>所在地：<%= photographer.province %>  <%= photographer.city %>
+                    <li>评论：<span class="count"><%= photographer.comments_count %></span> / 浏览 <span class="count"><%= photographer.read_count %></span>
+                  </ul>
+                </td>
+              </tr>
+            </table>
+            <% end %>
+        </div>
+    </div>
+    <div class="more"><%= link_to_pages%><div class="clear"></div></div>
+</div>
+<div id="sidebar">
+    <div class="featurebox">
+        <div class="sider_title">搜索感兴趣的摄影师。。。。。。</div>
+        <div class="brief" id="group_brief_id">
+            <div class="group_brief_title">请输入姓名、关键字进行搜索</div>
+            <%=form_tag(url_for(:controller => 'photographers', :action => 'search'), 'method' => 'post')%>
+                <body onload="init_city('<%= params[:province] %>','<%= params[:city] %>')">
+                <select id="province" name="province" onChange="select()"style="width:110px;margin:5px 7px 3px 5px;"></select>  
+                <select id="city" name="city" style="width:110px;margin:5px 0 3px 5px;"></select>
+                <input type="text" name="search" style="width:232px;margin:5px 5px 5px 5px;"></input>
+                <%= submit_tag '搜索摄影师',{:style=>'width:100px;height:22px;margin-left:140px;margin-bottom:10px;'} %>  
+            <%= end_form_tag %>
+        </div> 
+    </div>  
+    <%= corner('group_brief_id','#FFF6EE','#FFF',true)%>
+</div>

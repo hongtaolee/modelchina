@@ -1,0 +1,9 @@
+<div class="sub_head">
+<h2>编辑职位信息</h2>
+</div>
+<%= start_form_tag :action => 'update', :id => @job %>
+  <%= render :partial => 'form' %>
+<%= end_form_tag %>
+
+<%= link_to 'Show', :action => 'show', :id => @job %> |
+<%= link_to 'Back', :action => 'list' %>

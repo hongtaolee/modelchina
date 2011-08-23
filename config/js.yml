@@ -1,0 +1,11 @@
+--- 
+source_map: 
+- base: 
+  - prototype
+  - effects
+  - controls
+  - dragdrop
+  - lightbox
+  - rico
+  - application
+current_version: "20060822042212"

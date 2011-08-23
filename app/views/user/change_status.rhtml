@@ -1,0 +1,24 @@
+<div class="sub_head">
+<h2>设置用户状态</h2>
+</div>
+<%= form_tag(url_for(:controller => 'user', :action => 'change_status'),
+      'method' => 'post',
+      'class' => 'two_columns' )%>
+<fieldset>
+  <table>
+    <tr><td class="prompt"><%= "用户名"%>:</td><td class="value"><%= @user.name %></td></tr>
+    <tr class="two_columns">
+      <td class="prompt" valign="top"><label><%= "状态"%>:</label></td>
+      <td class="value" valign="top" id="image_table">
+        <input class="two_columns" id="status" name="status" size="30" />
+      </td>
+    </tr>  
+    <tr class="two_columns">
+        <td class="prompt"></td><td class="button" colspan="2">
+          <input name="submit" type="submit" value="修改" />
+          <%= link_to "返回", :action => 'list'%>
+        </td>
+    </tr>
+  </table>
+</fieldset>
+<%= end_form_tag %>

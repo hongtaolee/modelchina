@@ -1,0 +1,38 @@
+<div id="content">
+    <%=render :partial=>'sidebar/gst'%>
+</div>
+
+<div id="sidebar">
+    <div class="featurebox">
+    <%= render :partial=>'sidebar/gs' %>
+    </div>
+    <% @models = Model.find(:all,:conditions=>['height>? and status <> ? and pictures_count > ?',100,1,0],:order => 'RAND()',:limit=>10,:include=>[:avata]) %>
+    <% unless @models.blank? %>
+    <div class="featurebox more_model" id="model_more_id">
+        <div class="title">推荐的模特</div>
+        <div class="my_model">
+            <% odd_or_even = 1 %>
+            <% for model in @models %>
+            <% odd_or_even = 1 - odd_or_even %>
+            <table class="side_model_item side_model_<%=odd_or_even%>">
+              <tr>
+                <td valign="middle" align="center" class="side_model_img">
+                    <div><%= link_to_avata(model,'80x80')%></div>
+                </td>
+                <td valign="middle" class="side_model_info">
+                  <div class="side_model_name"><%= link_to model.name,:controller => 'models',:action=>'show',:id=>model.id %></div>
+                  <div class="clear"></div>
+                  <ul class="side_model_detail">
+                    <li>身高：<%= model.height%> cm</li>
+                    <li>三围：<%= model.chest %>/<%= model.waist %>/<%= model.hips%></li> 
+                    <li>鞋码：<%= model.shoes %>
+                  </ul>
+                </td>
+              </tr>
+            </table>
+            <% end %>
+        </div>
+    </div>
+    <%= corner('model_more_id','#F1F1F1','#FFF',true,'top')%>
+    <% end %>
+</div>

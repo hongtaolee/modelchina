@@ -1,0 +1,50 @@
+<div class="tab_content" id="msg_list">
+<% if @jobs.length == 0 %>
+    没有任何招聘信息，您可以现在<%= link_to '发布一个新的招聘信息', :controller => 'jobs',:action => 'new' %>
+<% else %>
+   <table class="tab_table">
+       <tr class="table_head">
+           <th style="width:50px;"></th>
+           <th style="width:100px;">职位</th>
+           <th style="width:40px;">人数</th>
+           <th style="width:250px;">工作地址</th>
+           <th style="width:100px;">状态</th>
+           <th style="width:120px;">面试时间</th>
+           <th style="width:150px;">控制面板</th>
+       </tr>
+       <% odd_or_even = 0 %>
+       <% for job in @jobs%>
+       <% odd_or_even = 1 - odd_or_even %>
+       <tr id='job_<%= job.id %>' class="ListLine<%= odd_or_even %>">
+            <td style="width:50px; text-align:center;">
+               <input type="checkbox" style="display:inline;" onclick="getCheck('check_<%= job.id%>','check_all')" id="check_<%= job.id%>" name="check" class="check_box %>"  value="check_<%= job.id%>"/> 
+            </td>
+            <td style="width:100px;"><%= link_to job.work, :action => 'show',:id => job %></td>
+            <td style="width:40px;"><%= job.number %></td>
+            <td style="width:250px;"><%= job.address%></td>
+            <td style="width:100px;"><%= job.status%></td>
+            <td style="width:120px;"><%= format_datetime(job.worked_at) %></td>
+            <td style="width:150px;">
+                <%= link_to '查看', :action => 'show', :id => job%>
+                <%= link_to '编辑', :action => 'edit', :id => job %>
+                <%= link_to '删除', { :action => 'destroy', :id => job }, :confirm => '确定要删除吗?', :post => true %>            
+            </td>                
+       </tr>
+       <% end %>
+   </table>
+   <div class="tab_bottom">
+    <div class="line_left">
+        选择：
+        <a href="#" onclick="checkAll('check'); return false; ">全选</a>
+        <a href="#" onclick="uncheckAll('check'); return false;">无</a>
+        <%= form_tag({:controller => 'jobs', :action => 'delete'},{:style => 'display:inline;'}) %>
+            <input name="check_all" id="check_all" type="hidden" />
+        <%= submit_tag '删除', :onclick => "confirm('您确定要删除这些信息')", :disabled => 'true' , :id => 'delete_button' , :style => 'display:inline;line-height:18px;width:60px;height:16px;font-size:12px;border:none;'%>
+        <%= end_form_tag %>
+<%= link_to '新招聘' ,{:controller => 'jobs' , :action => 'new'}, {:class => 'tab_content_button'}%>
+    </div>
+    <div class="line_right"><%= link_to_pages %></div> 
+    <div id="job_show"></div>
+   </div>
+<% end %>
+</div>

@@ -1,0 +1,621 @@
+
+
+Processing LinksController#ok (for 220.241.247.174 at 2009-10-08 15:53:02) [GET]
+
+
+Processing PicturesController#show (for 123.125.66.113 at 2009-10-08 15:53:02) [GET]
+  Session ID: 3a6db9ec32f9043725170108975a56a8
+  Parameters: {"action"=>"ok", "id"=>"430926", "controller"=>"links"}
+Cookie set: lang=zh; path=/
+  Session ID: b7d754b23fd694d9b4c11a16b2dfd93a
+
+
+Processing ModelsController#group (for 220.181.94.237 at 2009-10-08 15:53:03) [GET]
+  Parameters: {"action"=>"show", "id"=>"52260", "controller"=>"pictures"}
+Cookie set: lang=zh; path=/
+Rendering layoutfalse within layouts/web
+check session cookies
+Rendering links/ok
+  Session ID: d10b6a7c285ecd3901e84bf3d10de7a2
+Cookie set: login_session=cb77ddba56b59695432440f0218ce80b82f4b5e8; path=/; expires=Fri, 08 Oct 2010 07:53:09 GMT
+  Parameters: {"action"=>"group", "id"=>"8105", "controller"=>"models"}
+
+
+
+Processing LinksController#create (for 91.121.221.94 at 2009-10-08 15:53:07) [POST]
+write login_log
+Cookie set: lang=zh; path=/
+  Session ID: f7a30f816d70df33bcb221c2ec6ede66
+check session cookies
+  Parameters: {"submit"=>"提交", "action"=>"create", "link"=>{"name"=>"Hpozstpa", "im"=>"BHQIzwhWDiFHBY", "url"=>"http://www.opensourcecinema.org/user/18055#1", "tel"=>"mxlLLwkmh", "email"=>"iwmeawnd@ilrkyjnl.com"}, "controller"=>"links"}
+Cookie set: login_session=ffe9674da6fab6c521fbe6c26464d34318022e2f; path=/; expires=Fri, 08 Oct 2010 07:53:09 GMT
+
+write login_log
+Cookie set: lang=zh; path=/
+check session cookies
+Cookie set: login_session=43db63e256bd7649402e902966477a403f45d731; path=/; expires=Fri, 08 Oct 2010 07:53:09 GMT
+
+write login_log
+Redirected to http://www.model-china.cn/groups/show/8197
+Completed in 0.03061 (32 reqs/sec) | DB: 0.02860 (93%) | 302 Found [http://www.model-china.cn/models/group/8105]
+
+
+Processing GroupsController#list (for 221.194.136.242 at 2009-10-08 15:53:09) [GET]
+  Session ID: 42cd2db79902f1141474fc3ed5cf267c
+  Parameters: {"action"=>"list", "controller"=>"groups"}
+Cookie set: lang=zh; path=/
+check session cookies
+Cookie set: login_session=a5b7871c3113a73404b3f00c7a4e3380fc6a732c; path=/; expires=Fri, 08 Oct 2010 07:53:09 GMT
+
+write login_log
+Completed in 0.35658 (2 reqs/sec) | Rendering: 0.00483 (1%) | DB: 0.34923 (97%) | 200 OK [http://www.model-china.cn/links/ok/430926]
+
+
+Processing GroupsController#all (for 61.135.249.205 at 2009-10-08 15:53:10) [GET]
+  Session ID: 3670069fd9caba3c13e8593667beec17
+  Parameters: {"action"=>"all", "page"=>"74", "controller"=>"groups"}
+Cookie set: lang=zh; path=/
+Redirected to http://www.model-china.cn/links/ok/430927
+Completed in 0.36226 (2 reqs/sec) | DB: 0.35635 (98%) | 302 Found [http://www.model-china.cn/links/create]
+Sending data 
+Rendering  within layouts/default
+Rendering groups/list
+Completed in 0.43686 (2 reqs/sec) | Rendering: 0.00006 (0%) | DB: 0.00031 (0%) | 200 OK [http://www.model-china.cn/pictures/show/52260]
+
+
+Processing AvatasController#show (for 203.208.60.74 at 2009-10-08 15:53:10) [GET]
+  Session ID: a6718c75c4f909aa644b4679563e4b50
+  Parameters: {"size"=>"60x60.png", "action"=>"show", "id"=>"965", "controller"=>"avatas"}
+Cookie set: lang=zh; path=/
+Sending data 
+Completed in 0.43552 (2 reqs/sec) | Rendering: 0.03707 (8%) | DB: 0.39395 (90%) | 200 OK [http://www.model-china.cn/groups/list/]
+Completed in 0.07582 (13 reqs/sec) | Rendering: 0.00004 (0%) | DB: 0.00026 (0%) | 200 OK [http://www.model-china.cn/avatas/show/965?size=60x60.png]
+Rendering  within layouts/default
+Rendering groups/all
+Completed in 0.24578 (4 reqs/sec) | Rendering: 0.05993 (24%) | DB: 0.12428 (50%) | 200 OK [http://www.model-china.cn/groups/all?page=74]
+
+
+Processing TopicsController#show (for 220.181.125.69 at 2009-10-08 15:53:10) [GET]
+  Session ID: fc1abc4932bec11e0d1c94aa72ccc2e2
+  Parameters: {"action"=>"show", "id"=>"3568", "controller"=>"topics"}
+Cookie set: lang=zh; path=/
+check session cookies
+Cookie set: login_session=95e652761464f1af98adfeccef439cf207b3d201; path=/; expires=Fri, 08 Oct 2010 07:53:10 GMT
+
+write login_log
+
+
+ActiveRecord::RecordNotFound (Couldn't find Topic with ID=3568):
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-1.14.4/lib/active_record/base.rb:955:in `find_one'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-1.14.4/lib/active_record/base.rb:941:in `find_from_ids'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-1.14.4/lib/active_record/base.rb:382:in `find'
+    /app/controllers/topics_controller.rb:20:in `show'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-1.12.5/lib/action_controller/base.rb:941:in `send'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-1.12.5/lib/action_controller/base.rb:941:in `perform_action_without_filters'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-1.12.5/lib/action_controller/filters.rb:368:in `perform_action_without_benchmark'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-1.12.5/lib/action_controller/benchmarking.rb:69:in `perform_action_without_rescue'
+    /usr/local/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-1.12.5/lib/action_controller/benchmarking.rb:69:in `perform_action_without_rescue'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-1.12.5/lib/action_controller/rescue.rb:82:in `perform_action'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-1.12.5/lib/action_controller/base.rb:408:in `send'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-1.12.5/lib/action_controller/base.rb:408:in `process_without_filters'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-1.12.5/lib/action_controller/filters.rb:377:in `process_without_session_management_support'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-1.12.5/lib/action_controller/session_management.rb:117:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/rails-1.1.6/lib/dispatcher.rb:38:in `dispatch'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:76:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:74:in `synchronize'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:74:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel.rb:159:in `process_client'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel.rb:158:in `each'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel.rb:158:in `process_client'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel.rb:285:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel.rb:285:in `initialize'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel.rb:285:in `new'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel.rb:285:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel.rb:268:in `initialize'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel.rb:268:in `new'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel.rb:268:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/configurator.rb:282:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/configurator.rb:281:in `each'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/configurator.rb:281:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:128:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/command.rb:212:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:281
+    /usr/local/bin/mongrel_rails:19:in `load'
+    /usr/local/bin/mongrel_rails:19
+
+
+Rendering /var/www/modelchina/trunk2/config/../public/404.html (404 Not Found)
+
+
+Processing PagesController#digg (for 203.208.60.74 at 2009-10-08 15:53:10) [GET]
+  Session ID: d2d4659152b21b401c78a499e14412be
+  Parameters: {"o"=>"2", "action"=>"digg", "id"=>"3758", "controller"=>"pages"}
+Cookie set: lang=zh; path=/
+check session cookies
+Cookie set: login_session=46824df698d2bfdda3c5362decda15b836a144fd; path=/; expires=Fri, 08 Oct 2010 07:53:10 GMT
+
+write login_log
+Completed in 0.01479 (67 reqs/sec) | Rendering: 0.00739 (49%) | DB: 0.00308 (20%) | 200 OK [http://www.model-china.cn/pages/digg/3758?o=2]
+
+
+Processing LinksController#ok (for 91.121.221.94 at 2009-10-08 15:53:12) [GET]
+  Session ID: f7a30f816d70df33bcb221c2ec6ede66
+  Parameters: {"action"=>"ok", "id"=>"430927", "controller"=>"links"}
+Cookie set: lang=zh; path=/
+Rendering layoutfalse within layouts/web
+Rendering links/ok
+Completed in 0.00963 (103 reqs/sec) | Rendering: 0.00356 (36%) | DB: 0.00436 (45%) | 200 OK [http://www.model-china.cn/links/ok/430927]
+
+
+Processing TopicsController#new (for 203.208.60.74 at 2009-10-08 15:53:12) [GET]
+  Session ID: 0a720ca80feb9aa12a5333a921c85fb3
+  Parameters: {"action"=>"new", "id"=>"6023", "controller"=>"topics"}
+Cookie set: lang=zh; path=/
+check session cookies
+Cookie set: login_session=65ef91db6cd0b608b4a44d45975c231b0c885c88; path=/; expires=Fri, 08 Oct 2010 07:53:12 GMT
+
+write login_log
+Redirected to http://www.model-china.cn/user/login
+Filter chain halted as [login_required] returned false
+Completed in 0.00076 (1316 reqs/sec) | DB: 0.00000 (0%) | 302 Found [http://www.model-china.cn/topics/new/6023]
+
+
+Processing PicturesController#show (for 123.125.66.23 at 2009-10-08 15:53:12) [GET]
+  Session ID: 4005276c3d2fa8a9d6ebac7d5e3ddfe9
+  Parameters: {"action"=>"show", "id"=>"52116", "controller"=>"pictures"}
+Cookie set: lang=zh; path=/
+check session cookies
+Cookie set: login_session=54a00657c4a7fe357362fc2e4df3e50edfea889d; path=/; expires=Fri, 08 Oct 2010 07:53:12 GMT
+
+write login_log
+Sending data 
+Completed in 0.09002 (11 reqs/sec) | Rendering: 0.00005 (0%) | DB: 0.00028 (0%) | 200 OK [http://www.model-china.cn/pictures/show/52116]
+
+
+Processing ModelsController#tag (for 220.181.94.237 at 2009-10-08 15:53:14) [GET]
+  Session ID: 5ba35688764ad00b0a24e9b1027e997e
+  Parameters: {"action"=>"tag", "id"=>"沉默寡言", "controller"=>"models"}
+Cookie set: lang=zh; path=/
+check session cookies
+Cookie set: login_session=78ceb0194975296da93e3cb21f95495b0ea339b2; path=/; expires=Fri, 08 Oct 2010 07:53:14 GMT
+
+write login_log
+Rendering layoutfalse within layouts/default
+Rendering models/tag
+Completed in 0.12337 (8 reqs/sec) | Rendering: 0.02670 (21%) | DB: 0.09451 (76%) | 200 OK [http://www.model-china.cn/models/tag/%E6%B2%89%E9%BB%98%E5%AF%A1%E8%A8%80]
+
+
+Processing TopicsController#show (for 220.181.125.69 at 2009-10-08 15:53:14) [GET]
+  Session ID: 375bf79890e3bc5e4b06698d0ed72dd5
+  Parameters: {"action"=>"show", "id"=>"10211", "controller"=>"topics"}
+Cookie set: lang=zh; path=/
+check session cookies
+Cookie set: login_session=8a8e1c1108d8c1bc97004b6305fc32af9883938e; path=/; expires=Fri, 08 Oct 2010 07:53:14 GMT
+
+write login_log
+
+
+ActiveRecord::RecordNotFound (Couldn't find Topic with ID=10211):
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-1.14.4/lib/active_record/base.rb:955:in `find_one'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-1.14.4/lib/active_record/base.rb:941:in `find_from_ids'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-1.14.4/lib/active_record/base.rb:382:in `find'
+    /app/controllers/topics_controller.rb:20:in `show'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-1.12.5/lib/action_controller/base.rb:941:in `send'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-1.12.5/lib/action_controller/base.rb:941:in `perform_action_without_filters'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-1.12.5/lib/action_controller/filters.rb:368:in `perform_action_without_benchmark'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-1.12.5/lib/action_controller/benchmarking.rb:69:in `perform_action_without_rescue'
+    /usr/local/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-1.12.5/lib/action_controller/benchmarking.rb:69:in `perform_action_without_rescue'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-1.12.5/lib/action_controller/rescue.rb:82:in `perform_action'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-1.12.5/lib/action_controller/base.rb:408:in `send'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-1.12.5/lib/action_controller/base.rb:408:in `process_without_filters'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-1.12.5/lib/action_controller/filters.rb:377:in `process_without_session_management_support'
+    /usr/local/lib/ruby/gems/1.8/gems/actionpack-1.12.5/lib/action_controller/session_management.rb:117:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/rails-1.1.6/lib/dispatcher.rb:38:in `dispatch'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:76:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:74:in `synchronize'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:74:in `process'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel.rb:159:in `process_client'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel.rb:158:in `each'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel.rb:158:in `process_client'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel.rb:285:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel.rb:285:in `initialize'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel.rb:285:in `new'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel.rb:285:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel.rb:268:in `initialize'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel.rb:268:in `new'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel.rb:268:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/configurator.rb:282:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/configurator.rb:281:in `each'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/configurator.rb:281:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:128:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/command.rb:212:in `run'
+    /usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:281
+    /usr/local/bin/mongrel_rails:19:in `load'
+    /usr/local/bin/mongrel_rails:19
+
+
+Rendering /var/www/modelchina/trunk2/config/../public/404.html (404 Not Found)
+
+
+Processing PicturesController#show (for 123.125.66.54 at 2009-10-08 15:53:16) [GET]
+  Session ID: 1b5eda944b510735b8930f3984b223b9
+  Parameters: {"action"=>"show", "id"=>"51876", "controller"=>"pictures"}
+Cookie set: lang=zh; path=/
+check session cookies
+Cookie set: login_session=0fe072d8e873bee7a9d7fdb109499c1524fcc3be; path=/; expires=Fri, 08 Oct 2010 07:53:16 GMT
+
+write login_log
+Sending data 
+Completed in 0.13534 (7 reqs/sec) | Rendering: 0.00005 (0%) | DB: 0.00032 (0%) | 200 OK [http://www.model-china.cn/pictures/show/51876]
+
+
+Processing ModelsController#profile (for 203.208.60.76 at 2009-10-08 15:53:18) [GET]
+  Session ID: b7015013a56b4cab93f7336b7b6316ff
+  Parameters: {"action"=>"profile", "id"=>"5654", "controller"=>"models"}
+Cookie set: lang=zh; path=/
+check session cookies
+Cookie set: login_session=5aca81668275512849827f987bc12ec1e137aac4; path=/; expires=Fri, 08 Oct 2010 07:53:18 GMT
+
+write login_log
+
+
+Processing PicturesController#show (for 123.125.66.104 at 2009-10-08 15:53:20) [GET]
+  Session ID: bc33fc60025b548d7fe9d2e6bf063a3c
+  Parameters: {"action"=>"show", "id"=>"51385", "controller"=>"pictures"}
+Cookie set: lang=zh; path=/
+check session cookies
+Cookie set: login_session=9bb1acce95ea835e15f97777466f0430e389e29f; path=/; expires=Fri, 08 Oct 2010 07:53:20 GMT
+
+write login_log
+Sending data 
+Completed in 0.71834 (1 reqs/sec) | Rendering: 0.00004 (0%) | DB: 0.00038 (0%) | 200 OK [http://www.model-china.cn/pictures/show/51385]
+
+
+Processing PicturesController#show (for 123.125.66.115 at 2009-10-08 15:53:24) [GET]
+  Session ID: 7ccd6692bcd31932f1ff7e2ea30a217e
+  Parameters: {"action"=>"show", "id"=>"51082", "controller"=>"pictures"}
+Cookie set: lang=zh; path=/
+check session cookies
+Cookie set: login_session=f95ed34066fb7ca756a04b28f236e3ba815728e8; path=/; expires=Fri, 08 Oct 2010 07:53:24 GMT
+
+write login_log
+Sending data 
+Completed in 0.08393 (11 reqs/sec) | Rendering: 0.00004 (0%) | DB: 0.00026 (0%) | 200 OK [http://www.model-china.cn/pictures/show/51082]
+
+
+Processing LinksController#create (for 195.88.32.68 at 2009-10-08 15:53:24) [POST]
+  Session ID: d6cbea474a01f31bc3597f8deb2dc401
+  Parameters: {"submit"=>"提交", "action"=>"create", "link"=>{"name"=>"buying cialis online canada", "im"=>"http://dotnet.org.za/members/Cialis-Drug-Information.aspx", "url"=>"http://dotnet.org.za/members/Cialis-Drug-Information.aspx", "tel"=>"http://dotnet.org.za/members/Cialis-Drug-Information.aspx", "email"=>"lkptwen@qnqjx.com"}, "controller"=>"links"}
+Cookie set: lang=zh; path=/
+check session cookies
+Cookie set: login_session=011f3d378c85c3f98ca895a11dadeb2099650f85; path=/; expires=Fri, 08 Oct 2010 07:53:24 GMT
+
+write login_log
+Rendering layoutfalse within layouts/default
+Rendering models/profile
+Completed in 6.57419 (0 reqs/sec) | Rendering: 0.01111 (0%) | DB: 6.55698 (99%) | 200 OK [http://www.model-china.cn/models/profile/5654]
+
+
+Processing TopicsController#show (for 61.135.249.205 at 2009-10-08 15:53:24) [GET]
+  Session ID: 3670069fd9caba3c13e8593667beec17
+  Parameters: {"action"=>"show", "id"=>"2347", "controller"=>"topics"}
+Cookie set: lang=zh; path=/
+
+
+Processing GroupsController#show (for 220.181.125.69 at 2009-10-08 15:53:25) [GET]
+  Session ID: 1033bb9db9c6830efb38049d38ab6c5b
+  Parameters: {"action"=>"show", "id"=>"4775", "controller"=>"groups"}
+Cookie set: lang=zh; path=/
+check session cookies
+Cookie set: login_session=5635b413169fd48e797b98faf77167de39e4e0c2; path=/; expires=Fri, 08 Oct 2010 07:53:25 GMT
+
+write login_log
+Rendering  within layouts/default
+Rendering groups/show
+Completed in 0.02454 (40 reqs/sec) | Rendering: 0.00682 (27%) | DB: 0.01488 (60%) | 200 OK [http://51yoga.com/groups/show/4775]
+Rendering  within layouts/default
+Rendering topics/show
+Redirected to http://www.model-china.cn/links/ok/430928
+Completed in 1.93764 (0 reqs/sec) | Rendering: 0.01357 (0%) | DB: 1.91769 (98%) | 200 OK [http://www.model-china.cn/topics/show/2347]
+Completed in 2.35857 (0 reqs/sec) | DB: 2.35230 (99%) | 302 Found [http://www.model-china.cn/links/create]
+
+
+Processing PicturesController#show (for 220.181.94.237 at 2009-10-08 15:53:26) [GET]
+  Session ID: cbb8e4283f16c1cbf2329a336aee3b23
+  Parameters: {"action"=>"show", "id"=>"53671", "controller"=>"pictures"}
+Cookie set: lang=zh; path=/
+check session cookies
+Cookie set: login_session=a98c953e0f63e359556a600d8dd122429d75da3d; path=/; expires=Fri, 08 Oct 2010 07:53:26 GMT
+
+write login_log
+Sending data 
+Completed in 0.11779 (8 reqs/sec) | Rendering: 0.00005 (0%) | DB: 0.00041 (0%) | 200 OK [http://www.model-china.cn/pictures/show/53671]
+
+
+Processing PicturesController#show (for 123.125.66.23 at 2009-10-08 15:53:27) [GET]
+  Session ID: 8113eb20d1a25712c1fcd844c9fa5a7c
+  Parameters: {"action"=>"show", "id"=>"50849", "controller"=>"pictures"}
+Cookie set: lang=zh; path=/
+check session cookies
+Cookie set: login_session=5b0576dd1fbf903a22e06da8a6ad1e23f48717f2; path=/; expires=Fri, 08 Oct 2010 07:53:27 GMT
+
+write login_log
+Sending data 
+Completed in 0.15205 (6 reqs/sec) | Rendering: 0.00006 (0%) | DB: 0.00038 (0%) | 200 OK [http://www.model-china.cn/pictures/show/50849]
+
+
+Processing JobsController#show (for 124.115.0.138 at 2009-10-08 15:53:28) [GET]
+  Session ID: 1e62484ce3e840b930310ac48fd9f8e2
+  Parameters: {"action"=>"show", "id"=>"16591", "controller"=>"jobs"}
+Cookie set: lang=zh; path=/
+check session cookies
+Cookie set: login_session=f3700f4acb390726c80e1815963e673c54ea475c; path=/; expires=Fri, 08 Oct 2010 07:53:28 GMT
+
+write login_log
+Rendering layoutfalse within layouts/default
+Rendering jobs/show
+Completed in 0.62119 (1 reqs/sec) | Rendering: 0.00606 (0%) | DB: 0.61084 (98%) | 200 OK [http://www.model-china.cn/jobs/show/16591]
+
+
+Processing PicturesController#show (for 123.125.66.41 at 2009-10-08 15:53:30) [GET]
+  Session ID: 0ec3e42d3ac5fb32a0f179a90ca4a931
+  Parameters: {"action"=>"show", "id"=>"500", "controller"=>"pictures"}
+Cookie set: lang=zh; path=/
+check session cookies
+Cookie set: login_session=b147a63eac80216baa3438f9c3fe6170ae36e2de; path=/; expires=Fri, 08 Oct 2010 07:53:30 GMT
+
+write login_log
+Sending data 
+Completed in 0.86908 (1 reqs/sec) | Rendering: 0.00005 (0%) | DB: 0.00035 (0%) | 200 OK [http://www.model-china.cn/pictures/show/500]
+
+
+Processing JobsController#show (for 124.115.0.107 at 2009-10-08 15:53:33) [GET]
+  Session ID: 0c722346522093173a85277f41c3c933
+  Parameters: {"action"=>"show", "id"=>"16587", "controller"=>"jobs"}
+Cookie set: lang=zh; path=/
+check session cookies
+Cookie set: login_session=5f83e5d5546e3341c17a46f98937c301c63e9c4b; path=/; expires=Fri, 08 Oct 2010 07:53:33 GMT
+
+write login_log
+Rendering layoutfalse within layouts/default
+Rendering jobs/show
+Completed in 0.58577 (1 reqs/sec) | Rendering: 0.00639 (1%) | DB: 0.57488 (98%) | 200 OK [http://www.model-china.cn/jobs/show/16587]
+
+
+Processing PicturesController#show (for 123.125.66.32 at 2009-10-08 15:53:34) [GET]
+  Session ID: 4aafcc1165b62d642768456ba87c27c3
+  Parameters: {"action"=>"show", "id"=>"49816", "controller"=>"pictures"}
+Cookie set: lang=zh; path=/
+check session cookies
+Cookie set: login_session=7e365a101bcbd19a7a5bb4edd87152732f45e4f4; path=/; expires=Fri, 08 Oct 2010 07:53:34 GMT
+
+write login_log
+
+
+Processing UserController#welcome (for 220.181.94.237 at 2009-10-08 15:53:34) [GET]
+  Session ID: cda2c8091930d9b90d8dae3d7f06ee76
+  Parameters: {"action"=>"welcome", "id"=>"12820", "controller"=>"user"}
+Cookie set: lang=zh; path=/
+check session cookies
+Cookie set: login_session=de55b7872a0d318da0e1060e467bd5b8bfb32084; path=/; expires=Fri, 08 Oct 2010 07:53:34 GMT
+
+write login_log
+Redirected to http://www.model-china.cn/models/show/8110
+Completed in 0.00228 (438 reqs/sec) | DB: 0.00091 (40%) | 302 Found [http://www.model-china.cn/user/welcome/12820]
+Sending data 
+Completed in 0.44133 (2 reqs/sec) | Rendering: 0.00005 (0%) | DB: 0.00037 (0%) | 200 OK [http://www.model-china.cn/pictures/show/49816]
+
+
+Processing GroupsController#show (for 220.181.125.69 at 2009-10-08 15:53:36) [GET]
+  Session ID: 7d5b8fd01b687b0a375a8faab63f0db6
+  Parameters: {"tag"=>"出名", "action"=>"show", "id"=>"449", "controller"=>"groups"}
+Cookie set: lang=zh; path=/
+check session cookies
+Cookie set: login_session=d8377fea6ce0dee7a8ea87838d88aa81310f0d81; path=/; expires=Fri, 08 Oct 2010 07:53:36 GMT
+
+write login_log
+Rendering  within layouts/default
+Rendering groups/show
+Completed in 0.02816 (35 reqs/sec) | Rendering: 0.00840 (29%) | DB: 0.01698 (60%) | 200 OK [http://51yoga.com/groups/show/449?tag=%E5%87%BA%E5%90%8D]
+
+
+Processing PicturesController#show (for 123.125.66.17 at 2009-10-08 15:53:37) [GET]
+  Session ID: f1280d5537c84dd01b07598fded485eb
+  Parameters: {"action"=>"show", "id"=>"47386", "controller"=>"pictures"}
+Cookie set: lang=zh; path=/
+check session cookies
+Cookie set: login_session=1ebb3e6b9ae9c41230725c34e71b0e934066ccd4; path=/; expires=Fri, 08 Oct 2010 07:53:37 GMT
+
+write login_log
+Sending data 
+Completed in 0.10312 (9 reqs/sec) | Rendering: 0.00006 (0%) | DB: 0.00047 (0%) | 200 OK [http://www.model-china.cn/pictures/show/47386]
+
+
+Processing PicturesController#show (for 123.125.66.30 at 2009-10-08 15:53:40) [GET]
+  Session ID: 42ad9c77159f5afe4c96c6342c7c46cb
+  Parameters: {"action"=>"show", "id"=>"46746", "controller"=>"pictures"}
+Cookie set: lang=zh; path=/
+check session cookies
+Cookie set: login_session=a951bd91743d050d27c922f980bfbf2d76a0db7b; path=/; expires=Fri, 08 Oct 2010 07:53:40 GMT
+
+write login_log
+Sending data 
+Completed in 0.09535 (10 reqs/sec) | Rendering: 0.00004 (0%) | DB: 0.00023 (0%) | 200 OK [http://www.model-china.cn/pictures/show/46746]
+
+
+Processing TopicsController#show (for 61.135.249.205 at 2009-10-08 15:53:41) [GET]
+  Session ID: 3670069fd9caba3c13e8593667beec17
+  Parameters: {"action"=>"show", "id"=>"2872", "controller"=>"topics"}
+Cookie set: lang=zh; path=/
+Rendering  within layouts/default
+Rendering topics/show
+Completed in 0.16565 (6 reqs/sec) | Rendering: 0.01282 (7%) | DB: 0.14712 (88%) | 200 OK [http://www.model-china.cn/topics/show/2872]
+
+
+Processing PicturesController#show (for 123.125.66.24 at 2009-10-08 15:53:43) [GET]
+  Session ID: 5bf9fb101ae2541c3019d9b5c1942c03
+  Parameters: {"action"=>"show", "id"=>"46335", "controller"=>"pictures"}
+Cookie set: lang=zh; path=/
+check session cookies
+Cookie set: login_session=33b122e3995554139b12436c85cc371d93aa38a5; path=/; expires=Fri, 08 Oct 2010 07:53:43 GMT
+
+write login_log
+Sending data 
+Completed in 0.10280 (9 reqs/sec) | Rendering: 0.00006 (0%) | DB: 0.00040 (0%) | 200 OK [http://www.model-china.cn/pictures/show/46335]
+
+
+Processing ModelsController#group (for 220.181.94.237 at 2009-10-08 15:53:43) [GET]
+  Session ID: 0227ae54ae769eb59cffe271bf5cdf37
+  Parameters: {"action"=>"group", "id"=>"8107", "controller"=>"models"}
+Cookie set: lang=zh; path=/
+check session cookies
+Cookie set: login_session=72f634f33136561e3746136e38d9893edfa830c7; path=/; expires=Fri, 08 Oct 2010 07:53:43 GMT
+
+write login_log
+Redirected to http://www.model-china.cn/groups/show/8199
+Completed in 0.03038 (32 reqs/sec) | DB: 0.02853 (93%) | 302 Found [http://www.model-china.cn/models/group/8107]
+
+
+Processing PicturesController#show (for 123.125.66.46 at 2009-10-08 15:53:46) [GET]
+  Session ID: fbd5b0437a7ff6b9bec52c073b212322
+  Parameters: {"action"=>"show", "id"=>"46236", "controller"=>"pictures"}
+Cookie set: lang=zh; path=/
+check session cookies
+Cookie set: login_session=386794e8dac61ecf5a420cd8f0f00c28df6636f8; path=/; expires=Fri, 08 Oct 2010 07:53:46 GMT
+
+write login_log
+Sending data 
+Completed in 0.07752 (12 reqs/sec) | Rendering: 0.00004 (0%) | DB: 0.00016 (0%) | 200 OK [http://www.model-china.cn/pictures/show/46236]
+
+
+Processing LinksController#create (for 91.121.221.90 at 2009-10-08 15:53:46) [POST]
+  Session ID: b4f987059bbb78abf34fa14bbf495de9
+  Parameters: {"submit"=>"提交", "action"=>"create", "link"=>{"name"=>"Ebwanfzi", "im"=>"yGedRwmDsLimY", "url"=>"http://callblast.org/node/199#1", "tel"=>"cYhOLVGEnpBRRi", "email"=>"eulxrejc@lccwpwgw.com"}, "controller"=>"links"}
+Cookie set: lang=zh; path=/
+check session cookies
+Cookie set: login_session=e90dd20fc2c54aa02157361765ab0c8499929d05; path=/; expires=Fri, 08 Oct 2010 07:53:46 GMT
+
+write login_log
+Redirected to http://www.model-china.cn/links/ok/430929
+Completed in 0.01120 (89 reqs/sec) | DB: 0.00604 (53%) | 302 Found [http://www.model-china.cn/links/create]
+
+
+Processing ModelsController#profile (for 220.181.125.69 at 2009-10-08 15:53:47) [GET]
+  Session ID: d69a99afee59b2e83ba5228f4f0c044a
+  Parameters: {"action"=>"profile", "id"=>"2468", "controller"=>"models"}
+Cookie set: lang=zh; path=/
+check session cookies
+Cookie set: login_session=fe2201578cf9d06ac85fe6930155b2b278e25a3c; path=/; expires=Fri, 08 Oct 2010 07:53:47 GMT
+
+write login_log
+Rendering layoutfalse within layouts/default
+Rendering models/profile
+Completed in 0.05922 (16 reqs/sec) | Rendering: 0.01012 (17%) | DB: 0.04326 (73%) | 200 OK [http://51yoga.com/models/profile/2468]
+
+
+Processing MakeupsController#show (for 123.125.68.125 at 2009-10-08 15:53:48) [GET]
+  Session ID: 1f56d302035281bf9c5c24c3a7b88067
+  Parameters: {"action"=>"show", "id"=>"5", "controller"=>"makeups"}
+Cookie set: lang=zh; path=/
+check session cookies
+Cookie set: login_session=7ecbc10c09ceb0e7b5e601d4132626cf0c96e067; path=/; expires=Fri, 08 Oct 2010 07:53:48 GMT
+
+write login_log
+Rendering layoutfalse within layouts/default
+Rendering makeups/show
+Completed in 0.04346 (23 reqs/sec) | Rendering: 0.00928 (21%) | DB: 0.03001 (69%) | 200 OK [http://www.model-china.cn/makeups/show/5]
+
+
+Processing GroupsController#show (for 216.129.119.42 at 2009-10-08 15:53:48) [GET]
+  Session ID: 3914205909b1c19f85980ccadb1e0f1e
+  Parameters: {"tag"=>"化妆师，造型师，广州化妆师，兼职，专业化妆造型", "action"=>"show", "id"=>"29", "controller"=>"groups"}
+Cookie set: lang=zh; path=/
+check session cookies
+Cookie set: login_session=22726a6bcd1f5dee03114e7a9b5b054e5695f923; path=/; expires=Fri, 08 Oct 2010 07:53:48 GMT
+
+write login_log
+Rendering  within layouts/default
+Rendering groups/show
+Completed in 0.04790 (20 reqs/sec) | Rendering: 0.00801 (16%) | DB: 0.03449 (72%) | 200 OK [http://model-china.cn/groups/show/29?tag=%E5%8C%96%E5%A6%86%E5%B8%88%EF%BC%8C%E9%80%A0%E5%9E%8B%E5%B8%88%EF%BC%8C%E5%B9%BF%E5%B7%9E%E5%8C%96%E5%A6%86%E5%B8%88%EF%BC%8C%E5%85%BC%E8%81%8C%EF%BC%8C%E4%B8%93%E4%B8%9A%E5%8C%96%E5%A6%86%E9%80%A0%E5%9E%8B]
+
+
+Processing PicturesController#show (for 123.125.66.109 at 2009-10-08 15:53:49) [GET]
+  Session ID: d735267ec1243bc3a40527a88aaec502
+  Parameters: {"action"=>"show", "id"=>"45761", "controller"=>"pictures"}
+Cookie set: lang=zh; path=/
+check session cookies
+Cookie set: login_session=cc386db615d3f9cc20d38349aee3aad27c2a39d8; path=/; expires=Fri, 08 Oct 2010 07:53:49 GMT
+
+write login_log
+Sending data 
+Completed in 0.19782 (5 reqs/sec) | Rendering: 0.00004 (0%) | DB: 0.00038 (0%) | 200 OK [http://www.model-china.cn/pictures/show/45761]
+
+
+Processing LinksController#ok (for 91.121.221.90 at 2009-10-08 15:53:50) [GET]
+  Session ID: b4f987059bbb78abf34fa14bbf495de9
+  Parameters: {"action"=>"ok", "id"=>"430929", "controller"=>"links"}
+Cookie set: lang=zh; path=/
+Rendering layoutfalse within layouts/web
+Rendering links/ok
+Completed in 0.01246 (80 reqs/sec) | Rendering: 0.00398 (31%) | DB: 0.00659 (52%) | 200 OK [http://www.model-china.cn/links/ok/430929]
+
+
+Processing PicturesController#show (for 123.125.66.107 at 2009-10-08 15:53:52) [GET]
+  Session ID: f71a5d26720aa418a1fdb8f363034e66
+  Parameters: {"action"=>"show", "id"=>"45728", "controller"=>"pictures"}
+Cookie set: lang=zh; path=/
+check session cookies
+Cookie set: login_session=1b146f36e56c52be75551f666ec4f3dd76446e1f; path=/; expires=Fri, 08 Oct 2010 07:53:52 GMT
+
+write login_log
+Sending data 
+Completed in 0.08303 (12 reqs/sec) | Rendering: 0.00004 (0%) | DB: 0.00025 (0%) | 200 OK [http://www.model-china.cn/pictures/show/45728]
+
+
+Processing JobsController#show (for 124.115.4.203 at 2009-10-08 15:53:53) [GET]
+  Session ID: 7c867979f8d6e90e13fc0d3434160f4c
+  Parameters: {"action"=>"show", "id"=>"16588", "controller"=>"jobs"}
+Cookie set: lang=zh; path=/
+check session cookies
+Cookie set: login_session=b256d68115a4abc8e5bd20a13f90545418b24588; path=/; expires=Fri, 08 Oct 2010 07:53:53 GMT
+
+write login_log
+Rendering layoutfalse within layouts/default
+Rendering jobs/show
+Completed in 0.03169 (31 reqs/sec) | Rendering: 0.00596 (18%) | DB: 0.02174 (68%) | 200 OK [http://www.model-china.cn/jobs/show/16588]
+
+
+Processing PagesController#tag (for 220.181.94.237 at 2009-10-08 15:53:53) [GET]
+  Session ID: 552ce813ad6bdbb9fe37c495fedec7f3
+  Parameters: {"action"=>"tag", "id"=>"忧郁", "controller"=>"pages"}
+Cookie set: lang=zh; path=/
+check session cookies
+Cookie set: login_session=6b7cd405eb480e5246812f676280140b60cb08b0; path=/; expires=Fri, 08 Oct 2010 07:53:53 GMT
+
+write login_log
+Rendering layoutfalse within layouts/default
+Rendering pages/tag
+Completed in 0.04916 (20 reqs/sec) | Rendering: 0.00970 (19%) | DB: 0.03790 (77%) | 200 OK [http://www.model-china.cn/pages/tag/%E5%BF%A7%E9%83%81]
+
+
+Processing PagesController#show (for 61.135.249.205 at 2009-10-08 15:53:54) [GET]
+  Session ID: 3670069fd9caba3c13e8593667beec17
+  Parameters: {"action"=>"show", "id"=>"1759", "controller"=>"pages"}
+Cookie set: lang=zh; path=/
+
+
+Processing PicturesController#show (for 123.125.66.109 at 2009-10-08 15:53:55) [GET]
+  Session ID: 9ca50010324e2d4a4f879e08351c0322
+  Parameters: {"action"=>"show", "id"=>"45661", "controller"=>"pictures"}
+Cookie set: lang=zh; path=/
+check session cookies
+Cookie set: login_session=4003b728d30c99d0553089fd1aba50c3dd8b8c31; path=/; expires=Fri, 08 Oct 2010 07:53:55 GMT
+
+write login_log
+Sending data 
+Completed in 0.58958 (1 reqs/sec) | Rendering: 0.00004 (0%) | DB: 0.00019 (0%) | 200 OK [http://www.model-china.cn/pictures/show/45661]
+Rendering layoutfalse within layouts/default
+Rendering pages/show
+Completed in 1.30375 (0 reqs/sec) | Rendering: 0.00491 (0%) | DB: 1.29458 (99%) | 200 OK [http://www.model-china.cn/pages/show/1759]

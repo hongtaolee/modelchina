@@ -1,0 +1,50 @@
+﻿            <div id="logo">
+                <%=link_to image_tag("logo.gif"),:controller=>'public',:action=>'index' %>
+            </div>
+            <div class="guanggao">
+            </div>            
+            <div id="tabs1">
+                <ul>
+                    <% if current_controller == 'public' && current_action == 'index' %>
+                        <li><a href="/" class="active"><span class="span">首页</span></a></li>
+                    <% else %>
+                        <li><a href="/" class=""><span>首页</span></a></li>
+                    <% end %>
+                    <% if current_controller == 'models' && current_action == 'search' %>
+                        <li><a href="/models" class="active"><span class="span">模特</span></a></li>
+                    <% else %>
+                        <li><a href="/models" class=""><span>模特</span></a></li>
+                    <% end %>
+                    <% if current_controller == 'photographers'%>
+                        <li><a href="/photographers" class="active"><span class="span">摄影师</span></a></li>
+                    <% else %>
+                        <li><a href="/photographers" class=""><span>摄影师</span></a></li>
+                    <% end %>
+                    <% if current_controller == 'makeups' %>
+                        <li><a href="/makeups" class="active"><span class="span">化妆师</span></a></li>
+                    <% else %>
+                        <li><a href="/makeups" class=""><span>化妆师</span></a></li>
+                    <% end %>
+                    <% if current_controller == 'models' && current_action == 'city' %>
+                        <li><a href="/models/city" class="active"><span class="span">同城</span></a></li>
+                    <% else %>
+                        <li><a href="/models/city" class=""><span>同城</span></a></li>
+                    <% end %>
+                    <% if current_controller == 'public' && current_action == 'job' %>
+                        <li><a href="/public/job" class="active"><span class="span">招聘</span></a></li>
+                    <% else %>
+                        <li><a href="/public/job" class=""><span>招聘</span></a></li>
+                    <% end %>
+                    <% if current_controller == 'pages' %>
+                        <li><a href="/pages/list" class="active"><span class="span">资讯</span></a></li>
+                    <% else %>
+                        <li><a href="/pages/list" class=""><span>资讯</span></a></li>
+                    <% end %>
+                    <% if current_controller == 'public' && current_action == 'rank' %>
+                        <li><a href="/public/rank" class="active"><span class="span">排行榜</span></a></li>
+                    <% else %>
+                        <li><a href="/public/rank" class=""><span>排行榜</span></a></li>
+                    <% end %>
+                    <li><a href="http://www.danongjia.com"><span>大农家</span></a></li>
+                </ul>
+            </div>

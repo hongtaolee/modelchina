@@ -1,0 +1,10 @@
+<% if flash[:notice]%>
+    <div class="notice" id="notice_flash"><%= flash[:notice]%></div>
+<% end %>
+<%- if @current_user.nil? -%>
+    <%= link_to '登陆', :controller =>'user', :action =>'login' %>| 
+    <%= link_to '注册', :controller => 'user', :action => 'signup' %>
+<% else %>
+        欢迎您，<%= @current_user.name%>&nbsp;&nbsp;|&nbsp;&nbsp;<%= link_to '我的地盘', :controller => 'user', :action => 'home' %>&nbsp;&nbsp;
+     |&nbsp;&nbsp;<%= link_to '退出', :controller => 'user', :action =>'logout' %>
+<% end %>

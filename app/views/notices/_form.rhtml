@@ -1,0 +1,16 @@
+<%= error_messages_for 'notice' %>
+<fieldset>
+    <table>
+        <%= form_input (:text_field, 'notice', 'controller', "Controller","公告所在页面的controller")%>
+        <%= form_input (:text_field ,'notice', 'action', "action","公告所在页面的action" )%>
+        <%= form_input(:text_field, 'notice', 'title', "公告标题","公告标题") %>
+        <%= form_input(:text_area, 'notice', 'content', "公告内容","公告内容",{:class => 'textarea'})%>
+        <tr class="two_columns">
+            <td class="prompt"></td><td class="button" colspan="2">
+              <input name="submit" type="submit" value="发布招聘信息" />
+              <%= link_to "返回", :action => 'list'%>
+            </td>
+        </tr>
+    </table>
+</fieldset>
+

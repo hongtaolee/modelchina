@@ -1,0 +1,56 @@
+<div id="content">
+<div id="preview">
+<div class="big_title"><%=params[:id]%>化妆师。。。。。。</div>
+<div  id="preview_list">
+<% for makeup in @makeups%>
+<table class="model_item">
+  <tr>
+    <td valign="middle" align="center" class="model_item_img">
+       <div><%= link_to_avata(makeup)%></div>
+    </td>
+    <td valign="middle" class="model_item_info">
+      <div class="preview_name"><%= link_to makeup.name,:controller => 'makeups',:action=>'show',:id=>makeup.id %></div>
+      <div class="rank_star">
+        <ul class="star-rating">
+            <li class="current-rating" style="width:<%= makeup.rank_count > 0 ? makeup.rank*20/makeup.rank_count : 0 %>px;"></li>
+        </ul>
+      </div>
+      <div class="clear"></div> 
+      <ul class="preview_detail">
+        <li>性别：<%= makeup.sex%> cm</li>
+        <li>所在地：<%= makeup.province %>  <%= makeup.city %>
+        <li>评论 <span class="count"><%= makeup.comments_count %></span> / 浏览 <span class="count"><%= makeup.read_count %></span>
+      </ul>
+    </td>
+  </tr>
+</table>
+<% end %>
+<div class="more">
+    <%= link_to_page %>
+</div>
+</div>
+</div>
+
+</div>
+<div id="sidebar">
+    <div class="featurebox">
+        <% if notice = Notice.find(:first,:conditions=>['controller = ? and action =?',current_controller,current_action],:order=>'created_at DESC') %>
+        <div class="sider_title"><%= notice.title%>。。。。。。</div>
+        <div class="brief"><%= notice.content%></div>
+       <% end %> 
+    </div> 
+    <div class="featurebox">
+    <div class="sider_title">同城化妆师。。。。。。</div>
+    <ul class="sider_list">  
+    <% for city in @city%>
+    <li><span class="news"><%=link_to city.city,:controller => 'makeups',:action=>'citysearch',:id=>city.city %>(<%= city.count%>人)</span></li>
+    <% end %>    
+    </ul>
+    </div>  
+    <div class="featurebox">
+        <div class="sider_title">根据标签查找化妆师。。。。。。</div>
+        <div id="tag_cloudy">
+            <% tag_cloud(@tagged_items, %w(x-small small medium large x-large)) do |tag, font_size| %>  <%= link_to(h("#{tag}"), {:action=>'tag',:id => tag}, { :style => "font-size: #{font_size}" } ) -%><% end %>
+        </div>
+    </div>
+</div>

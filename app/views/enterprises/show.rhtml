@@ -1,0 +1,86 @@
+<div id="content">
+<div id="preview">
+<div class="big_title"><%= @enterprise.name %>的模特列表。。。。。。</div>
+<div  id="preview_list">
+<% for model in @models%>
+<table class="model_item">
+  <tr>
+    <td valign="middle" align="center" class="model_item_img">
+        <div><%= link_to_avata(model)%>
+        </div>
+    </td>
+    <td valign="middle" class="model_item_info">
+      <div class="preview_name"><%= link_to model.name,:controller => 'models',:action=>'show',:id=>model.id %></div>
+      <div class="rank_star">
+        <ul class="star-rating">
+            <li class="current-rating" style="width:<%= model.rank_count > 0 ? model.rank*20/model.rank_count : 0 %>px;"></li>
+        </ul>
+      </div>
+      <div class="clear"></div> 
+      <ul class="preview_detail">
+        <li>城市：<%= model.province %> <%= model.city %></li>
+        <li>身高：<%= model.height%> cm</li>
+        <li>三围：<%= model.chest %>/<%= model.waist %>/<%= model.hips%> cm</li> 
+        <li>评论：<span class="count"><%= model.comments_count %></span> / 浏览 <span class="count"><%= model.read_count %></span>
+      </ul>
+    </td>
+  </tr>
+</table>
+<% end %>
+<div class="more">&gt;&gt;<%= link_to '浏览全部模特信息',:controller=>'enterprises',:action=>'model',:id=>@enterprise.id%></div>
+</div>
+</div>
+
+<div id="preview">
+<div class="big_title"><%= @enterprise.name %>发布的招聘信息。。。。。。</div>
+<div  id="preview_list">
+<% for job in @jobs%>
+<table class="job_table">
+    <tr class="job_table_head"><th colspan=4><%= job.work %></th></tr>
+    <tr><td class="odd">发布日期：</td><td class="even"><%= format_datetime(job.created_at) %></td><td class="odd">工作地点：</td><td class="even"><%=job.address%></td></tr>
+    <tr><td class="odd">招聘人数：</td><td class="even"><%= job.number%></td><td class="odd">薪水范围：</td><td class="even"><%=job.salary%></td></tr>
+    <tr><td class="odd">职位描述：</td><td colspan=3><%= job.content %></td></tr>
+</table>
+<% end %>
+<div class="more">&gt;&gt;<%= link_to '浏览全部模特招聘信息',:controller=>'enterprises',:action=>'job',:id=>@enterprise.id%></div>
+</div>
+</div>
+
+</div>
+<div id="sidebar">
+    <div class="featurebox">
+        <div class="sider_title"><%= @enterprise.name%>的企业简介。。。。。。</div>
+        <div class="brief" id="model_brief_id">
+            <ul class="brief_list">
+                <li class="single">联系人：<%= User.find(@enterprise.user_id).name%>
+                <li class="single">邮编：<%= @enterprise.zip%></li>
+                <li class="single">传真：<%= @enterprise.fax%></li>            
+                <li class="single">网址：<%= @enterprise.site%></li>
+                <li class="single">办公地址：<%= @enterprise.office %>
+                <li class="single">简介：<%= @enterprise.description %></li>
+            </ul>
+        </div>
+    </div> 
+    <%= corner('model_brief_id','#FFF6EE','#FFF',true)%>
+    <div class="featurebox model_link" id="model_link_id">
+        <div class="title">联系方式</div>
+        <% @agency = User.find(@enterprise.user_id)%>
+        <% if @current_user.nil? %>
+            <div class="left_sidebar_remark"><%= link_to '登陆', :controller=>'user', :action=>'login'%>后，才能查看联系方式……</div>        
+        <% else %>
+        <ul class="right_sider_list">
+            <li id="is_friend">
+                联系人：<%=@agency.name%>
+              <% unless @current_user.is_friend(@agency.id)%>
+              (<%= link_to_remote '加为好友',:url=>{:controller=>'favs',:action=>'new',:id=>@agency.id}%>)
+              <% end%>
+            </li> 
+            <li>电话：<%=@agency.phone %></li>
+            <li>手机：<%=@agency.mobile %></li>
+            <li>email：<%=@agency.email %></li>
+            <li>MSN：<%=@agency.msn %></li>
+            <li>QQ：<%=@agency.qq %></li>
+        </ul>
+        <% end %>
+    </div>
+</div>

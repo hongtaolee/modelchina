@@ -1,0 +1,47 @@
+<div id="content">
+<% o = 1%>
+<% for page in @webs %>
+    <div  id="page_<%=page.id%>">
+    <table style="margin:20px 10px 20px 20px;">
+        <tr><td><div class="digg_count" id="digg_count_<%=page.id%>"><%= page.digg%></div>
+                <div class="digg_button"><%= link_to_remote '&#x2191; 推荐',:url => {:controller =>'pages',:action =>'digg',:id => page,:o => o}%></div></td>
+            <td>
+                <div class="digg_content">
+                    <div class="digg_title"><%= link_to page.title, :controller=>'pages',:action=>'show',:id=> page %></div>
+                    <div class="digg_brief"><%= h(page.brief)%></div>
+                    <div class="digg_info">类别:<%= link_to (page.category.blank? ? '暂无分类' : page.category),:controller => 'pages',:action=>'category',:id=>page.category %>  |  标签:   </div>
+                </div>
+            </td>
+        </tr>   
+    </table>
+    </div>
+    <% o = o + 1 %>
+<% end %>
+<div class="more"><div class="page_more"><%= link_to_pages %></div></div>
+</div>
+
+<div id="sidebar">
+    <div class="featurebox">
+        <% if notice = Notice.find(:first,:conditions=>['controller = ? and action =?',current_controller,current_action],:order=>'created_at DESC') %>
+        <div class="sider_title"><%= notice.title%>。。。。。。</div>
+        <div class="brief"><%= notice.content%></div>
+       <% end %> 
+    </div>
+    <div class="group_operation">
+        <div class="sider_link">&gt;&gt;<%= link_to '加入编辑队伍',:controller=>'pages',:action=>'join'%></div>
+    </div>
+    <div class="page_right_bar">
+        <div class="page_right_bar_title">文章分类</div>
+        <ul class="sider_list">  
+        <% for category in @categories%>
+        <li><span class="news"><%=link_to category.category,:controller => 'pages',:action=>'category',:id=>category.category %></span></li>
+        <% end %>   
+        </ul>
+    </div>                                  
+    <div class="page_right_bar">
+        <div class="page_right_bar_title">热门标签</div>
+        <div id="tag_cloudy">
+            <% tag_cloud(@tagged_items, %w(x-small small medium large x-large)) do |tag, font_size| %>  <%= link_to(h("#{tag}"), {:controller=>'pages',:action=>'tag',:id => tag}, { :style => "font-size: #{font_size}" } ) -%><% end %>
+        </div>
+    </div>    
+</div>

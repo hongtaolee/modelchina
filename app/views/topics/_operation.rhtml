@@ -1,0 +1,9 @@
+<% if @topic.deleted %>
+    <span class="admin_operate" id="delete_<%= @topic.id %>"><%= link_to_remote "取消删除",:url=>{:controller =>'topics',:action=>'undelete',:id=>@topic.id}%></span>                  
+<% else %>
+    <span class="admin_operate" id="delete_<%= @topic.id %>"><%= link_to_remote "删除",:url=>{:controller =>'topics',:action=>'delete',:id=>@topic.id}%></span>
+    <span class="admin_operate" id="top_<%= @topic.id %>"><%= link_to "置顶",:controller =>'topics',:action=>'set_status',:id=>@topic.id ,:status=>5 %></span>                                
+    <% if @current_user.role == 'admin'%>
+    <span class="admin_operate" id="all_top_<%= @topic.id %>"><%= link_to "全站置顶",:controller =>'topics',:action=>'set_status',:id=>@topic.id,:status=>6 %></span>                                                      
+    <% end %>
+<% end %>

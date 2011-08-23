@@ -1,0 +1,14 @@
+<div id="message_new" style="text-align:left;">
+<div style="float:right;"><a href="<%=@session[:return_to] || '/'%>">关闭</a></div>
+<h3>创建新消息：</h3>
+<%=form_tag :controller => 'messages', :action => 'create'%>
+<fieldset>
+<table>
+<%= form_input(:text_field,'message', 'receive_name',"接收者")%><br/>
+<%= form_input(:text_field ,'message', 'title',"主题")  %>
+<%= form_input(:text_area, 'message', 'content',"内容")  %>
+<%= form_input(:submit_button, 'message','submit','发送')%>
+</table>
+</fieldset>
+<%=end_form_tag%>
+</div>

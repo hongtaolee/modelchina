@@ -1,0 +1,47 @@
+<div id="content">
+<div id="preview">
+    <div class="big_title">最新加入企业。。。。。。</div>
+    <div  id="preview_list">
+        <% for new_enterprise in @new_enterprises%>
+        <table class="group_item" valign="bottom">
+          <tr style="height:84px;"><td valign="middle" align="center" class="group_item_img">
+              <%= link_to_avata(new_enterprise,'80x80')%>
+          </td></tr>
+          <tr><td valign="middle" align="center" class="group_item_info">
+                <%= link_to new_enterprise.name,:controller => 'enterprises',:action=>'show',:id=>new_enterprise.id %>(<%= format_relative_time(new_enterprise.created_at)%>)
+         </td></tr>
+        </table>
+        <% end %>
+    </div>
+    <div class="clear"></div>
+</div>
+<div id="preview">
+<div class="big_title">推荐企业列表。。。。。。</div>
+<div  id="preview_list">
+<% for enterprise in @enterprises%>
+<table class="model_item">
+  <tr>
+    <td valign="middle" align="center" class="model_item_img">
+        <div><%= link_to_avata(enterprise)%></div>
+    </td>
+    <td valign="middle" class="enterprise_item_info">
+      <div class="preview_name"><%= link_to enterprise.name,:controller => 'enterprise',:action=>'show',:id=>enterprise.id %></div>
+      <div class="clear"></div> 
+      <ul class="preview_detail">
+        <li><%= enterprise.descriptions%></li>
+      </ul>
+    </td>
+  </tr>
+</table>
+<% end %>
+</div>
+</div>
+<div class="more"><%= link_to_pages%><div class="clear"></div></div>
+</div>
+<div id="sidebar">
+    <%= render :partial => 'sidebar/notice' %>
+    <div class="sider_link">&gt;&gt;<%= link_to '搜索合意的模特',:controller=>'models',:action=>'search' %></div>
+    <div class="sider_link">&gt;&gt;<%= link_to '找个感兴趣的小组逛逛',:controller=>'groups',:action=>'list' %></div>   
+    <%= render :partial => 'sidebar/top_group'%>
+    <%= render :partial => 'sidebar/tag' %>
+</div>

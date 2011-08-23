@@ -1,0 +1,8 @@
+    <td>[<%=job.id %>]<%=job.state %></td>  
+    <td><%=job.work %></td>
+    <td><%=job.user_id %></td> 
+    <td><%=job.content %></td>
+    <td>
+     <%= link_to_remote '删除', :url => { :action => 'proof_destroy', :id => job.id }, :confirm => '确定删除' %>
+     | <%= link_to_remote '删除该用户全部', :url => { :action => 'proof_destroy_user', :user_id => job.user_id }, :confirm => '确定删除' %>
+     | <%= link_to_remote '审核通过', :url => { :action => 'proof', :id => job.id } %></td>

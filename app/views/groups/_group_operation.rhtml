@@ -1,0 +1,10 @@
+<% if @group.id == 1 %>
+    <div class="sider_link">&gt;&gt;<%= link_to '我要发言',:controller=>'topics',:action=>'new',:id=>@group %></div>
+<% else %>
+    <% if !@current_user.nil? && @current_user.is_member(@group.id)%>
+        <div class="sider_link">&gt;&gt;<%= link_to '我要发言',:controller=>'topics',:action=>'new',:id=>@group %></div>
+        <div class="sider_link">&gt;&gt;<%= link_to_remote '退出小组',:url=>{:controller=>'groups',:action=>'exit',:id=>@group} %></div>      
+    <% else %>            
+        <div class="sider_link">&gt;&gt;<%= link_to_remote '加入小组',:url=>{:controller=>'groups',:action=>'add',:id=>@group} %></div>             
+    <% end %>
+<% end %>

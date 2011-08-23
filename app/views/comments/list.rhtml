@@ -1,0 +1,19 @@
+<h1>评论 (<%=@total_size %>)</h1>
+
+<table border="1">
+  <tr>
+    <th>ID:Status</th>
+    <th>model id</th>
+    <th>user id</th>
+    <th>留言内容</th>
+  </tr>
+  
+<% for comment in @comments %>
+  <tr id="comment_<%=comment.id %>">
+    <%=render :partial => "comment", :locals => {:comment => comment} %>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to '上一页', { :page => @comment_pages.current.previous } if @comment_pages.current.previous %>
+<%= link_to '下一页', { :page => @comment_pages.current.next } if @comment_pages.current.next %> 

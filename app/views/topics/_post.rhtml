@@ -1,0 +1,12 @@
+<div class="comment_item" style="clear:both;margin-left:20px;padding:10px;" id="new_post_<%=@post.id %>">
+    <div style="width:60px;height60px;float:left;margin:0 10px 10px 10px;" >
+        <% @poster = User.find(@post.user_id) %>
+        <%= link_to_avata(@poster,'60x60','user','welcome')%>             
+    </div>
+    <div style="background:#F4F4F4; padding:3px 10px;margin-left:90px;margin-right:10px;">
+        作者：<%= link_to @poster.name, :controller => 'user', :action => 'welcome',:id=> @poster.id %> | 发布时间： <%= format_datetime(@post.created_at)%> 
+    </div>
+    <div style="padding:10px;margin-left:90px;margin-right:10px;text-indent:20px;">
+        <%=@post.content%>
+    </div>
+</div>

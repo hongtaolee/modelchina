@@ -1,0 +1,15 @@
+<div id="content">
+    <div class="sub_head"><h2>发布新的话题</h2></div>
+    <div>
+    <%= form_tag(
+          url_for(:controller=> 'groups',:action => 'post',:id=>@group),
+          'method' => 'post',
+          :multipart => true)
+    %>
+      <%= render :partial => 'form' %>
+    <%= end_form_tag %>
+    </div>
+    <div id="sidebar">
+        <div class="sider_link">&gt;&gt;<%= link_to '回到'+@group.name, :controller => 'groups',:action => 'show',:id=>@group %></div>
+    </div>
+</div>

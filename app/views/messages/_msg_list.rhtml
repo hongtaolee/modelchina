@@ -1,0 +1,52 @@
+@messages = Message.find(:all, :conditions => ["user_id = ? or user_id = ? ", @user.id, '0'],:order => 'created_at DESC')
+@pages, @messages = paginate_collection @messages, :page => @params[:page], :per_page => 10
+<% if @messages.length == 0 %>
+    没有任何消息，您可以向好友<%= link_to '发送一个新消息', :controller => 'public',:action => 'my', :id => 'messages/new' %>
+<% else %>
+   <dl class="tab_table">
+       <dt class="table_head">
+           <ul>
+               <li style="width:50px; text-align:center;"></li>
+               <li style="width:137px;">发送者</li>
+               <li style="width:25px;"></li>
+               <li style="width:15px;"></li>
+               <li style="width:420px;">消息</li>
+               <li style="width:120px;">发送时间</li>
+           </ul>
+       </dt>
+       <dd class="table_content" id="msg_list">
+           <% for message in @messages%>
+           <ul id='message_<%= message.id %>' class="<%= 'no_read' unless message.status %>">
+                <li style="width:50px; text-align:center;">
+                   <input type="checkbox" style="display:inline;" onclick="getCheck('check_<%= message.id%>','check_all')" id="check_<%= message.id%>" name="check" class="check_box <%= message.status ? 'read' : 'no_read'%>"  value="check_<%= message.id%>"/> 
+                </li>
+                <li style="width:137px;"><%= message.send_name %></li>
+                <li style="width:25px;"><%= image_tag 'spinner.gif', :id => 'spinner_' + message.id.to_s , :style => 'display: none; padding-top:3px;'%></li>
+                <li style="width:15px;"><%= (image_tag 'reply.gif', :id => 'reply_' + message.id.to_s , :style => 'padding-top:8px;', :title => '已回复') if message.reply %></li>
+                <li style="width:420px;">
+                   <%= link_to_remote message.title, 
+                               :url => {:controller => 'messages', :action => 'show' , :id => message.id }, 
+                            :before => %(Element.show('spinner_#{message.id}')),
+                            :success => %(Element.hide('spinner_#{message.id}')) %>
+                 </li>
+                <li style="width:120px;"><%= format_datetime(message.created_at) %></li>               
+           </ul>
+           <% end %>
+       </dd>
+   </dl>
+	<div class="tab_bottom">
+    <div class="line_left">
+        选择：
+        <a href="#" onclick="checkAll('check'); return false; ">全选</a>
+        <a href="#" onclick="uncheckAll('check'); return false;">无</a>
+        <a href="#" onclick="checkPartial('check','.no_read'); return false; ">未读</a>
+        <a href="#" onclick="checkPartial('check','.read'); return false;">已读</a>
+        <%= form_tag({:controller => 'messages', :action => 'delete'},{:style => 'display:inline;'}) %>
+            <input name="check_all" id="check_all" type="hidden" />
+        <%= submit_tag '删除', :onclick => "confirm('您确定要删除这些信息')", :disabled => 'true' , :id => 'delete_button' , :style => 'display:inline;line-height:18px;width:60px;height:16px;font-size:12px;border:none;'%>
+        <%= end_form_tag %>
+<%= link_to_remote '新消息' ,{ :url => {:controller => 'messages' , :action => 'new'}}, {:class => 'tab_content_button'}%>
+    </div>
+    <div class="line_right"><%= link_to_pages %></div> 
+	</div>
+<% end %>

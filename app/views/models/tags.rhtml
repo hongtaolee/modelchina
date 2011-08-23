@@ -1,0 +1,16 @@
+<div id="content">
+    <div class="tags">
+    <div class="sider_title">全部模特标签。。。。。。</div>
+    <div id="tag_cloudy">
+        <% tag_cloud(@tagged_items, %w(level-1 level-2 level-3 level-4 level-5)) do
+        |tag, tag_class| %>  <%= link_to(h("#{tag}"),
+          {:controller=>(current_controller == 'public' ? 'models' : current_controller ),:action=>'tag',:id => tag}, { :class => "#{tag_class}" } ) -%><% end %>
+    </div>
+    </div>
+</div>
+<div id="sidebar">
+    <%= render :partial => 'sidebar/notice' %>
+    <div class="sider_link">&gt;&gt;<%= link_to '搜索合意的模特',:controller=>'models',:action=>'search' %></div>
+    <div class="sider_link">&gt;&gt;<%= link_to '找个感兴趣的小组逛逛',:controller=>'groups',:action=>'list' %></div>    
+    <%= render :partial => 'sidebar/mclass' %>
+</div>

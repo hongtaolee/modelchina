@@ -1,0 +1,27 @@
+<table align="center" style="margin:5px;">
+<tr><td align="center" style="padding:5px; border:1px solid #ccc;height:400px;width:600px;">
+<div id ="big_image">
+    <%=link_to image_tag(url_for(:controller=>'pictures',:action=>'show',:id =>@picture.picture)),{:controller=>'pictures',:action=>'show',:id=>@picture.picture} %>
+</div>
+</td></tr>
+<tr><td align="center" valign="middle" style="line-height:28px;">
+    <% unless @picture.model.model_pictures.length == 0 %>
+        <% unless @picture.position >= @picture.model.pictures_count %>
+        <%= link_to_remote image_tag('fpage.gif',:alt=>'上一张'),
+                        :url=> {:controller => 'models',:action => 'get_picture',:model => @picture.model,:position => @picture.position + 1},
+                        :before => %(Element.show('spinner')),
+                        :success => %(Element.hide('spinner')) %>
+        <% end %>
+        <span style="display:inline-block;line-height:20px; margin:0 10px 8px 10px;">
+            <%=@picture.model.pictures_count - @picture.position + 1%>/<%= @picture.model.pictures_count %>
+        </span>
+        <% unless @picture.position <= 1 %>
+        <%= link_to_remote image_tag('npage.gif',:alt=>'下一张'),
+                        :url=> {:controller => 'models',:action => 'get_picture',:model => @picture.model,:position=> @picture.position - 1 },
+                        :before => %(Element.show('spinner')),
+                        :success => %(Element.hide('spinner')) %>
+        <% end %>
+     <% end %>
+</td></tr>
+<div style="text-align:center;"><%= image_tag 'spinner.gif', :id => 'spinner', :style => 'display: none;'%></div>
+</table>

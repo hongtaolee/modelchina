@@ -1,0 +1,19 @@
+<div class="featurebox">
+    <div class="sider_title">最新加入成员。。。。。。</div>
+    <div class="new_members" style="margin-left:10px;">
+    <% for member in @members%>
+        <div class="picbox">
+          <table><tr><td>
+            <%= link_to_avata(member.user,'60x60','user','welcome')%>
+          </td></tr></table>
+          <p>
+            <%= link_to member.user.name,:controller => 'user',:action=>'welcome',:id=>member.user.id %>
+            <% if @group.admin == member.user.id %>
+            <font color="red">(管理员)</font>
+            <% end %>
+          </p>
+       </div>
+    <% end %>
+    </div>
+</div>
+<div class="clear"></div>

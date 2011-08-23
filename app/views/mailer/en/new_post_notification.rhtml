@@ -1,0 +1,11 @@
+Since your last visit, a new message has been posted to topic "<%= @post.topic.subject %>" in forum "<%= @post.topic.forum.name %>".
+
+Subject: <%= @post.subject %>
+Author: <%= @post.get_display_name %>
+
+Read the message at <%= @post_url %>.
+
+You will not receive further notifications about new messages in this topic until you visit it again.
+
+Switch off notification for this topic:
+<%= @disable_notification_url %>

@@ -1,0 +1,33 @@
+<div class="admin_brief">
+    <div><span class="brief_item">头像：</span><%= link_to_avata(@user,'60x60','user','welcome')%></div>
+    <div><span class="brief_item"><%= "用户名"%>：</span><%= @user.name %></div>
+    <div><span class="brief_item"><%= "用户类型"%>：</span><%= Const.display_name('user','category',@user.category) %></div>   
+    <div><span class="brief_item"><%= "Email"%>：</span><%= @user.email %></div>
+    <div><span class="brief_item"><%= "电话"%>：</span><%= @user.phone %></div>
+    <div><span class="brief_item"><%= "手机"%>：</span><%= @user.mobile %></div>
+    <div><span class="brief_item"><%= "QQ"%>：</span><%= @user.qq %></div>
+    <div><span class="brief_item"><%= "MSN"%>：</span><%= @user.msn %></div>
+    <div><span class="brief_item"><%= "创建于"%>：</span><%= format_datetime(@user.created_at) %></div>
+    <div style="clear:both;margin-top:20px;">
+        <%= link_to '修改用户资料', :controller => 'user',:action => 'edit'%>
+        <% link_code = ""
+            case @user.category
+            when 1
+                link_code << "#{link_to '更新模特资料', :controller => 'models',:action => 'edit',:id=>Model.find_by_user_id(@user.id)}  "
+                link_code << "#{link_to '上传照片到相册,展示自我风采',:controller => 'models',:action => 'album' ,:id=>Model.find_by_user_id(@user.id)}  "
+            when 2
+                link_code << "#{link_to '更新企业资料', :controller => 'enterprises',:action => 'edit'}"
+            
+            when 3
+                link_code << "#{link_to '更新摄影师资料', :controller => 'photographers',:action => 'edit',:id=>Photographer.find_by_user_id(@user.id)}  "
+                link_code << "#{link_to '上传照片到相册,展示自我风采',:controller => 'photographers',:action => 'album' ,:id=>Photographer.find_by_user_id(@user.id)}  "
+            when 4
+                link_code << "#{link_to '更新化妆师资料', :controller => 'makeups',:action => 'edit',:id=>Makeup.find_by_user_id(@user.id)}  "
+                link_code << "#{link_to '上传照片到相册,展示自我风采',:controller => 'makeups',:action => 'album' ,:id=>Makeup.find_by_user_id(@user.id)}  "
+           else
+           end 
+           -%>
+       <%= link_code %>
+    </div>
+    <div style="font-size:12px;font-weight:bold;color:red;margin:10px 0;">注意:只有上传了照片,并且填写了基本资料(三围/身高/所在城市)的模特才能出现在首页</div>
+</div>

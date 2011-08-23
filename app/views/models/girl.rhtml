@@ -1,0 +1,54 @@
+<div id="content">
+<div id="preview">
+    <div class="big_title">最新加入女模特。。。。。。</div>
+    <div  id="preview_list">
+        <% for new_model in @new_models%>
+        <table class="group_item" valign="bottom">
+          <tr style="height:104px;"><td valign="middle" align="center" class="group_item_img">
+              <%= link_to_avata(new_model)%>
+          </td></tr>
+          <tr><td valign="middle" align="center" class="group_item_info">
+                <%= link_to new_model.name,:controller => 'models',:action=>'show',:id=>new_model.id %>(<%= format_relative_time(new_model.created_at)%>)
+         </td></tr>
+        </table>
+        <% end %>
+    </div>
+    <div class="clear"></div>
+</div>
+<div id="preview">
+<div class="big_title">最受欢迎的女模特。。。。。。</div>
+<div  id="preview_list">
+<% for model in @models%>
+<table class="model_item">
+  <tr>
+    <td valign="middle" align="center" class="model_item_img">
+        <div><%= link_to_avata(model)%></div>
+    </td>
+    <td valign="middle" class="model_item_info">
+      <div class="preview_name"><%= link_to model.name,:controller => 'models',:action=>'show',:id=>model.id %></div>
+      <div class="rank_star">
+        <ul class="star-rating">
+            <li class="current-rating" style="width:<%= model.rank_count > 0 ? model.rank*20/model.rank_count : 0 %>px;"></li>
+        </ul>
+      </div>
+      <div class="clear"></div> 
+      <ul class="preview_detail">
+        <li>身高：<%= model.height%> cm</li>
+        <li>三围：<%= model.chest %>/<%= model.waist %>/<%= model.hips%> cm</li> 
+        <li>评论 <span class="count"><%= model.comments_count %></span> / 浏览 <span class="count"><%= model.read_count %></span>
+      </ul>
+    </td>
+  </tr>
+</table>
+<% end %>
+<div class="more"><%= link_to_pages %></div>
+</div>
+</div>
+</div>
+<div id="sidebar">
+    <%= render :partial => 'sidebar/notice' %>
+    <div class="sider_link">&gt;&gt;<%= link_to '搜索合意的模特',:controller=>'models',:action=>'search' %></div>
+    <div class="sider_link">&gt;&gt;<%= link_to '找个感兴趣的小组逛逛',:controller=>'groups',:action=>'list' %></div>    
+    <%= render :partial => 'sidebar/mclass' %>
+    <%= render :partial => 'sidebar/tag' %>
+</div>

@@ -1,0 +1,19 @@
+defaults: &defaults
+  adapter: mysql
+  host: 127.0.0.1
+  port: 3306
+  username: root
+  password: chinaren
+  encoding: utf8
+  
+development:
+  database: mc
+  <<: *defaults
+
+test:
+  database: modelchina 
+  <<: *defaults
+
+production:
+  database: mc
+  <<: *defaults

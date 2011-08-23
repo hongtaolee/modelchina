@@ -1,0 +1,52 @@
+<div class="tab_content" id="msg_list">
+   <table class="tab_table">
+       <tr class="table_head">
+           <th style="width:30px; text-align:center;"></th>
+           <th style="width:80px;">用户名</th>
+           <th style="width:100px;">用户类型</th>
+           <th style="width:235px;">联系方式</th>
+           <th style="width:50px;">图片</th>
+           <th style="width:100px;">最后登录</th>
+           <th style="width:100px;">加入时间</th>
+           <th style="width:100px;">操作</th>
+       </tr>
+       <% odd_or_even = 0 %>
+       <% for user in @users%>
+       <% odd_or_even = 1 - odd_or_even %>
+       <tr id='user_<%= user.id %>' class="ListLine<%= odd_or_even %>">
+            <td style="width:30px; text-align:center;">
+               <input type="checkbox" style="display:inline;" onclick="getCheck('check_<%= user.id%>','check_all')" id="check_<%= user.id%>" name="check" class="check_box"  value="check_<%= user.id%>"/> 
+            </td>
+            <td style="width:80px;">
+                <%= link_to_avata(user,'60x60','user','welcome')%>
+            <br/><%= user.name %>        
+            </td>
+            <td style="width:100px;"><%= Const.display_name('user','category',user.category) %></td>
+            <td style="width:235px;"><%= user.email%><br/><%= user.phone%>/<%= user.mobile%><br/><%= user.qq%>/<%= user.msn%></td>
+            <td style="width:50px;"><%= user.models.first.pictures_count if user.models.nil? %></td>
+            <td style="width:100px;"><%= format_datetime(user.updated_at) if user.updated_at %></td>
+            <td style="width:100px;"><%= format_datetime(user.created_at) %></td>
+            <td style="width:100px;">
+                <%= link_to '查看', :action => 'welcome', :id => user %>
+                <%= link_to '编辑', :action => 'edit', :id => user %>
+                <%= link_to '状态',:action => 'change_status', :id => user %>
+                <%= link_to '删除', { :action => 'destroy', :id => user }, :confirm => '确定要删除吗?', :post => true %>            
+            </td>                
+       </tr>
+       <% end %>
+   </table>
+   <div class="tab_bottom">
+    <div class="line_left">
+        选择：
+        <a href="#" onclick="checkAll('check'); return false; ">全选</a>
+        <a href="#" onclick="uncheckAll('check'); return false;">无</a>
+        <%= form_tag({:controller => 'users', :action => 'delete'},{:style => 'display:inline;'}) %>
+            <input name="check_all" id="check_all" type="hidden" />
+        <%= submit_tag '删除', :onclick => "confirm('您确定要删除这些信息')", :disabled => 'true' , :id => 'delete_button' , :style => 'display:inline;line-height:18px;width:60px;height:16px;font-size:12px;border:none;'%>
+        <%= end_form_tag %>
+<%= link_to '添加模特' ,{:controller => 'users' , :action => 'new'}, {:class => 'tab_content_button'}%>
+    </div>
+    <div class="line_right"><%= link_to_pages %></div> 
+    <div id="user_show"></div>
+   </div>
+</div>

@@ -1,0 +1,33 @@
+module App
+  CONFIG = {
+    :site_name => 'www.model-china.cn',
+    :site_email => 'admin@model-china.cn',
+    :hostname => 'www.model-china.cn',
+    :default_language => 'zh',
+    :nntp_charset => 'utf-8',
+    :web_charset => 'utf-8',
+    :db_charset => 'utf-8',
+    :mail_charset => 'utf-8',
+    :show_user_email_to => :users,
+    :deliver_mail => true,
+    :bounce_address => 'admin@model-china.cn',
+    :accept_mail_from_guests => true,
+    :salt => "chinaren",
+    :security_token_life_hours => 24,
+    :user_role_name => 'Guest',
+    :delayed_delete_days => 30,
+    :email_from => 'admin@model-china.cn',
+    :admin_email => 'admin@model-china.cn',
+    :app_url => 'http://www.model-china.cn/',
+    :app_name => '模特中国网',
+    :mail_charset => 'utf-8',
+    :two_column_input => true,
+    :changeable_fields => [ 'firstname', 'lastname' ],
+    :delayed_delete => false,
+    :use_email_notification => true,
+    :confirm_account => true,
+    :user_table => 'users',
+    :default_language => 'zh',
+    :web_charset => 'utf-8'
+  }
+end

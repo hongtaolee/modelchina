@@ -1,0 +1,18 @@
+<%= error_messages_for 'job' %>
+<fieldset>
+    <table>
+        <%= form_input (:text_field, 'job', 'work',"工作名","输入招聘标题。")%>
+        <%= form_input (:text_field ,'job', 'number', "招聘人数","招聘人数" )%>
+        <%= form_input(:text_field, 'job', 'address', "工作地址","工作或面试地址，为了更好招聘效果，请尽量详细") %>
+        <%= form_input(:date_select, 'job', 'finished_at', "结束时间","招聘信息结束日期",{:start_year => 2006, :use_month_numbers => true}) %>
+        <%= form_input(:date_select ,'job', 'worked_at', "时间","工作或面试日期",{:start_year => 2006, :use_month_numbers => true})%>
+        <%= form_input(:text_area, 'job', 'content',"工作内容",'详细的招聘信息描述' ) %>
+        <tr class="two_columns">
+            <td class="prompt"></td><td class="button" colspan="2">
+              <input name="submit" type="submit" value="发布招聘信息" />
+              <%= link_to "返回", :action => 'list'%>
+            </td>
+        </tr>
+    </table>
+</fieldset>
+

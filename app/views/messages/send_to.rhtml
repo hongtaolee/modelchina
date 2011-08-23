@@ -1,0 +1,22 @@
+<div id="content">
+    <div class="sub_head">
+        <h2>用户登录</h2>
+        <div class="sub_head_remark">
+        <% if flash[:warning]%>
+            <%= flash[:warning]%>
+        <% end %>
+        </div>
+    </div>
+    <div class="box" style="margin-top:20px;">
+    <%=form_tag :controller => 'messages', :action => 'create'%>
+        <fieldset>
+            <table>
+                <%= form_input(:text_field,'message', 'receive_name',"接收者")%><br/>
+                <%= form_input(:text_field ,'message', 'title',"主题")  %>
+                <%= form_input(:text_area, 'message', 'content',"内容")  %>
+                <%= form_input(:submit_button, 'message','submit','发送')%>
+            </table>
+        </fieldset>
+    <%=end_form_tag%>
+    </div>
+</div>

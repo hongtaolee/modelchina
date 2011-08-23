@@ -1,0 +1,16 @@
+<%= error_messages_for 'web' %>
+<fieldset>
+    <table>
+        <%= form_input (:text_field, 'web', 'title', "标题","输入网页标题。")%>
+        <%= form_input (:text_field ,'web', 'url', "网页地址","网页URL" )%>
+        <%= form_input(:text_field, 'web', 'number', "序号","网页在foot栏的排序") %>
+        <%= form_input(:text_area, 'web', 'content', "内容","网页内容",{:class => 'textarea'})%>
+        <tr class="two_columns">
+            <td class="prompt"></td><td class="button" colspan="2">
+              <input name="submit" type="submit" value="建立新网页" />
+              <%= link_to "返回", :action => 'list'%>
+            </td>
+        </tr>
+    </table>
+</fieldset>
+

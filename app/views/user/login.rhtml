@@ -1,0 +1,35 @@
+<div id="content">
+<div class="sub_head">
+    <h2>用户登录</h2>
+    <div class="sub_head_remark">
+    <% if flash[:warning]%>
+        <%= flash[:warning]%>
+    <% end %>
+    </div>
+</div>
+<% if @current_user %>
+   <div style="margin-left:20px;"> 您已经登录,是否要<%= link_to '重新登录',:controller=>'user',:action=>'logout'%>,或者<%= link_to '回到首页',:controller=>'public',:action=>'index'%>.</div>
+<% else %>
+  <div class="box" style="margin-top:20px;">
+    <form action="<%=h url_for() %>" method="post"  style="margin-top:-15px;">
+    <fieldset>
+      <div class="legend"></div>
+      <table>
+        <%= form_input(:text_field, 'user', 'name', "用户名", '必填项：登陆用户名，注册后不能更改', 'class'=>'two_columns')%>
+        <%= form_input(:password_field, 'user', 'password', "密码", '必填项：登陆密码', 'class'=>'two_columns')%>
+        <tr><td></td><td class="check_box"><%= check_box_tag('auto_login',1,{:size => '5', :CHECKED => true})%> <%= "自动登录"%></td></tr>
+        <tr><td></td><td class="remark">在网吧等公共计算机上网时，请取消该选项</td></tr>
+        <tr class="two_columns"><td class="prompt"></td><td class="button" colspan="2">
+            <input type="submit" value="<%= "登录"%>" name="submit" />
+            <a href="<%=h url_for(:action => 'signup') %>"><%= "注册新用户"%></a>
+            <a href="<%=h url_for(:action => 'forgot_password') %>"><%= "忘记密码" %></a>
+        </td></tr>
+      <% if @params['from'] %>
+        <input type="hidden" name="from" value="<%=h @params['from'] %>" />
+      <% end %>
+      </table>
+    </fieldset>
+    </form>
+  </div>
+<% end %>
+</div>

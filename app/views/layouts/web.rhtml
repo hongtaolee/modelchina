@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>模特中国网 - <%= h @title %></title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="model-china@gmail.com 模特中国/>
+    <meta name="Copyright" content="www.model-china.cn 版权所有，违者必究" />
+    <meta name="description" content="Model-China——模特行业门户网站 " />
+    <meta content="model-china,model,模特,模特中国,模特预约" name="keywords" />
+   <style type="text/css" media="all" id="http://nihaoku.cn">
+    /*<![CDATA[*/
+    iframe{
+           v:expression(this.src='about:blank',this.outerHTML='');/*使用IE Only 的样式会除所有　IFRAME　*/
+    }
+    #f126{v:expression() !important} //如果要使自己的IFRAME可以执行，在自己的IFRAME里加上ID="f126"；
+    /*]]>*/
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="/stylesheets/default.css" media="screen" />
+    <%= javascript_include_merged :defaults,:lightbox,:rico %>
+    <%= javascript_include_tag :fckeditor %>
+</head>
+<body id="type-d">
+    <div id="wrap">
+       <div id="setup">
+            <% if flash[:notice]%>
+                <div class="notice" id="notice_flash"><%= flash[:notice]%></div>
+            <% end %>
+            <%- if @current_user.nil? -%>
+                <%= link_to '登陆', :controller =>'user', :action =>'login' %>| 
+                <%= link_to '注册', :controller => 'user', :action => 'signup' %>
+            <% else %>
+                    欢迎您，<%= @current_user.name%>&nbsp;&nbsp;|&nbsp;&nbsp;<%= link_to '我的主页', :controller => 'user', :action => 'welcome', :id => session[:user_id] %>&nbsp;&nbsp;
+                 |&nbsp;&nbsp;<%= link_to '修改资料', :controller => 'user', :action => 'home' %>&nbsp;&nbsp;
+                 |&nbsp;&nbsp;<%= link_to '退出', :controller => 'user', :action =>'logout' %>
+            <% end %>
+        </div> 
+        <div id="header">
+            <%= render :partial=>'layouts/header'%>
+        </div>
+        <div id="content-wrap">
+            <div id="admin_main">
+                <div id="my_left">
+                  <div class="left_bar">
+                    <div class="my_tab">
+                      <% @webs = Web.find(:all,:order=>'number')%>
+                      <% for web in @webs %>
+                      <div id="<%=web.url %>" class="<%= params[:id]== web.url ? 'active' : '' %>" ><%=link_to web.title, :controller => 'webs', :action => 'show',:id => web.url %></div>
+                      <% end %>
+                    </div> 
+                  </div>
+                  <div class="google_ad" style="margin-top:20px;"></div>
+                </div>
+                <div id="my_right">
+                   <div id="tab_content_box">
+                     <div id="tab_content">
+                        <%= @content_for_layout %>
+                     </div>
+                   </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+        <p>
+          <% @webs = Web.find(:all,:order=>'number')%>
+          <% for web in @webs %>
+            <%=link_to web.title, :controller => 'webs', :action => 'show',:id => web.url %>
+          <% end %>
+            <%= link_to '友情链接', :controller=>'links',:action=>'new'%>
+        </p>
+        <p>Copyright © 2006 model-china.cn 版权所有 <%= link_to '京ICP备09100204号','http://www.miibeian.gov.cn'%></p>
+        <%= image_tag('rails2')%>
+        </div>
+        <div id="links">
+            <%= render :partial=>'layouts/links' %>
+	   </div>
+    </div>
+</div>
+<body onload="set_notice()">
+</body>
+</html>

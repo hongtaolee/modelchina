@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title><%= h @title %>-模特中国网</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="model-china@gmail.com 模特中国/>
+    <meta name="Copyright" content="www.model-china.cn 版权所有，违者必究" />
+    <meta name="description" content="Model-China——模特行业门户网站 " />
+    <meta content="model-china,model,模特,模特中国,模特预约" name="keywords" />
+    <style type="text/css" media="all" id="http://nihaoku.cn">
+    /*<![CDATA[*/
+    iframe{
+           v:expression(this.src='about:blank',this.outerHTML='');/*使用IE Only 的样式会除所有　IFRAME　*/
+    }
+    #f126{v:expression() !important} //如果要使自己的IFRAME可以执行，在自己的IFRAME里加上ID="f126"；
+    /*]]>*/
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="/stylesheets/default.css?20081014" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/lightbox.css?20081014" media="screen" />
+    <%= javascript_include_merged :defaults,:lightbox,:rico %>
+    <%= javascript_include_tag :fckeditor %>
+</head>
+<body id="type-d">
+    <div id="wrap">
+       <div id="setup">
+            <% if flash[:notice]%>
+                <div class="notice" id="notice_flash"><%= flash[:notice]%></div>
+            <% end %>
+            <%- if @current_user.nil? -%>
+                <%= link_to '登陆', :controller =>'user', :action =>'login' %>| 
+                <%= link_to '注册', :controller => 'user', :action => 'signup' %>
+            <% else %>
+                    欢迎您，<%= @current_user.name%>&nbsp;&nbsp;|&nbsp;&nbsp;<%= link_to '我的主页', :controller => 'user', :action => 'welcome', :id => session[:user_id] %>&nbsp;&nbsp;
+                 |&nbsp;&nbsp;<%= link_to '修改资料', :controller => 'user', :action => 'home' %>&nbsp;&nbsp;
+                 |&nbsp;&nbsp;<%= link_to '退出', :controller => 'user', :action =>'logout' %>
+            <% end %>
+        </div> 
+        <div id="header">
+            <%= render :partial=>'layouts/header'%>
+        </div>
+        <div id="content-wrap">
+            <div id="admin_main">
+                <div id="my_left">
+                  <div class="left_bar">
+                    <div class="my_tab">
+                      <div id="info" class="<%= current_controller== 'user' and current_action == 'show'? 'active' : '' %>" ><%=link_to '用户资料', :controller => 'user', :action => 'show' %></div>
+                      <div id="passwd"  class="<%= current_action== 'change_password' ? 'active' : '' %>"><%=link_to '修改密码', :controller => 'user', :action => 'change_password' %></div>
+                      <div id="job"  class="<%= current_controller== 'jobs' ? 'active' : '' %>" ><%=link_to '招聘信息', :controller => 'jobs', :action => 'list'%></div>
+                      <% if @current_user.category == 2 %>
+                      <div id="model"  class="<%= current_controller== 'models' ? 'active' : '' %>" ><%=link_to '模特管理', :controller => 'models', :action => 'list' %></div>
+                      <div id="model"  class="<%= current_controller== 'photographers' ? 'active' : '' %>" ><%=link_to '摄影师管理', :controller => 'photographers', :action => 'list' %></div>
+                      <div id="model"  class="<%= current_controller== 'makeups' ? 'active' : '' %>" ><%=link_to '化妆师管理', :controller => 'makeups', :action => 'list' %></div>
+                      <% else %>
+                        <% if @current_user.category == 1 %>
+                            <div id="album"  class="<%= current_action== 'album' ? 'active' : '' %>" ><%=link_to '相册管理', :controller => 'models', :action => 'album' ,:id => Model.find_by_user_id(@current_user.id).id%></div>                      
+                            <div id="model"  class="<%= current_controller== 'models' ? 'active' : '' %>" ><%=link_to '模特管理', :controller => 'models', :action => 'edit' ,:id=>Model.find_by_user_id(@user.id)%></div>                      
+                        <% end %>
+                        <% if @current_user.category == 3 %>
+                            <div id="album"  class="<%= current_action== 'album' ? 'active' : '' %>" ><%=link_to '相册管理', :controller => 'photographers', :action => 'album' ,:id => Photographer.find_by_user_id(@current_user.id).id%></div>                      
+                            <div id="model"  class="<%= current_controller== 'photographers' ? 'active' : '' %>" ><%=link_to '摄影师管理', :controller => 'photographers', :action => 'edit',:id => Photographer.find_by_user_id(@current_user.id).id %></div>                       
+                        <% end %>
+                        <% if @current_user.category == 4 %>
+                            <div id="album"  class="<%= current_action== 'album' ? 'active' : '' %>" ><%=link_to '相册管理', :controller => 'makeups', :action => 'album' ,:id => Makeup.find_by_user_id(@current_user.id).id%></div>                      
+                            <div id="model"  class="<%= current_controller== 'makeups' ? 'active' : '' %>" ><%=link_to '化妆师管理', :controller => 'makeups', :action => 'edit',:id => Makeup.find_by_user_id(@current_user.id).id %></div>                        
+                        <% end %>
+                      <% end %>
+                      <div id="news"  class="<%= current_controller== 'news' ? 'active' : '' %>" ><%=link_to '信息管理', :controller => 'messages', :action => 'list' %></div>
+                      <div id="fav"  class="<%= current_controller== 'favs' ? 'active' : '' %>" ><%=link_to '我的好友', :controller => 'favs', :action => 'list' %></div>
+                      <div id="group"  class="<%= current_controller== 'groups' ? 'active' : '' %>" ><%=link_to '兴趣小组', :controller => 'groups', :action => 'my' %></div>
+                      <% if @current_user.role == 'admin'%>
+                      <div id="web"  class="<%= current_controller== 'webs' ? 'active' : '' %>" ><%=link_to '内容管理', :controller => 'webs', :action => 'list' %></div>
+                      <div id="const"  class="<%= current_controller== 'consts' ? 'active' : '' %>" ><%=link_to '常量管理', :controller => 'consts', :action => 'list' %></div>
+                      <div id="notice"  class="<%= current_controller== 'notices' ? 'active' : '' %>" ><%=link_to '公告管理', :controller => 'notices', :action => 'list' %></div>                                                
+                      <div id="users"  class="<%= current_controller== 'users' ? 'active' : '' %>" ><%=link_to '用户管理', :controller => 'user', :action => 'list' %></div>                        
+                      <% end %>  
+                    </div> 
+                  </div>
+                  <div class="google_ad" style="margin-top:20px;"></div>
+                </div>
+                <div id="my_right">
+                   <div id="tab_content_box">
+                     <div id="tab_content">
+                        <%= @content_for_layout %>
+                     </div>
+                   </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+        <p>
+          <% @webs = Web.find(:all,:order=>'number')%>
+          <% for web in @webs %>
+            <%=link_to web.title, :controller => 'webs', :action => 'show',:id => web.url %>
+          <% end %>
+            <%= link_to '友情链接', :controller=>'links',:action=>'new'%>
+        </p>
+        <p>Copyright © 2006 model-china.cn 版权所有 <%= link_to '京ICP备09100204号','http://www.miibeian.gov.cn'%></p>
+        <%= image_tag('rails2')%>
+        </div>
+        <div id="links">
+            <%= render :partial=>'layouts/links' %>
+       </div>
+    </div>
+</div>
+        <body onload="set_notice()">
+</body>
+</html>

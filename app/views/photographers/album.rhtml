@@ -1,0 +1,29 @@
+<%= form_tag(
+      url_for(:controller => 'photographers', :action => 'add_picture',:id=>@photographer),
+      'method' => 'post',
+      'class' => 'two_columns',
+      :multipart => true)%>
+    <fieldset>
+        <table>
+            <input type="hidden" id="album_photographer_id" name="album[photographer_id]" value="<%= @photographer.id %>">
+            <tr class="two_columns">
+              <td class="prompt" valign="top"><label><%= "图片"%>:</label></td>
+              <td class="value" valign="top" id="image_table">
+                <input class="two_columns" id="data" name="data" size="30" type="file" onchange="preview()"/>
+              </td>
+            </tr>          
+            <%= form_input(:text_field, 'photographer_picture', 'name', "图片名", '可以不填：给图片一个名字', 'class'=>'two_columns')%>
+            <%= form_input(:submit_button, 'photographer_picture', 'submit', "上传") %>
+        </table>
+    </fieldset>             
+<%= end_form_tag %>
+<div id="pictures_admin">
+    <% for picture in @photographer.pictures%>
+        <table class="pictures_list">
+            <tr><td valign="middle" align="center" style="height:106px;width:86px; border:3px solid #eee;">
+                <%=link_to image_tag(url_for(:controller=>'pictures',:action=>'show',:id =>picture.id ,:size => '80x100'),{:alt=>picture.photographer_picture.name}),{:controller => 'albums',:action=>'show',:id=>picture.id},{:rel => 'lightbox'} %>
+            </td></tr>
+            <tr><td style="text-align:center;height:20px;"><%= picture.photographer_picture.name %>  (<%= link_to "删除",:controller=> 'photographers',:action => 'destroy_picture',:id=>@photographer,:position => picture.photographer_picture.position%>)</td></tr>    
+        </table>
+    <% end %>
+</div>

@@ -1,0 +1,1614 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2006-08-22 04:27+0800\n"
+"PO-Revision-Date: 2006-08-22 04:27+0800\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: app/controllers/consts_controller.rb:28
+msgid "Const was successfully created."
+msgstr ""
+
+#: app/controllers/consts_controller.rb:42
+msgid "Const was successfully updated."
+msgstr ""
+
+#: app/controllers/consts_controller.rb:62
+msgid "News was successfully deleted."
+msgstr ""
+
+#: app/controllers/enterprises_controller.rb:24
+msgid "Enterprise was successfully updated."
+msgstr ""
+
+#: app/controllers/favs_controller.rb:28
+msgid "#{@agency.name} was successfully becomed your friend"
+msgstr ""
+
+#: app/controllers/favs_controller.rb:33
+msgid "Sorry，add friend failure"
+msgstr ""
+
+#: app/controllers/favs_controller.rb:41
+msgid "Fav was successfully created."
+msgstr ""
+
+#: app/controllers/favs_controller.rb:55
+msgid "Fav was successfully updated."
+msgstr ""
+
+#: app/controllers/favs_controller.rb:75
+msgid "all selected friend was successfully deleted"
+msgstr ""
+
+#: app/controllers/groups_controller.rb:75
+msgid "Group was successfully created."
+msgstr ""
+
+#: app/controllers/groups_controller.rb:102
+msgid "Group was successfully updated."
+msgstr ""
+
+#: app/controllers/groups_controller.rb:121
+msgid "welcome to being the member of #{@group.name}"
+msgstr ""
+
+#: app/controllers/groups_controller.rb:128 app/controllers/groups_controller.rb:145
+#: app/controllers/jobs_controller.rb:92
+msgid "Sorry，failure……"
+msgstr ""
+
+#: app/controllers/groups_controller.rb:138
+msgid "you was successfully exited from #{@group.name}"
+msgstr ""
+
+#: app/controllers/groups_controller.rb:162 app/controllers/topics_controller.rb:39
+msgid "Topic was successfully created."
+msgstr ""
+
+#: app/controllers/groups_controller.rb:165
+msgid "Create Topic was failure"
+msgstr ""
+
+#: app/controllers/jobs_controller.rb:38
+msgid "Job was successfully created."
+msgstr ""
+
+#: app/controllers/jobs_controller.rb:56
+msgid "Job was successfully updated."
+msgstr ""
+
+#: app/controllers/jobs_controller.rb:79
+msgid "Jobs was successfully deleted"
+msgstr ""
+
+#: app/controllers/jobs_controller.rb:90
+msgid "Ok,successfully!"
+msgstr ""
+
+#: app/controllers/makeups_controller.rb:44
+msgid "makeup was successfully created."
+msgstr ""
+
+#: app/controllers/makeups_controller.rb:64
+msgid "makeup was successfully updated."
+msgstr ""
+
+#: app/controllers/makeups_controller.rb:84
+msgid "makeup was successfully deleted."
+msgstr ""
+
+#: app/controllers/makeups_controller.rb:97 app/controllers/makeups_controller.rb:110
+#: app/controllers/models_controller.rb:103 app/controllers/models_controller.rb:116
+#: app/controllers/photographers_controller.rb:97 app/controllers/photographers_controller.rb:110
+#: app/controllers/topics_controller.rb:111
+msgid "sorry,failure……"
+msgstr ""
+
+#: app/controllers/makeups_controller.rb:119 app/controllers/models_controller.rb:125
+#: app/controllers/photographers_controller.rb:119
+msgid "Rank was successfully created."
+msgstr ""
+
+#: app/controllers/messages_controller.rb:39
+msgid "Messages was successfully deleted"
+msgstr ""
+
+#: app/controllers/messages_controller.rb:50
+msgid "Messages was successfully sended."
+msgstr ""
+
+#: app/controllers/messages_controller.rb:61
+msgid "Messages was successfully created."
+msgstr ""
+
+#: app/controllers/messages_controller.rb:76
+msgid "Messages was successfully updated."
+msgstr ""
+
+#: app/controllers/models_controller.rb:44
+msgid "Model was successfully created."
+msgstr ""
+
+#: app/controllers/models_controller.rb:67
+msgid "Model was successfully updated."
+msgstr ""
+
+#: app/controllers/models_controller.rb:90
+msgid "Model was successfully deleted."
+msgstr ""
+
+#: app/controllers/notices_controller.rb:28 app/controllers/notices_controller.rb:42
+msgid "Notice was successfully created."
+msgstr ""
+
+#: app/controllers/photographers_controller.rb:44
+msgid "photographer was successfully created."
+msgstr ""
+
+#: app/controllers/photographers_controller.rb:64
+msgid "photographer was successfully updated."
+msgstr ""
+
+#: app/controllers/photographers_controller.rb:84
+msgid "photographer was successfully deleted."
+msgstr ""
+
+#: app/controllers/topics_controller.rb:54
+msgid "Topic was successfully updated."
+msgstr ""
+
+#: app/controllers/topics_controller.rb:105
+msgid "Post was successfully created."
+msgstr ""
+
+#: app/controllers/user_controller.rb:6
+msgid "login_title"
+msgstr ""
+
+#: app/controllers/user_controller.rb:11
+msgid "Login successful"
+msgstr ""
+
+#: app/controllers/user_controller.rb:14
+msgid "Login unsuccessful"
+msgstr ""
+
+#: app/controllers/user_controller.rb:23
+msgid "A new password has been sent by email."
+msgstr ""
+
+#: app/controllers/user_controller.rb:26
+msgid "Couldn't send password"
+msgstr ""
+
+#: app/controllers/user_controller.rb:58
+msgid "signup_successful"
+msgstr ""
+
+#: app/controllers/user_controller.rb:64
+msgid "signup_failure"
+msgstr ""
+
+#: app/controllers/user_controller.rb:75
+msgid "user was successfully updated"
+msgstr ""
+
+#: app/controllers/user_controller.rb:110
+msgid "user_list_title"
+msgstr ""
+
+#: app/controllers/webs_controller.rb:41
+msgid "Web was successfully created."
+msgstr ""
+
+#: app/controllers/webs_controller.rb:57
+msgid "Web was successfully updated."
+msgstr ""
+
+#: app/controllers/webs_controller.rb:77
+msgid "Web was successfully deleted."
+msgstr ""
+
+#: app/models/avata.rb:-
+msgid "avata"
+msgstr ""
+
+#: app/models/avata.rb:-
+msgid "Avata|User"
+msgstr ""
+
+#: app/models/avata.rb:-
+msgid "Avata|Group"
+msgstr ""
+
+#: app/models/avata.rb:-
+msgid "Avata|Model"
+msgstr ""
+
+#: app/models/avata.rb:-
+msgid "Avata|Makeup"
+msgstr ""
+
+#: app/models/avata.rb:-
+msgid "Avata|Photographer"
+msgstr ""
+
+#: app/models/avata.rb:-
+msgid "Avata|Enterprise"
+msgstr ""
+
+#: app/models/avata.rb:-
+msgid "Avata|Data"
+msgstr ""
+
+#: app/models/comment.rb:-
+msgid "comment"
+msgstr ""
+
+#: app/models/comment.rb:-
+msgid "Comment|Model"
+msgstr ""
+
+#: app/models/comment.rb:-
+msgid "Comment|Photographer"
+msgstr ""
+
+#: app/models/comment.rb:-
+msgid "Comment|Makeup"
+msgstr ""
+
+#: app/models/comment.rb:-
+msgid "Comment|User"
+msgstr ""
+
+#: app/models/comment.rb:-
+msgid "Comment|Text"
+msgstr ""
+
+#: app/models/comment.rb:-
+msgid "Comment|Created at"
+msgstr ""
+
+#: app/models/const.rb:-
+msgid "const"
+msgstr ""
+
+#: app/models/const.rb:-
+msgid "Const|Table name"
+msgstr ""
+
+#: app/models/const.rb:-
+msgid "Const|Field name"
+msgstr ""
+
+#: app/models/const.rb:-
+msgid "Const|Field value"
+msgstr ""
+
+#: app/models/const.rb:-
+msgid "Const|Text name"
+msgstr ""
+
+#: app/models/const.rb:-
+msgid "Const|Created at"
+msgstr ""
+
+#: app/models/const.rb:-
+msgid "Const|Updated at"
+msgstr ""
+
+#: app/models/enterprise.rb:-
+msgid "enterprise"
+msgstr ""
+
+#: app/models/enterprise.rb:-
+msgid "Enterprise|Name"
+msgstr ""
+
+#: app/models/enterprise.rb:-
+msgid "Enterprise|User"
+msgstr ""
+
+#: app/models/enterprise.rb:-
+msgid "Enterprise|Office"
+msgstr ""
+
+#: app/models/enterprise.rb:-
+msgid "Enterprise|Zip"
+msgstr ""
+
+#: app/models/enterprise.rb:-
+msgid "Enterprise|Fax"
+msgstr ""
+
+#: app/models/enterprise.rb:-
+msgid "Enterprise|Site"
+msgstr ""
+
+#: app/models/enterprise.rb:-
+msgid "Enterprise|Number"
+msgstr ""
+
+#: app/models/enterprise.rb:-
+msgid "Enterprise|Description"
+msgstr ""
+
+#: app/models/enterprise.rb:-
+msgid "Enterprise|Status"
+msgstr ""
+
+#: app/models/enterprise.rb:-
+msgid "Enterprise|Created at"
+msgstr ""
+
+#: app/models/fav.rb:-
+msgid "fav"
+msgstr ""
+
+#: app/models/fav.rb:-
+msgid "Fav|User"
+msgstr ""
+
+#: app/models/fav.rb:-
+msgid "Fav|Friend"
+msgstr ""
+
+#: app/models/fav.rb:-
+msgid "Fav|Remark"
+msgstr ""
+
+#: app/models/fav.rb:-
+msgid "Fav|Created at"
+msgstr ""
+
+#: app/models/group.rb:-
+msgid "group"
+msgstr ""
+
+#: app/models/group.rb:-
+msgid "Group|Name"
+msgstr ""
+
+#: app/models/group.rb:-
+msgid "Group|Description"
+msgstr ""
+
+#: app/models/group.rb:-
+msgid "Group|Admin"
+msgstr ""
+
+#: app/models/group.rb:-
+msgid "Group|Member count"
+msgstr ""
+
+#: app/models/group.rb:-
+msgid "Group|Topic count"
+msgstr ""
+
+#: app/models/group.rb:-
+msgid "Group|Post count"
+msgstr ""
+
+#: app/models/group.rb:-
+msgid "Group|Status"
+msgstr ""
+
+#: app/models/group.rb:-
+msgid "Group|Created at"
+msgstr ""
+
+#: app/models/job.rb:-
+msgid "job"
+msgstr ""
+
+#: app/models/job.rb:-
+msgid "Job|Work"
+msgstr ""
+
+#: app/models/job.rb:-
+msgid "Job|Number"
+msgstr ""
+
+#: app/models/job.rb:-
+msgid "Job|Worked at"
+msgstr ""
+
+#: app/models/job.rb:-
+msgid "Job|Address"
+msgstr ""
+
+#: app/models/job.rb:-
+msgid "Job|Salary"
+msgstr ""
+
+#: app/models/job.rb:-
+msgid "Job|Content"
+msgstr ""
+
+#: app/models/job.rb:-
+msgid "Job|User"
+msgstr ""
+
+#: app/models/job.rb:-
+msgid "Job|Status"
+msgstr ""
+
+#: app/models/job.rb:-
+msgid "Job|User count"
+msgstr ""
+
+#: app/models/job.rb:-
+msgid "Job|Created at"
+msgstr ""
+
+#: app/models/job.rb:-
+msgid "Job|Finished at"
+msgstr ""
+
+#: app/models/mailer.rb:9
+msgid "welcome_to"
+msgstr ""
+
+#: app/models/mailer.rb:15
+msgid "reset_password_subject"
+msgstr ""
+
+#: app/models/mailer.rb:23
+msgid "user_message_from"
+msgstr ""
+
+#: app/models/makeup.rb:-
+msgid "makeup"
+msgstr ""
+
+#: app/models/makeup.rb:-
+msgid "Makeup|User"
+msgstr ""
+
+#: app/models/makeup.rb:-
+msgid "Makeup|Name"
+msgstr ""
+
+#: app/models/makeup.rb:-
+msgid "Makeup|Sex"
+msgstr ""
+
+#: app/models/makeup.rb:-
+msgid "Makeup|Birthday"
+msgstr ""
+
+#: app/models/makeup.rb:-
+msgid "Makeup|Province"
+msgstr ""
+
+#: app/models/makeup.rb:-
+msgid "Makeup|City"
+msgstr ""
+
+#: app/models/makeup.rb:-
+msgid "Makeup|Description"
+msgstr ""
+
+#: app/models/makeup.rb:-
+msgid "Makeup|Pictures count"
+msgstr ""
+
+#: app/models/makeup.rb:-
+msgid "Makeup|Worktime"
+msgstr ""
+
+#: app/models/makeup.rb:-
+msgid "Makeup|Category"
+msgstr ""
+
+#: app/models/makeup.rb:-
+msgid "Makeup|Read count"
+msgstr ""
+
+#: app/models/makeup.rb:-
+msgid "Makeup|Comments count"
+msgstr ""
+
+#: app/models/makeup.rb:-
+msgid "Makeup|Rank count"
+msgstr ""
+
+#: app/models/makeup.rb:-
+msgid "Makeup|Rank"
+msgstr ""
+
+#: app/models/makeup.rb:-
+msgid "Makeup|Created at"
+msgstr ""
+
+#: app/models/makeup.rb:-
+msgid "Makeup|Status"
+msgstr ""
+
+#: app/models/makeup_picture.rb:-
+msgid "makeup picture"
+msgstr ""
+
+#: app/models/makeup_picture.rb:-
+msgid "MakeupPicture|Makeup"
+msgstr ""
+
+#: app/models/makeup_picture.rb:-
+msgid "MakeupPicture|Picture"
+msgstr ""
+
+#: app/models/makeup_picture.rb:-
+msgid "MakeupPicture|Name"
+msgstr ""
+
+#: app/models/makeup_picture.rb:-
+msgid "MakeupPicture|Number"
+msgstr ""
+
+#: app/models/makeup_picture.rb:-
+msgid "MakeupPicture|Display"
+msgstr ""
+
+#: app/models/makeup_picture.rb:-
+msgid "MakeupPicture|Deleted"
+msgstr ""
+
+#: app/models/makeup_picture.rb:-
+msgid "MakeupPicture|Created at"
+msgstr ""
+
+#: app/models/member.rb:-
+msgid "member"
+msgstr ""
+
+#: app/models/member.rb:-
+msgid "Member|Group"
+msgstr ""
+
+#: app/models/member.rb:-
+msgid "Member|User"
+msgstr ""
+
+#: app/models/member.rb:-
+msgid "Member|Status"
+msgstr ""
+
+#: app/models/member.rb:-
+msgid "Member|Created at"
+msgstr ""
+
+#: app/models/message.rb:-
+msgid "message"
+msgstr ""
+
+#: app/models/message.rb:-
+msgid "Message|Title"
+msgstr ""
+
+#: app/models/message.rb:-
+msgid "Message|Content"
+msgstr ""
+
+#: app/models/message.rb:-
+msgid "Message|Send"
+msgstr ""
+
+#: app/models/message.rb:-
+msgid "Message|Send name"
+msgstr ""
+
+#: app/models/message.rb:-
+msgid "Message|Status"
+msgstr ""
+
+#: app/models/message.rb:-
+msgid "Message|Receive"
+msgstr ""
+
+#: app/models/message.rb:-
+msgid "Message|Receive name"
+msgstr ""
+
+#: app/models/message.rb:-
+msgid "Message|Reply"
+msgstr ""
+
+#: app/models/message.rb:-
+msgid "Message|Created at"
+msgstr ""
+
+#: app/models/model.rb:-
+msgid "model"
+msgstr ""
+
+#: app/models/model.rb:-
+msgid "Model|User"
+msgstr ""
+
+#: app/models/model.rb:-
+msgid "Model|Name"
+msgstr ""
+
+#: app/models/model.rb:-
+msgid "Model|Sex"
+msgstr ""
+
+#: app/models/model.rb:-
+msgid "Model|Birthday"
+msgstr ""
+
+#: app/models/model.rb:-
+msgid "Model|Country"
+msgstr ""
+
+#: app/models/model.rb:-
+msgid "Model|Province"
+msgstr ""
+
+#: app/models/model.rb:-
+msgid "Model|City"
+msgstr ""
+
+#: app/models/model.rb:-
+msgid "Model|Weight"
+msgstr ""
+
+#: app/models/model.rb:-
+msgid "Model|Height"
+msgstr ""
+
+#: app/models/model.rb:-
+msgid "Model|Eye"
+msgstr ""
+
+#: app/models/model.rb:-
+msgid "Model|Shoes"
+msgstr ""
+
+#: app/models/model.rb:-
+msgid "Model|Chest"
+msgstr ""
+
+#: app/models/model.rb:-
+msgid "Model|Waist"
+msgstr ""
+
+#: app/models/model.rb:-
+msgid "Model|Hips"
+msgstr ""
+
+#: app/models/model.rb:-
+msgid "Model|In china"
+msgstr ""
+
+#: app/models/model.rb:-
+msgid "Model|Description"
+msgstr ""
+
+#: app/models/model.rb:-
+msgid "Model|Remark"
+msgstr ""
+
+#: app/models/model.rb:-
+msgid "Model|Pictures count"
+msgstr ""
+
+#: app/models/model.rb:-
+msgid "Model|Worktime"
+msgstr ""
+
+#: app/models/model.rb:-
+msgid "Model|Category"
+msgstr ""
+
+#: app/models/model.rb:-
+msgid "Model|Read count"
+msgstr ""
+
+#: app/models/model.rb:-
+msgid "Model|Comments count"
+msgstr ""
+
+#: app/models/model.rb:-
+msgid "Model|Rank count"
+msgstr ""
+
+#: app/models/model.rb:-
+msgid "Model|Rank"
+msgstr ""
+
+#: app/models/model.rb:-
+msgid "Model|Created at"
+msgstr ""
+
+#: app/models/model.rb:-
+msgid "Model|Status"
+msgstr ""
+
+#: app/models/model_picture.rb:-
+msgid "model picture"
+msgstr ""
+
+#: app/models/model_picture.rb:-
+msgid "ModelPicture|Model"
+msgstr ""
+
+#: app/models/model_picture.rb:-
+msgid "ModelPicture|Picture"
+msgstr ""
+
+#: app/models/model_picture.rb:-
+msgid "ModelPicture|Name"
+msgstr ""
+
+#: app/models/model_picture.rb:-
+msgid "ModelPicture|Number"
+msgstr ""
+
+#: app/models/model_picture.rb:-
+msgid "ModelPicture|Display"
+msgstr ""
+
+#: app/models/model_picture.rb:-
+msgid "ModelPicture|Deleted"
+msgstr ""
+
+#: app/models/model_picture.rb:-
+msgid "ModelPicture|Created at"
+msgstr ""
+
+#: app/models/notice.rb:-
+msgid "notice"
+msgstr ""
+
+#: app/models/notice.rb:-
+msgid "Notice|Controller"
+msgstr ""
+
+#: app/models/notice.rb:-
+msgid "Notice|Action"
+msgstr ""
+
+#: app/models/notice.rb:-
+msgid "Notice|Title"
+msgstr ""
+
+#: app/models/notice.rb:-
+msgid "Notice|Content"
+msgstr ""
+
+#: app/models/notice.rb:-
+msgid "Notice|Created at"
+msgstr ""
+
+#: app/models/old_image.rb:-
+msgid "old image"
+msgstr ""
+
+#: app/models/old_image.rb:-
+msgid "OldImage|Name"
+msgstr ""
+
+#: app/models/old_image.rb:-
+msgid "OldImage|User"
+msgstr ""
+
+#: app/models/old_image.rb:-
+msgid "OldImage|Data"
+msgstr ""
+
+#: app/models/old_image.rb:-
+msgid "OldImage|Created at"
+msgstr ""
+
+#: app/models/page.rb:-
+msgid "page"
+msgstr ""
+
+#: app/models/page.rb:-
+msgid "Page|Title"
+msgstr ""
+
+#: app/models/page.rb:-
+msgid "Page|Category"
+msgstr ""
+
+#: app/models/page.rb:-
+msgid "Page|Author"
+msgstr ""
+
+#: app/models/page.rb:-
+msgid "Page|From"
+msgstr ""
+
+#: app/models/page.rb:-
+msgid "Page|Brief"
+msgstr ""
+
+#: app/models/page.rb:-
+msgid "Page|Editor"
+msgstr ""
+
+#: app/models/page.rb:-
+msgid "Page|Count"
+msgstr ""
+
+#: app/models/page.rb:-
+msgid "Page|Number"
+msgstr ""
+
+#: app/models/page.rb:-
+msgid "Page|Digg"
+msgstr ""
+
+#: app/models/page.rb:-
+msgid "Page|Published at"
+msgstr ""
+
+#: app/models/page.rb:-
+msgid "Page|Published"
+msgstr ""
+
+#: app/models/page.rb:-
+msgid "Page|Updated at"
+msgstr ""
+
+#: app/models/page.rb:-
+msgid "Page|Created at"
+msgstr ""
+
+#: app/models/page_content.rb:-
+msgid "page content"
+msgstr ""
+
+#: app/models/page_content.rb:-
+msgid "PageContent|Page"
+msgstr ""
+
+#: app/models/page_content.rb:-
+msgid "PageContent|Content"
+msgstr ""
+
+#: app/models/page_content.rb:-
+msgid "PageContent|Content redcloth"
+msgstr ""
+
+#: app/models/page_content.rb:-
+msgid "PageContent|Number"
+msgstr ""
+
+#: app/models/photographer.rb:-
+msgid "photographer"
+msgstr ""
+
+#: app/models/photographer.rb:-
+msgid "Photographer|User"
+msgstr ""
+
+#: app/models/photographer.rb:-
+msgid "Photographer|Name"
+msgstr ""
+
+#: app/models/photographer.rb:-
+msgid "Photographer|Sex"
+msgstr ""
+
+#: app/models/photographer.rb:-
+msgid "Photographer|Birthday"
+msgstr ""
+
+#: app/models/photographer.rb:-
+msgid "Photographer|Province"
+msgstr ""
+
+#: app/models/photographer.rb:-
+msgid "Photographer|City"
+msgstr ""
+
+#: app/models/photographer.rb:-
+msgid "Photographer|Description"
+msgstr ""
+
+#: app/models/photographer.rb:-
+msgid "Photographer|Remark"
+msgstr ""
+
+#: app/models/photographer.rb:-
+msgid "Photographer|Pictures count"
+msgstr ""
+
+#: app/models/photographer.rb:-
+msgid "Photographer|Worktime"
+msgstr ""
+
+#: app/models/photographer.rb:-
+msgid "Photographer|Read count"
+msgstr ""
+
+#: app/models/photographer.rb:-
+msgid "Photographer|Comments count"
+msgstr ""
+
+#: app/models/photographer.rb:-
+msgid "Photographer|Rank count"
+msgstr ""
+
+#: app/models/photographer.rb:-
+msgid "Photographer|Rank"
+msgstr ""
+
+#: app/models/photographer.rb:-
+msgid "Photographer|Created at"
+msgstr ""
+
+#: app/models/photographer.rb:-
+msgid "Photographer|Status"
+msgstr ""
+
+#: app/models/photographer_picture.rb:-
+msgid "photographer picture"
+msgstr ""
+
+#: app/models/photographer_picture.rb:-
+msgid "PhotographerPicture|Photographer"
+msgstr ""
+
+#: app/models/photographer_picture.rb:-
+msgid "PhotographerPicture|Picture"
+msgstr ""
+
+#: app/models/photographer_picture.rb:-
+msgid "PhotographerPicture|Name"
+msgstr ""
+
+#: app/models/photographer_picture.rb:-
+msgid "PhotographerPicture|Number"
+msgstr ""
+
+#: app/models/photographer_picture.rb:-
+msgid "PhotographerPicture|Display"
+msgstr ""
+
+#: app/models/photographer_picture.rb:-
+msgid "PhotographerPicture|Deleted"
+msgstr ""
+
+#: app/models/photographer_picture.rb:-
+msgid "PhotographerPicture|Created at"
+msgstr ""
+
+#: app/models/picture.rb:-
+msgid "picture"
+msgstr ""
+
+#: app/models/picture.rb:-
+msgid "Picture|Data"
+msgstr ""
+
+#: app/models/post.rb:-
+msgid "post"
+msgstr ""
+
+#: app/models/post.rb:-
+msgid "Post|User"
+msgstr ""
+
+#: app/models/post.rb:-
+msgid "Post|Topic"
+msgstr ""
+
+#: app/models/post.rb:-
+msgid "Post|Parent"
+msgstr ""
+
+#: app/models/post.rb:-
+msgid "Post|Deleted"
+msgstr ""
+
+#: app/models/post.rb:-
+msgid "Post|Content"
+msgstr ""
+
+#: app/models/post.rb:-
+msgid "Post|Created at"
+msgstr ""
+
+#: app/models/project.rb:-
+msgid "project"
+msgstr ""
+
+#: app/models/project.rb:-
+msgid "Project|User"
+msgstr ""
+
+#: app/models/project.rb:-
+msgid "Project|Name"
+msgstr ""
+
+#: app/models/project.rb:-
+msgid "Project|Task count"
+msgstr ""
+
+#: app/models/project.rb:-
+msgid "Project|Finished"
+msgstr ""
+
+#: app/models/project.rb:-
+msgid "Project|Created at"
+msgstr ""
+
+#: app/models/task.rb:-
+msgid "task"
+msgstr ""
+
+#: app/models/task.rb:-
+msgid "Task|User"
+msgstr ""
+
+#: app/models/task.rb:-
+msgid "Task|Name"
+msgstr ""
+
+#: app/models/task.rb:-
+msgid "Task|Project"
+msgstr ""
+
+#: app/models/task.rb:-
+msgid "Task|Description"
+msgstr ""
+
+#: app/models/task.rb:-
+msgid "Task|Plan time"
+msgstr ""
+
+#: app/models/task.rb:-
+msgid "Task|Finished"
+msgstr ""
+
+#: app/models/task.rb:-
+msgid "Task|Deleted"
+msgstr ""
+
+#: app/models/task.rb:-
+msgid "Task|Created at"
+msgstr ""
+
+#: app/models/topic.rb:-
+msgid "topic"
+msgstr ""
+
+#: app/models/topic.rb:-
+msgid "Topic|Group"
+msgstr ""
+
+#: app/models/topic.rb:-
+msgid "Topic|User"
+msgstr ""
+
+#: app/models/topic.rb:-
+msgid "Topic|Title"
+msgstr ""
+
+#: app/models/topic.rb:-
+msgid "Topic|Read count"
+msgstr ""
+
+#: app/models/topic.rb:-
+msgid "Topic|Post count"
+msgstr ""
+
+#: app/models/topic.rb:-
+msgid "Topic|Last reply"
+msgstr ""
+
+#: app/models/topic.rb:-
+msgid "Topic|Deleted"
+msgstr ""
+
+#: app/models/topic.rb:-
+msgid "Topic|Status"
+msgstr ""
+
+#: app/models/topic.rb:-
+msgid "Topic|Created at"
+msgstr ""
+
+#: app/models/trade.rb:-
+msgid "trade"
+msgstr ""
+
+#: app/models/trade.rb:-
+msgid "Trade|Job"
+msgstr ""
+
+#: app/models/trade.rb:-
+msgid "Trade|User"
+msgstr ""
+
+#: app/models/trade.rb:-
+msgid "Trade|Status"
+msgstr ""
+
+#: app/models/trade.rb:-
+msgid "Trade|Remark"
+msgstr ""
+
+#: app/models/trade.rb:-
+msgid "Trade|Created at"
+msgstr ""
+
+#: app/models/user.rb:-
+msgid "user"
+msgstr ""
+
+#: app/models/user.rb:-
+msgid "User|Category"
+msgstr ""
+
+#: app/models/user.rb:-
+msgid "User|Name"
+msgstr ""
+
+#: app/models/user.rb:-
+msgid "User|Hashed password"
+msgstr ""
+
+#: app/models/user.rb:-
+msgid "User|Email"
+msgstr ""
+
+#: app/models/user.rb:-
+msgid "User|Salt"
+msgstr ""
+
+#: app/models/user.rb:-
+msgid "User|Phone"
+msgstr ""
+
+#: app/models/user.rb:-
+msgid "User|Mobile"
+msgstr ""
+
+#: app/models/user.rb:-
+msgid "User|Msn"
+msgstr ""
+
+#: app/models/user.rb:-
+msgid "User|Qq"
+msgstr ""
+
+#: app/models/user.rb:-
+msgid "User|Role"
+msgstr ""
+
+#: app/models/user.rb:-
+msgid "User|Hide"
+msgstr ""
+
+#: app/models/user.rb:-
+msgid "User|Remember token expires"
+msgstr ""
+
+#: app/models/user.rb:-
+msgid "User|Remember token"
+msgstr ""
+
+#: app/models/user.rb:-
+msgid "User|Updated at"
+msgstr ""
+
+#: app/models/user.rb:-
+msgid "User|Created at"
+msgstr ""
+
+#: app/models/user.rb:13 app/models/user.rb:14
+msgid "not empty"
+msgstr ""
+
+#: app/models/user.rb:17
+msgid "Invalid email"
+msgstr ""
+
+#: app/models/web.rb:-
+msgid "web"
+msgstr ""
+
+#: app/models/web.rb:-
+msgid "Web|Title"
+msgstr ""
+
+#: app/models/web.rb:-
+msgid "Web|Content"
+msgstr ""
+
+#: app/models/web.rb:-
+msgid "Web|Url"
+msgstr ""
+
+#: app/models/web.rb:-
+msgid "Web|Number"
+msgstr ""
+
+#: app/models/web.rb:-
+msgid "Web|Updated at"
+msgstr ""
+
+#: app/models/web.rb:-
+msgid "Web|Created at"
+msgstr ""
+
+#: app/models/wisdom.rb:-
+msgid "wisdom"
+msgstr ""
+
+#: app/models/wisdom.rb:-
+msgid "Wisdom|User"
+msgstr ""
+
+#: app/models/wisdom.rb:-
+msgid "Wisdom|Content"
+msgstr ""
+
+#: app/models/wisdom.rb:-
+msgid "Wisdom|Created at"
+msgstr ""
+
+#: app/views/enterprises/_form.rhtml:4
+msgid "enterprise_name"
+msgstr ""
+
+#: app/views/enterprises/_form.rhtml:5
+msgid "enterprise_office"
+msgstr ""
+
+#: app/views/enterprises/_form.rhtml:6
+msgid "enterprise_zip"
+msgstr ""
+
+#: app/views/enterprises/_form.rhtml:7
+msgid "enterprise_fax"
+msgstr ""
+
+#: app/views/enterprises/_form.rhtml:8
+msgid "enterprise_site"
+msgstr ""
+
+#: app/views/enterprises/_form.rhtml:9
+msgid "enterprise_description"
+msgstr ""
+
+#: app/views/groups/show.rhtml:18 app/views/groups/show.rhtml:41 app/views/groups/show.rhtml:94
+#: app/views/topics/_operation.rhtml:5
+msgid "top"
+msgstr ""
+
+#: app/views/groups/show.rhtml:25 app/views/groups/show.rhtml:48
+msgid "cancel_status"
+msgstr ""
+
+#: app/views/groups/show.rhtml:72 app/views/topics/show.rhtml:32 app/views/topics/_operation.rhtml:2
+msgid "undelete"
+msgstr ""
+
+#: app/views/groups/show.rhtml:93 app/views/topics/show.rhtml:34 app/views/topics/_operation.rhtml:4
+msgid "delete"
+msgstr ""
+
+#: app/views/groups/show.rhtml:96 app/views/topics/_operation.rhtml:7
+msgid "all_top"
+msgstr ""
+
+#: app/views/groups/_form.rhtml:4
+msgid "group_name"
+msgstr ""
+
+#: app/views/groups/_form.rhtml:6
+msgid "group_data"
+msgstr ""
+
+#: app/views/groups/_form.rhtml:13
+msgid "group_description"
+msgstr ""
+
+#: app/views/jobs/_form.rhtml:4
+msgid "job_work"
+msgstr ""
+
+#: app/views/jobs/_form.rhtml:5
+msgid "job_number"
+msgstr ""
+
+#: app/views/jobs/_form.rhtml:6
+msgid "job_address"
+msgstr ""
+
+#: app/views/jobs/_form.rhtml:7
+msgid "job_finished_at"
+msgstr ""
+
+#: app/views/jobs/_form.rhtml:8
+msgid "datetime_select"
+msgstr ""
+
+#: app/views/jobs/_form.rhtml:9
+msgid "job_content"
+msgstr ""
+
+#: app/views/makeups/album.rhtml:10 app/views/models/album.rhtml:10
+#: app/views/photographers/album.rhtml:10
+msgid "album_data"
+msgstr ""
+
+#: app/views/makeups/album.rhtml:15 app/views/models/album.rhtml:15
+#: app/views/photographers/album.rhtml:15
+msgid "album_name"
+msgstr ""
+
+#: app/views/makeups/_form.rhtml:5
+msgid "makeup_sex"
+msgstr ""
+
+#: app/views/makeups/_form.rhtml:12
+msgid "makeup_name"
+msgstr ""
+
+#: app/views/makeups/_form.rhtml:14
+msgid "makeup_data"
+msgstr ""
+
+#: app/views/makeups/_form.rhtml:22 app/views/models/_form.rhtml:22
+#: app/views/photographers/_form.rhtml:22
+msgid "user_city"
+msgstr ""
+
+#: app/views/makeups/_form.rhtml:31
+msgid "makeup_description"
+msgstr ""
+
+#: app/views/messages/new.rhtml:7 app/views/messages/send_to.rhtml:14
+msgid "message_receive_name"
+msgstr ""
+
+#: app/views/messages/new.rhtml:8 app/views/messages/send_to.rhtml:15
+msgid "message_title"
+msgstr ""
+
+#: app/views/messages/new.rhtml:9 app/views/messages/send_to.rhtml:16
+msgid "message_content"
+msgstr ""
+
+#: app/views/messages/_form.rhtml:3
+msgid "messages_title"
+msgstr ""
+
+#: app/views/messages/_form.rhtml:4
+msgid "messages_content"
+msgstr ""
+
+#: app/views/models/_form.rhtml:5
+msgid "model_sex"
+msgstr ""
+
+#: app/views/models/_form.rhtml:12
+msgid "model_name"
+msgstr ""
+
+#: app/views/models/_form.rhtml:14
+msgid "model_data"
+msgstr ""
+
+#: app/views/models/_form.rhtml:31
+msgid "model_height"
+msgstr ""
+
+#: app/views/models/_form.rhtml:41
+msgid "model_weight"
+msgstr ""
+
+#: app/views/models/_form.rhtml:51
+msgid "model_measure"
+msgstr ""
+
+#: app/views/models/_form.rhtml:67
+msgid "model_shoes"
+msgstr ""
+
+#: app/views/models/_form.rhtml:77
+msgid "model_eye"
+msgstr ""
+
+#: app/views/models/_form.rhtml:86
+msgid "model_country"
+msgstr ""
+
+#: app/views/models/_form.rhtml:94
+msgid "model_description"
+msgstr ""
+
+#: app/views/notices/_form.rhtml:4
+msgid "notice_controller"
+msgstr ""
+
+#: app/views/notices/_form.rhtml:5
+msgid "notice_action"
+msgstr ""
+
+#: app/views/notices/_form.rhtml:6
+msgid "notice_title"
+msgstr ""
+
+#: app/views/notices/_form.rhtml:7
+msgid "notice_content"
+msgstr ""
+
+#: app/views/photographers/_form.rhtml:5
+msgid "photographer_sex"
+msgstr ""
+
+#: app/views/photographers/_form.rhtml:12
+msgid "photographer_name"
+msgstr ""
+
+#: app/views/photographers/_form.rhtml:14
+msgid "photographer_data"
+msgstr ""
+
+#: app/views/photographers/_form.rhtml:31
+msgid "photographer_description"
+msgstr ""
+
+#: app/views/topics/_form.rhtml:4
+msgid "topic_title"
+msgstr ""
+
+#: app/views/topics/_form.rhtml:6
+msgid "topic_content"
+msgstr ""
+
+#: app/views/user/change_password.rhtml:9
+msgid "user_password"
+msgstr ""
+
+#: app/views/user/change_password.rhtml:10
+msgid "password_confirmation"
+msgstr ""
+
+#: app/views/user/change_password.rhtml:11
+msgid "change_password"
+msgstr ""
+
+#: app/views/user/change_status.rhtml:9 app/views/user/edit.rhtml:11 app/views/user/login.rhtml:18
+#: app/views/user/show.rhtml:3 app/views/user/_edit_user.rhtml:26
+#: app/views/user/_edit_user.rhtml:39
+msgid "user_name"
+msgstr ""
+
+#: app/views/user/change_status.rhtml:11
+msgid "status"
+msgstr ""
+
+#: app/views/user/edit.rhtml:12 app/views/user/forgot_password.rhtml:15 app/views/user/show.rhtml:5
+#: app/views/user/_edit_user.rhtml:27 app/views/user/_edit_user.rhtml:40
+msgid "user_email"
+msgstr ""
+
+#: app/views/user/edit.rhtml:14 app/views/user/_edit_user.rhtml:31
+msgid "user_data"
+msgstr ""
+
+#: app/views/user/edit.rhtml:21 app/views/user/show.rhtml:6 app/views/user/_edit_user.rhtml:47
+msgid "user_phone"
+msgstr ""
+
+#: app/views/user/edit.rhtml:22 app/views/user/show.rhtml:7 app/views/user/_edit_user.rhtml:48
+msgid "user_mobile"
+msgstr ""
+
+#: app/views/user/edit.rhtml:23 app/views/user/show.rhtml:8 app/views/user/_edit_user.rhtml:49
+msgid "user_qq"
+msgstr ""
+
+#: app/views/user/edit.rhtml:24 app/views/user/show.rhtml:9 app/views/user/_edit_user.rhtml:50
+msgid "user_msn"
+msgstr ""
+
+#: app/views/user/edit.rhtml:25 app/views/user/_edit_user.rhtml:51
+msgid "user_hide"
+msgstr ""
+
+#: app/views/user/forgot_password.rhtml:17 app/views/user/login.rhtml:25
+msgid "forgot_password"
+msgstr ""
+
+#: app/views/user/forgot_password.rhtml:18 app/views/user/login.rhtml:24
+msgid "login_signup"
+msgstr ""
+
+#: app/views/user/forgot_password.rhtml:19 app/views/user/login.rhtml:23
+msgid "login_submit"
+msgstr ""
+
+#: app/views/user/login.rhtml:19 app/views/user/_edit_user.rhtml:28
+msgid "new_password"
+msgstr ""
+
+#: app/views/user/login.rhtml:20 app/views/user/_edit_user.rhtml:42
+msgid "save_cookie"
+msgstr ""
+
+#: app/views/user/show.rhtml:2
+msgid "user_avata"
+msgstr ""
+
+#: app/views/user/show.rhtml:4 app/views/user/_edit_user.rhtml:18
+msgid "user_category"
+msgstr ""
+
+#: app/views/user/show.rhtml:10
+msgid "user_created_at"
+msgstr ""
+
+#: app/views/user/_edit_user.rhtml:29
+msgid "retype_password"
+msgstr ""
+
+#: app/views/user/_edit_user.rhtml:57
+msgid "user_captcha"
+msgstr ""
+
+#: app/views/user/_edit_user.rhtml:65
+msgid "user_agreement"
+msgstr ""
+
+#: app/views/user/_edit_user.rhtml:75
+msgid "signup"
+msgstr ""
+
+#: app/views/webs/_form.rhtml:4
+msgid "web_title"
+msgstr ""
+
+#: app/views/webs/_form.rhtml:5
+msgid "web_url"
+msgstr ""
+
+#: app/views/webs/_form.rhtml:6
+msgid "web_number"
+msgstr ""
+
+#: app/views/webs/_form.rhtml:7
+msgid "web_content"
+msgstr ""
+
+msgid "notmatch"
+msgstr ""
+
+msgid "expired"
+msgstr ""
+
+msgid "notfound"
+msgstr ""
+
+#: app/models/user.rb:-
+msgid "User|Password"
+msgstr ""
+
+#: app/models/user.rb:-
+msgid "User|Password confirmation"
+msgstr ""
+
+#: app/models/user.rb:-
+msgid "User|Captcha"
+msgstr ""

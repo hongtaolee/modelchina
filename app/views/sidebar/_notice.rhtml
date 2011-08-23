@@ -1,0 +1,9 @@
+<div class="featurebox">
+<%= render :partial=>'sidebar/gs' %>
+</div>
+<div class="featurebox">
+    <% if notice = Notice.find(:first,:conditions=>['controller = ? and action =?',current_controller,current_action],:order=>'created_at DESC') %>
+    <div class="sider_title"><%= notice.title%>。。。。。。</div>
+    <div class="notice_content"><%= notice.content%></div>
+   <% end %> 
+</div>

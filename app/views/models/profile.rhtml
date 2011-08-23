@@ -1,0 +1,101 @@
+<div id="content">
+    <div class="page_main">
+        <div class="page_title"><%=h @model.name%>的简历</div>
+        <div class="page_info">发布时间：<%=format_datetime(@model.updated_at) %>&nbsp;&nbsp;</div>
+        <div class="page_content"><%= (simple_format(@model.description) if !@model.description.blank?)%></div>
+    </div> 
+</div>
+<div id="sidebar"> 
+    <%= render :partial => 'sidebar/notice'%>
+   <div id="group_operation">
+        <div class="sider_link">&gt;&gt;<%= link_to "查看#{@model.name}的相册",:controller=>'models',:action=>'show',:id=>@model %></div>
+        <div class="sider_link">&gt;&gt;<%= link_to "对#{@model.name}发表评论",:controller=>'models',:action=>'show',:id=>@model %></div>
+        <div class="sider_link">&gt;&gt;<%= link_to "加入#{@model.name}的Fans圈",:controller=>'models',:action=>'group',:id=>@model %></div>
+        <div class="sider_link">&gt;&gt;<%= link_to "给#{@model.name}发送短消息",:controller=>'messages',:action=>'send_to',:id=>@model.user %></div>            
+    </div>
+    <div class="featurebox">
+        <div class="sider_title"><%= @model.name%>的小档案。。。。。。</div>
+        <div class="brief" id="model_brief_id">
+            <ul class="brief_list">
+                <li>性别：<%= @model.sex.to_i == 1 ? '靓女' : '帅哥'%></li>
+                <li>城市：<%= @model.province %>  <%= @model.city%>
+                <li>身高：<%= @model.height%> cm</li>
+                <li>体重：<%= @model.weight %> kg</li>
+                <li>鞋码：<%= @model.shoes %></li>
+                <li>三围：<%= @model.chest %>/<%= @model.waist %>/<%= @model.hips%> cm</li> 
+                <li>眼睛：<%= @model.eye %></li>
+                <li>评论：<span class="count"><%= @model.comments_count %></span> / 浏览 <span class="count"><%= @model.read_count %></span></li>
+            </ul>
+        </div>
+    </div> 
+    <%= corner('model_brief_id','#FFF6EE','#FFF',true)%>
+        
+    <div class="featurebox">
+        <div class="sider_title">联系方式</div>
+        <% if @current_user.nil? %>
+            <div class="left_sidebar_remark"><%= link_to '登陆', :controller=>'user', :action=>'login'%>后，才能查看联系方式……</div>        
+        <% else %>
+            <% if @model.user.hide%>
+                <div class="left_sidebar_remark">该用户没有公开联系方式，您可以通过<%= link_to '发送站内消息',:controller=>'messages',:action=>'send_to',:id=>@model.user%>进行联系。</div>                   
+            <% else %>
+            <ul class="right_sider_list">
+                <li id="is_friend">
+                    联系人：<%=@model.user.name%>
+                  <% unless @current_user.is_friend(@model.user)%>
+                  (<%= link_to_remote '加为好友',:url=>{:controller=>'favs',:action=>'new',:id=>@model.user.id}%>)
+                  <% end%>
+                </li>
+                <li>电话：<%=@model.user.phone %></li>
+                <li>手机：<%=@model.user.mobile %></li>
+                <li>email：<%=@model.user.email %></li>
+                <li>MSN：<%=@model.user.msn %></li>
+                <li>QQ：<%=@model.user.qq %></li>
+            </ul>
+            <% end %>
+        <% end %>
+    </div>
+    <div class="featurebox">
+        <div class="sider_title">
+              该模特相关的标签
+            <% if @current_user %>
+                <% if @current_user.role == 'admin' || @current_user.id == @model.user.id %>
+                    <span style="font-size:12px;"><%= link_to_function("修改" ,"Element.toggle($('tag_form')); Element.hide('tag_cloudy')")%></span>
+                <% end %>
+            <% end %>
+        </div>
+        <div id="tag_form" style="display:none;">
+            <%= form_remote_tag :url => {:action => "tagging", :id => @model}%>
+            <%= text_field_tag "tag_list", @model.tags.collect{|t| t.name }.join(" "), :title => '设置好标签，回车即可'%>
+            <%= end_form_tag %>
+        </div>
+        <div id="tag_cloudy">
+            <% tag_cloud(@tagged_items, %w(x-small small medium large x-large)) do |tag, font_size| %>  <%= link_to(h("#{tag}"), {:controller=>'models',:action=>'tag',:id => tag}, { :style => "font-size: #{font_size}" } ) -%><% end %>
+        </div> 
+    </div>
+    <div class="featurebox more_model" id="model_more_id">
+        <div class="title">推荐的模特</div>
+        <div class="my_model">
+            <% odd_or_even = 1 %>
+            <% for model in @models%>
+            <% odd_or_even = 1 - odd_or_even %>
+            <table class="side_model_item side_model_<%=odd_or_even%>">
+              <tr>
+                <td valign="middle" align="center" class="side_model_img">
+                    <div><%= link_to_avata(model,'60x60')%></div>
+                </td>
+                <td valign="middle" class="side_model_info">
+                  <div class="side_model_name"><%= link_to model.name,:controller => 'models',:action=>'show',:id=>model.id %></div>
+                  <div class="clear"></div>
+                  <ul class="side_model_detail">
+                    <li>身高：<%= model.height%> cm</li>
+                    <li>三围：<%= model.chest %>/<%= model.waist %>/<%= model.hips%></li> 
+                    <li>鞋码：<%= model.shoes %>
+                  </ul>
+                </td>
+              </tr>
+            </table>
+            <% end %>
+        </div>
+    </div>
+    <%= corner('model_more_id','#F1F1F1','#FFF',true,'top')%>
+</div>

@@ -1,0 +1,63 @@
+<div class="tab_content" id="msg_list">
+    <div id="preview">
+        <div class="big_title">我参加的小组（红色的小组您是创始人）。。。。。。</div>
+        <% if @members.length > 0 %>
+        <div  id="preview_list">
+            <% for member in @members%>
+            <table class="group_item">
+              <tr><td valign="middle" align="center" class="group_item_img">
+                  <%=link_to_avata(member.group,'80x80')%>
+              </td></tr>
+              <tr><td valign="middle" align="center" class="group_item_info">
+                <% if member.group.admin == @current_user.id %>
+                    <%= link_to member.group.name,{:controller => 'groups',:action=>'show',:id=>member.group.id},{:style=>'color:#FF3366'} %>(<%= member.group.member_count%>)[<%= link_to '修改',:controller=>'groups',:action=>'edit',:id => member.group.id %>]
+                <% else %>
+                    <%= link_to member.group.name,:controller => 'groups',:action=>'show',:id=>member.group.id %>(<%= member.group.member_count%>)                
+                <% end %>
+             </td></tr>
+            </table>
+            <% end %>
+            <div class="clear"></div>
+        </div>
+        <% else %>
+            <div class="left_sidebar_remark">
+                <p>兴趣小组是根据个人的兴趣组成的小圈子，您现在还没有加入任何兴趣小组。</p>
+                <p> 您可以在<%= link_to '这里',:controller=>'groups',:action=>'list'%>查找您感兴趣的小组加入……</p>    
+                <p>也可以<%=link_to '创建自己的兴趣小组',:controller=>'groups',:action=>'new'%>，把你的朋友拉进来……</p>
+                <p>也可以到我们的<%=link_to 'model-china小组',:controller=>'groups',:action=>'show',:id=>1%>逛逛，您的每一句话都是我们成长的动力……</p>
+            </div>        
+        <% end %>
+</div>
+
+<div id="preview">
+<div class="big_title">我最近发表的话题。。。。。。</div>
+<div class ="topic_list">
+<% if @topics.length == 0 %>
+    <div class="left_sidebar_remark">
+        <p>您还没有发表任何话题……</p>
+        <p>想让更多人知道你吗？只要你主动出击，多在小组里面发表话题，好友就会主动找上门来的……</p>
+    </div> 
+<% else %>
+<table class="tab_table">
+    <tr class="table_head">
+        <th>话题</th><th>小组</th><th>作者</th><th>回复</th><th>浏览</th><th>最后回复</th>
+    </tr>
+    <% odd_or_even = 0 %>
+    <% for topic in @topics%>
+    <% odd_or_even = 1 - odd_or_even %>
+    <tr class="ListLine<%= odd_or_even %>">
+        <td style="width:280px;text-align:left;padding-left:10px;"><%=link_to topic.title,:controller=>'topics',:action=>'show',:id=>topic %></td>
+        <td style="width:100px;"><%=link_to Group.find(topic.group_id).name,:controller=>'groups',:action=>'show',:id=>topic.group_id %></td>
+        <td style="width:100px;"><%=link_to User.find(topic.user_id).name,:controller=>'user',:action=>'welcome',:id=>topic.user_id %></td>
+        <td style="width:60px;"><%= topic.post_count%></td>
+        <td style="width:60px;"><%= topic.read_count%></td>
+        <td style="width:150px;"><%= format_datetime(topic.last_reply) %></td>
+    </tr>
+    <% end %>
+</table>
+<div class="more"><%= link_to_pages %></div>
+<% end %>
+</div>
+</div>
+
+</div>

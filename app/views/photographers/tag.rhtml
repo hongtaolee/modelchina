@@ -1,0 +1,61 @@
+<div id="content">
+<div id="preview">
+<div class="big_title">标签<font color="red"><%=params[:id]%></font>下的摄影师。。。。。。</div>
+<div  id="preview_list">
+<% for photographer in @photographers%>
+<table class="model_item">
+  <tr>
+    <td valign="middle" align="center" class="model_item_img">
+        <div><%= link_to_avata(photographer)%></div>
+    </td>
+    <td valign="middle" class="model_item_info">
+      <div class="preview_name"><%= link_to photographer.name,:controller => 'photographers',:action=>'show',:id=>photographer.id %></div>
+      <div class="rank_star">
+        <ul class="star-rating">
+            <li class="current-rating" style="width:<%= photographer.rank_count > 0 ? photographer.rank*20/photographer.rank_count : 0 %>px;"></li>
+        </ul>
+      </div>
+      <div class="clear"></div> 
+      <ul class="preview_detail">
+        <li>性别：<%= photographer.sex%> cm</li>
+        <li>所在地：<%= photographer.province %>  <%= photographer.city %>
+        <li>评论 <span class="count"><%= photographer.comments_count %></span> / 浏览 <span class="count"><%= photographer.read_count %></span>
+      </ul>
+    </td>
+  </tr>
+</table>
+<% end %>
+<div class="more"><%= link_to_pages %></div>
+</div>
+</div>
+</div>
+<div id="sidebar">
+    <div class="featurebox">
+        <% if notice = Notice.find(:first,:conditions=>['controller = ? and action =?',current_controller,current_action],:order=>'created_at DESC') %>
+        <div class="sider_title"><%= notice.title%>。。。。。。</div>
+        <div class="brief"><%= notice.content%></div>
+       <% end %> 
+    </div> 
+     <div class="sider_link">&gt;&gt;<%= link_to '搜索合意的摄影师',:controller=>'photographers',:action=>'search' %></div>
+    <div class="sider_link">&gt;&gt;<%= link_to '找个感兴趣的小组逛逛',:controller=>'groups',:action=>'list' %></div>
+    <div class="featurebox">
+        <div class="sider_title">搜索感兴趣的摄影师。。。。。。</div>
+        <div class="brief" id="group_brief_id">
+            <div class="group_brief_title">请输入姓名、关键字进行搜索</div>
+            <%=form_tag(url_for(:controller => 'photographers', :action => 'search'), 'method' => 'post')%>
+                <body onload="init_city('<%= params[:province] %>','<%= params[:city] %>')">
+                <select id="province" name="province" onChange="select()"style="width:110px;margin:5px 7px 3px 5px;"></select>  
+                <select id="city" name="city" style="width:110px;margin:5px 0 3px 5px;"></select>
+                <input type="text" name="search" style="width:232px;margin:5px 5px 5px 5px;"></input>
+                <%= submit_tag '搜索摄影师',{:style=>'width:100px;height:22px;margin-left:140px;margin-bottom:10px;'} %>  
+            <%= end_form_tag %>
+        </div> 
+    </div>  
+    <%= corner('group_brief_id','#FFF6EE','#FFF',true)%>    
+    <div class="featurebox">
+        <div class="sider_title">根据标签查找摄影师。。。。。。</div>
+        <div id="tag_cloudy">
+            <% tag_cloud(@tagged_items, %w(x-small small medium large x-large)) do |tag, font_size| %>  <%= link_to(h("#{tag}"), {:action=>'tag',:id => tag}, { :style => "font-size: #{font_size}" } ) -%><% end %>
+        </div>
+    </div>
+</div>

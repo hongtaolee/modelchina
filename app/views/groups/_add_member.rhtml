@@ -1,0 +1,10 @@
+<% for member in @members%>
+    <table class="member_item">
+      <tr><td valign="middle" align="center" class="member_item_img">
+         <%=link_to_avata(member.user,'60x60','user','welcome')%>
+      </td></tr>
+      <tr><td valign="middle" align="center" class="member_item_info">
+            <%= link_to member.user.name,:controller => 'user',:action=>'welcome',:id=>member.user.id %>
+     </td></tr>
+    </table>
+<% end %>

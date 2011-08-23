@@ -1,0 +1,32 @@
+<div id="content">
+<div id="preview">
+<div class="big_title">模特招聘信息。。。。。。</div>
+<div  id="preview_list">
+<% for job in @jobs%>
+<table class="job_table">
+    <tr class="job_table_head"><th colspan=4><%=link_to job.work,:controller=>'jobs',:action=>'show',:id=>job %></th></tr>
+    <tr><td class="odd">发布日期：</td><td class="even"><%= format_datetime(job.created_at) %></td><td class="odd">工作地点：</td><td class="even"><%=job.address%></td></tr>
+    <tr><td class="odd">招聘人数：</td><td class="even"><%= job.number%></td><td class="odd">薪水范围：</td><td class="even"><%=job.salary%></td></tr>
+    <tr><td class="odd">职位描述：</td><td colspan=3><%= truncate(h(job.content),100)%>……</td></tr>
+</table>
+<% end %>
+<div class="more"><%= link_to_pages %></div>
+</div>
+</div>
+
+</div>
+<div id="sidebar">
+    <div class="featurebox">
+        <% if notice = Notice.find(:first,:conditions=>['controller = ? and action =?',current_controller,current_action],:order=>'created_at DESC') %>
+        <div class="sider_title"><%= notice.title%>。。。。。。</div>
+        <div class="brief"><%= notice.content%></div>
+       <% end %> 
+    </div> 
+    
+    <div class="featurebox">
+        <div class="sider_title">根据标签查找模特。。。。。。</div>
+        <div id="tag_cloudy">
+            <% tag_cloud(@tagged_items, %w(x-small small medium large x-large)) do |tag, font_size| %>  <%= link_to(h("#{tag}"), {:controller=>'models',:action=>'tag',:id => tag}, { :style => "font-size: #{font_size}" } ) -%><% end %>
+        </div>
+    </div>
+</div>

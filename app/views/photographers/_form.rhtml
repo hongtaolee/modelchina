@@ -1,0 +1,50 @@
+<%= error_messages_for 'photographer' %>
+<fieldset>
+<table>
+<tr class="two_columns">
+  <td class="prompt" valign="top"><label><%= "性别"%>:</label></td>
+  <td class="value">
+    <%= radio_button("photographer","sex","1",{"class" => "radio","CHECKED" => true})%>女
+    <%= radio_button("photographer","sex","2","class" => "radio")%>男
+  </td>
+</tr>
+<tr><td></td><td class="remark"></td></tr>
+<%= form_input(:text_field, 'photographer', 'name',"摄影师名")  %>
+<tr class="two_columns">
+  <td class="prompt" valign="top"><label><%= "头像"%>:</label></td>
+  <td class="value" valign="top" id="image_table">
+    <input class="two_columns" id="data" name="data" size="30" type="file" onchange="preview()"/>
+    <%= link_to_avata(@photographer,'60x80')%>
+  </td>
+</tr>
+<tr><td></td><td class="remark">只有设置了形象照片才有机会出现在首页哦.......</td></tr>
+<tr class="two_columns">
+  <td class="prompt"><%= "所在城市"%></td>
+  <td>
+<body onload="init_city('<%= @photographer.province %>','<%= @photographer.city %>')">
+    <select id="province" name="province" onChange="select()"></select>  
+    <select id="city" name="city"></select>
+  </td>
+</tr>
+<tr><td></td><td class="remark">必填项：为了快速找到您，请填写当前工作所在地。</td></tr>
+
+<%= form_input(:text_area, 'photographer', 'description',"简历"),'请尽量填写详细的工作简历……' ) %>
+
+<tr class="two_columns">
+  <td class="prompt" valign="top"><label>标签:</label></td>
+  <td class="value" style="width:600px;"><input id="tags" name="tags" size="30" type="text" value="<%= @photographer.tags.collect{|t| t.name }.join(" ")%>"/></td>
+</tr>
+<tr><td></td><td class="remark">填写简短的词语，比如：人物  风景 ……(请用空格分开......)</td></tr>
+       
+<tr class="two_columns">
+    <td class="prompt"></td><td class="button" colspan="2">
+      <input name="submit" type="submit" value="确定" />
+      <% if @current_user.category == 2 %>
+        <%= link_to "返回", :action => 'list'%>
+      <% else %>
+        <%= link_to "返回", :controller=>'user',:action => 'show'%>      
+      <% end %>
+    </td>
+</tr>
+</table>
+</fieldset>

@@ -1,0 +1,46 @@
+<div id="content">
+<% for task in @tasks %>
+    <div  id="page_<%=page.id%>">
+    <table style="margin:20px 10px 20px 20px;">
+        <tr>
+            <td><%= link_to_remote image_tag('finish.gif'),:url=>{:controller => 'tasks',:action => 'delete',:id => task.id }%></td>
+            <td>
+                <%=link_to(task.project.name,:controller=>'tasks',:action=>'project',:id=>task.project) if task.project %>
+                <%=task.title %><%= task.plan_time %>
+                <%=link_to_remote '编辑', :url => {:controller => 'tasks', :action => 'edit',:id => task.id }%>
+                <%=link_to_remote '删除', :url => {:controller => 'tasks', :action => 'edit',:id => task.id }%>
+            </td>
+        </tr>
+        <tr><td></td><td><%= task.description %></td></tr>
+    </table>
+    </div>
+<% end %>
+</div>
+
+<div id="sidebar">
+    <div class="featurebox" style="color:#5F5F5F;">
+        <div class="wisdoms">
+            <% for wisdom in @wisdoms %>
+                <%= wisdom.content%>
+            <% end %>
+        </div>
+    </div>
+    <div class="group_operation">
+        <div class="sider_link">&gt;&gt;<%= link_to_remote '添加新的任务',:url=>{:controller=>'tasks',:action=>'new'}%></div>
+        <div class="sider_link">&gt;&gt;<%= link_to_remote '添加新的项目',:url=>{:controller=>'tasks',:action=>'new'}%></div>
+        <div class="sider_link">&gt;&gt;<%= link_to_remote '查看月份总结',:url=>{:controller=>'tasks',:action=>'new'}%></div>        
+    </div>
+    <div class="page_right_bar">
+        <div class="page_right_bar_title">项目列表</div>
+        <ul class="sider_list">  
+        <% for project in @projects%>
+        <li><span class="news"><%=link_to project.name,:controller => 'tasks',:action=>'project',:id=> project %></span></li>
+        <% end %>   
+        </ul>
+    </div>                                  
+    <div class="page_right_bar">
+        <div class="page_right_bar_title">归档</div>
+        <ul class="sider_list">   
+        </ul>
+    </div>    
+</div>

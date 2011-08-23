@@ -1,0 +1,37 @@
+<%= error_messages_for 'page' %>
+
+<!--[form:page]-->
+<p><label for="page_title">Title</label><br/>
+<%= text_field 'page', 'title'  %></p>
+
+<p><label for="page_category">Category</label><br/>
+<%= text_field 'page', 'category'  %></p>
+
+<p><label for="page_author">Author</label><br/>
+<%= text_field 'page', 'author'  %></p>
+
+<p><label for="page_from">From</label><br/>
+<%= text_field 'page', 'from'  %></p>
+
+<p><label for="page_content">Content</label><br/>
+<%= text_area 'pagecontent', 'content'  %></p>
+
+<p><label for="page_content_redcloth">Content redcloth</label><br/>
+<%= text_area 'pagecontent', 'content_redcloth'  %></p>
+
+<p><label for="page_editor">Editor</label><br/>
+<%= text_field 'page', 'editor'  %></p>
+
+<p><label for="page_count">Count</label><br/>
+<%= text_field 'page', 'count'  %></p>
+
+<p><label for="page_published_at">Published at</label><br/>
+<%= date_select 'page', 'published_at'  %></p>
+
+<p><label for="page_published">Published</label><br/>
+<%= text_field 'page', 'published'  %></p>
+
+<p><label for="page_created_at">Created at</label><br/>
+<%= datetime_select 'page', 'created_at'  %></p>
+<!--[eoform:page]-->
+

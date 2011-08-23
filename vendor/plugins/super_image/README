@@ -1,0 +1,149 @@
+= Super Image Plugin
+
+  NOTE: This document will be much more readable if viewed through the *rdoc*
+  generated HTML in vendor/plugins/super_image/doc/index.html
+
+SuperImage is a plugin that allows you to put image data in your database
+And retrieve at any size you like.  Combine this with page caching and you 
+have a fast and easy way to manage large numbers of uploaded files.
+
+== Setup
+
+=== Prerequisites
+
+*RMagick* must be installed
+http://rmagick.rubyforge.org
+
+=== Installation
+
+SVN: http://beautifulpixel.com/svn/plugins/super_image/
+
+Install via the plugin script into your rails application
+
+  ruby script/plugin install http://beautifulpixel.com/svn/plugins/super_image/
+  
+Tip: use <tt>install -x</tt> instead of <tt>isntall</tt> if your project is 
+already under subversion.  Then the plugin will update itself every you do a
++svn up+.
+
+=== Migration
+
+Usage is simple.  First, you must create the table used by SuperImage.  At
+a command prompt in the root of your rails app:
+
+  ruby script/generate super_image_migration
+  rake migrate
+  
+This will ceate the a table in your database called +super_images+.
+
+The reason to keep this in a separate table (rather than a field on your users
+or products tables) is to keep databse bandwidth down since you rarely need
+the image data when you are retrieving the images parent object.
+
+=== Controller
+
+In order to view the image you simply need to include the proper module in your
+controller.  This is done with <tt>include SuperImagePlugin::Show</tt>
+
+We will also add a method to process an uploaded file, creating a new database
+row for the image.
+
+  class MyControllerNameController < ApplicationController
+    include SuperImagePlugin::Show
+    image_action :show_my_image
+    
+    def create
+      img = SuperImage.create(:data => params[:image][:data])
+      redirect_to :action => 'show_my_image', :id => img
+    end
+  end
+  
++include SuperImagePlugin::Show+ allows you to call the #show_image method in your controller.
+The symbol you pass to #image_action defines the action you access your images with.  In the above
+example, you would get your images via <tt>/my_controller_name/show_my_image/123</tt>
+
+The create method takes advantage of the <tt>#data=</tt> method
+defined in the SuperImage model which automatically processes an uploaded file and
+puts it in the database.
+
+=== View
+
+We still need a form to get uploaded images into the database.  Create a new rhtml
+file in <tt>app/views/my_controller_name/new.rhtml</tt> with the following simple form:
+
+  <%= form_tag({:action => 'create'}, {:multipart => true})%>
+    <%= file_field 'image', 'data' %>
+    <%= submit_tag %>
+  <%= end_form_tag %>
+ 
+=== Upload
+
+Now find a file on your hard drive and upload via the form at <tt>/my_controller_name/new</tt>.
+You should be redirected to your image, displayed in the browser.
+
+
+== Usage
+
+To include a link to an image in your view, first define a route that looks something like this:
+
+  map.super_image 'my_images/show_image/:id/:size/image.jpg',
+                  :controller => 'my_images',
+                  :action => 'my_image_action_for_this_controller'
+
+Then call it form your controller/view with:
+
+  <%= image_tag(super_image_url(
+                  :id         => @img.id,   # The id of the image you want to show.
+                  :size       => '175x100', # The size of the image you want returned.
+                  :crop       => true       # Optional.  Will make the returned image exactly the provided size (see below)
+                ),
+                :alt => "Image #{@img.id}") %>
+
+Or simply navigate to <tt>/my_controller_name/my_image_method/1</tt>.  And to use the size constraint
+navigate to <tt>/my_controller_name/show_image/1?size=120</tt>.  You can write custom url routes
+to make the size parameter prettier if you like.
+
+The +size+ parameter is the size of the largest dimension of the image.  For example, a
+640x480 image is requested with <tt>:size => 100</tt>.  The image will be rendered at
+100x75.  Aspect Ratio is always preserved.
+
+<tt>:size</tt> can be 2 dimensional as well.  A <tt>:size</tt> of "640x320" will make the width no 
+bigger than 640, and the height no bigger than 320.  Resizing you 640x480 image to 427x320.
+
+Lastly, you can use the <tt>:crop</tt> option (just pass any value to "crop" in the url, +true+ would
+probably do the job best) to resize the image and crop it to exactly the specified size.  Use this when
+you want to get an image that is exactly the size you ask for.
+
+Remember that SuperImage inherits from ActiveRecord and works just like every other
+model in Rails.  It simply has a small amount of added functionality.
+
+= Customization and Extension
+
+The model that manages the super_images table is completely overrideable.  From the plugin it looks 
+like this:
+
+  class SuperImage < ActiveRecord::Base
+    include SuperImagePlugin::SetImage
+  end
+  
+That's it, really.  What this means is you can use your own model, and extend it anyway you like.
+After you generate the +super_image_migration+ Modify it to your liking, and later add other attributes
+to the table.
+
+For example, here is a model to keep track of users avatars.
+
+  class AvatarImage < ActiveRecord::Base
+    include SuperImagePlugin::SetImage
+    belongs_to :user
+    
+    def file_size
+      data.length
+    end
+  end
+  
+In this case your table name would be +avatar_images+ and would include the field +user_id+.
+
+If you do override default SuperImage class, the controller must know what class is the proper
+class to use.  Add a line like the following to you controller.
+
+  image_class AvatarImage

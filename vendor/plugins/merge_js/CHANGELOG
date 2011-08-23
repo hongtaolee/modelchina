@@ -1,0 +1,10 @@
+Revision 10:
+- Added support for symbols (<%= javascript_include_merged :foo, :bar %>)
+- Added support for :defaults (<%= javascript_include_merged :defaults %>)
+- Added support for options (<%= javascript_include_merged :foo, :bar, {"charset" => "UTF-8"} %>)
+- Added support for relative_url_root (Add to environment.rb: ActionController::AbstractRequest.relative_url_root = "/dir")
+- Added support for asset_host (Add to environment.rb: ActionController::Base.asset_host = "http://assets.example.com")
+- Pass through any scripts not in the source_map
+- Pass through all scripts if js.yml not found
+- Load js_yml on initialization instead of each call to javascript_include_merged
+- Added MIT License text to README

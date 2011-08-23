@@ -1,0 +1,22 @@
+<div id="admin_main">
+<div id="my_left">
+  <div class="left_bar">
+    <div class="my_tab">
+      <div id="info" class="<%= params[:id]== 'info' ? 'active' : '' %>" ><%=link_to '用户资料', :controller => 'user', :action => 'show' %></div>
+      <div id="passwd"  class="<%= params[:id]== 'passwd' ? 'active' : '' %>"><%=link_to '修改密码', :controller => 'user', :action => 'change_password' %></div>
+      <div id="job"  class="<%= params[:id]== 'job' ? 'active' : '' %>" ><%=link_to '招聘模特', :controller => 'jobs', :action => 'list'%></div>
+      <div id="model"  class="<%= params[:id]== 'model' ? 'active' : '' %>" ><%=link_to '模特管理', :controller => 'models', :action => 'list' %></div>
+      <div id="news"  class="<%= params[:id]== 'news' ? 'active' : '' %>" ><%=link_to '信息管理', :controller => 'user', :action => 'home', :id => 'news' %></div>
+      <div id="fav"  class="<%= params[:id]== 'fav' ? 'active' : '' %>" ><%=link_to '我的好友', :controller => 'favs', :action => 'list' %></div>    
+    </div>
+  </div>
+  <div class="google_ad" style="margin-top:20px;"></div>
+</div>
+<div id="my_right">
+   <div id="tab_content_box">
+     <div id="tab_content">
+       <%= render_partial @tab %>
+     </div>
+   </div>
+</div>
+</div>

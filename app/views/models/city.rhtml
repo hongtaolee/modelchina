@@ -1,0 +1,101 @@
+<div id="content">
+<div id="preview">
+<div class="big_title">广州模特。。。。。。</div>
+<div  id="preview_list">
+<% for gzmodel in @gzmodels%>
+<table class="model_item">
+  <tr>
+    <td valign="middle" align="center" class="model_item_img">
+       <div><%= link_to_avata(gzmodel)%></div>
+    </td>
+    <td valign="middle" class="model_item_info">
+      <div class="preview_name"><%= link_to gzmodel.name,:controller => 'models',:action=>'show',:id=>gzmodel.id %></div>
+      <div class="rank_star">
+        <ul class="star-rating">
+            <li class="current-rating" style="width:<%= gzmodel.rank_count > 0 ? gzmodel.rank*20/gzmodel.rank_count : 0 %>px;"></li>
+        </ul>
+      </div>
+      <div class="clear"></div> 
+      <ul class="preview_detail">
+        <li>身高：<%= gzmodel.height%> cm</li>
+        <li>三围：<%= gzmodel.chest %>/<%= gzmodel.waist %>/<%= gzmodel.hips%> cm</li> 
+        <li>鞋码：<%= gzmodel.shoes %></li>
+        <li>评论 <span class="count"><%= gzmodel.comments_count %></span> / 浏览 <span class="count"><%= gzmodel.read_count %></span>
+      </ul>
+    </td>
+  </tr>
+</table>
+<% end %>
+<div class="more">&gt;&gt;<%=link_to '浏览广州的全部模特',:controller => 'models',:action=>'citysearch',:id=>'广州' %></div>
+</div>
+</div>
+
+<div id="preview">
+<div class="big_title">北京模特。。。。。。</div>
+<div  id="preview_list">
+<% for bjmodel in @bjmodels%>
+<table class="model_item">
+  <tr>
+    <td valign="middle" align="center" class="model_item_img">
+       <div><%= link_to_avata(bjmodel)%></div>
+    </td>
+    <td valign="middle" class="model_item_info">
+      <div class="preview_name"><%= link_to bjmodel.name,:controller => 'models',:action=>'show',:id=>bjmodel.id %></div>
+      <div class="rank_star">
+        <ul class="star-rating">
+            <li class="current-rating" style="width:<%= bjmodel.rank_count > 0 ? bjmodel.rank*20/bjmodel.rank_count : 0 %>px;"></li>
+        </ul>
+      </div>
+      <div class="clear"></div> 
+      <ul class="preview_detail">
+        <li>身高：<%= bjmodel.height%> cm</li>
+        <li>三围：<%= bjmodel.chest %>/<%= bjmodel.waist %>/<%= bjmodel.hips%> cm</li> 
+        <li>鞋码：<%= bjmodel.shoes %></li>
+        <li>评论 <span class="count"><%= bjmodel.comments_count %></span> / 浏览 <span class="count"><%= bjmodel.read_count %></span>
+      </ul>
+    </td>
+  </tr>
+</table>
+<% end %>
+<div class="more">&gt;&gt;<%=link_to '浏览北京的全部模特',:controller => 'models',:action=>'citysearch',:id=>'北京' %></div>
+</div>
+</div>
+
+<div id="preview">
+<div class="big_title">上海模特。。。。。。</div>
+<div  id="preview_list">
+<% for shmodel in @shmodels%>
+<table class="model_item">
+  <tr>
+    <td valign="middle" align="center" class="model_item_img">
+       <div><%= link_to_avata(shmodel)%></div>
+    </td>
+    <td valign="middle" class="model_item_info">
+      <div class="preview_name"><%= link_to shmodel.name,:controller => 'models',:action=>'show',:id=>shmodel.id %></div>
+      <div class="rank_star">
+        <ul class="star-rating">
+            <li class="current-rating" style="width:<%= shmodel.rank_count > 0 ? shmodel.rank*20/shmodel.rank_count : 0 %>px;"></li>
+        </ul>
+      </div>
+      <div class="clear"></div> 
+      <ul class="preview_detail">
+        <li>身高：<%= shmodel.height%> cm</li>
+        <li>三围：<%= shmodel.chest %>/<%= shmodel.waist %>/<%= shmodel.hips%> cm</li> 
+        <li>鞋码：<%= shmodel.shoes %></li>
+        <li>评论 <span class="count"><%= shmodel.comments_count %></span> / 浏览 <span class="count"><%= shmodel.read_count %></span>
+      </ul>
+    </td>
+  </tr>
+</table>
+<% end %>
+<div class="more">&gt;&gt;<%=link_to '浏览上海的全部模特',:controller => 'models',:action=>'citysearch',:id=>'上海' %></div>
+</div>
+</div>
+
+
+</div>
+<div id="sidebar">
+    <%= render :partial => 'sidebar/notice' %>
+    <%= render :partial => 'sidebar/city' %>
+    <%= render :partial => 'sidebar/tag' %>
+</div>

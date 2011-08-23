@@ -1,0 +1,60 @@
+<div id="content">
+<div id="preview">
+<div class="big_title">最受欢迎的小组。。。。。。</div>
+<div  id="preview_list">
+<% for group in @groups%>
+   <div class="picbox2">
+      <table><tr><td><%= link_to_avata(group,'80x80')%></td></tr></table>
+      <p><%= link_to group.name,:controller => 'groups',:action=>'show',:id=>group.id %>(<%= group.member_count%>)</p>
+   </div>
+<% end %>
+<div class="more">&gt;&gt;<%= link_to '浏览全部小组',:controller=>'groups',:action=>'all'%></div>
+</div>
+</div>
+
+<div id="preview">
+<div class="big_title">所有小组的最新话题。。。。。。</div>
+<div class ="topic_list">
+<table class="topic_table">
+    <tr class="topic_table_head">
+        <th>话题</th><th>小组</th><th>作者</th><th>回复/浏览</th><th>最后回复</th>
+    </tr>
+    <% odd_or_even = 0 %>
+    <% for topic in @topics%>
+    <% odd_or_even = 1 - odd_or_even %>
+    <tr class="ListLine<%= odd_or_even %>">
+        <td style="width:335px;text-align:left;padding-left:10px;"><%=link_to (my_truncate(topic.title,26)),:controller=>'topics',:action=>'show',:id=>topic %></td>
+        <td style="width:100px;"><%=link_to (my_truncate(Group.find(topic.group_id).name,6)),:controller=>'groups',:action=>'show',:id=>topic.group_id %></td>
+        <td style="width:100px;"><%=link_to (my_truncate(User.find(topic.user_id).name,6)),:controller=>'user',:action=>'welcome',:id=>topic.user_id %></td>
+        <td style="width:40px;"><%= topic.post_count%>/<%= topic.read_count%></td>
+        <td style="width:110px;"><%= human_datetime(topic.last_reply) %></td>
+    </tr>
+    <% end %>
+</table>
+<div class="more">&gt;&gt;<%= link_to '浏览更多话题',:controller=>'topics',:action=>'list' %></div>
+</div>
+</div>
+
+</div>
+<div id="sidebar">
+    <div class="featurebox">
+        <div class="sider_title">搜索感兴趣的小组。。。。。。</div>
+        <div class="brief" id="group_brief_id">
+            <div class="group_brief_title">请输入小组名、关键字进行搜索</div>
+            <%=form_tag(url_for(:controller => 'groups', :action => 'search'), 'method' => 'post')%>
+                <input type="text" name="search" style="width:140px;margin:5px;"></input>
+                <%= submit_tag '搜索',{:style=>'width:50px;height:22px;margin:7px 5px;'} %>  
+            <%= end_form_tag %>
+        </div> 
+    </div>  
+    <%= corner('group_brief_id','#FFF6EE','#FFF',true)%>
+    <div class="sider_link">&gt;&gt;<%= link_to '建立新的小组',:controller=>'groups',:action=>'new' %></div>
+    <div class="featurebox">
+        <div class="sider_title">最新成立的小组。。。。。。</div>
+            <ul class="sider_list">  
+            <% for new_group in @new_groups%>
+                <li><span class="news"><%=link_to new_group.name,:controller => 'groups',:action=>'show',:id=>new_group %>(<%= new_group.member_count%>人)</span></li>
+            <% end %>   
+            </ul>
+        </div>
+</div>

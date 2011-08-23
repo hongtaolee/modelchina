@@ -1,0 +1,7 @@
+<div class="sub_head">
+<h2>编辑好友信息</h2>
+</div>
+<%= start_form_tag :action => 'update', :id => @fav %>
+  <%= render :partial => 'form' %>
+  <%= submit_tag 'Edit' %>
+<%= end_form_tag %>

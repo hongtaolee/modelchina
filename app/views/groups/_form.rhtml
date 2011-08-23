@@ -1,0 +1,26 @@
+<%= error_messages_for 'group' %>
+<fieldset>
+<table>
+<%= form_input(:text_field, 'group', 'name',"组名")  %>
+<tr class="two_columns">
+  <td class="prompt" valign="top"><label><%= "小组标志" %>:</label></td>
+  <td class="value" valign="top" id="image_table">
+    <input class="two_columns" id="data" name="data" size="30" type="file" onchange="preview()"/>
+        <%= link_to_avata(@group,'60x80')%>
+  </td>
+</tr>
+<tr><td></td><td class="remark">设置一个图片做为小组的logo吧</td></tr>
+<%= form_input(:text_area, 'group', 'description',"小组简介",'新的小组就要建立了，说两句吧……' ) %>
+<tr class="two_columns">
+  <td class="prompt" valign="top"><label>标签:</label></td>
+  <td class="value"><input id="tags" name="tags" size="30" type="text" value="<%= @group.tags.collect{|t| t.name }.join(" ")%>"/></td>
+</tr>
+<tr><td></td><td class="remark">填写简短的词语，比如：广州 超女 靓仔……</td></tr>
+<tr class="two_columns">
+    <td class="prompt"></td><td class="button" colspan="2">
+      <input name="submit" type="submit" value="<%= current_action== 'new' ? '创建新的小组' : '修改小组资料'%>" />
+      <%= link_to "返回", :action => 'list'%>
+    </td>
+</tr>
+</table>
+</fieldset>

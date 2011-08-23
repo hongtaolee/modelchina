@@ -1,0 +1,22 @@
+<div id="content">
+    <div class="sub_head"><h2>建立新的小组</h2></div>
+    <div>
+    <%= form_tag(
+          url_for(:controller=> 'groups',:action => 'create'),
+          'method' => 'post',
+          :multipart => true)
+    %>
+      <%= render :partial => 'form' %>
+    <%= end_form_tag %>
+    </div>
+    <div id="sidebar">
+        <div class="featurebox">
+            <div class="sider_title">小组标签　· · · · · ·</div>　
+            <div class="sider_content"> 
+                <p>小组可以有不超过5个的标签，用来描述小组的目的。标签作为关键词可以被用户搜索到。多个标签之间用空格分割开。</p>
+                <p>比如，"广州模特小组"可以用"广州 模特 经纪"。小组名称本身可以被搜索，就不用再加在标签里了。</p>
+                <p>小组的名称、介绍、标签在创立后都可以随时更改。</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,118 @@
+<div id="content">
+<div id="preview">
+<div class="big_title">广州化妆师。。。。。。</div>
+<div  id="preview_list">
+<% for gzmakeup in @gzmakeups%>
+<table class="makeup_item">
+  <tr>
+    <td valign="middle" align="center" class="makeup_item_img">
+       <div><%= link_to_avata(gzmakeup)%></div>
+    </td>
+    <td valign="middle" class="makeup_item_info">
+      <div class="preview_name"><%= link_to gzmakeup.name,:controller => 'makeups',:action=>'show',:id=>gzmakeup.id %></div>
+      <div class="rank_star">
+        <ul class="star-rating">
+            <li class="current-rating" style="width:<%= gzmakeup.rank_count > 0 ? gzmakeup.rank*20/gzmakeup.rank_count : 0 %>px;"></li>
+        </ul>
+      </div>
+      <div class="clear"></div> 
+      <ul class="preview_detail">
+        <li>性别：<%= gzmakeup.sex%> cm</li>
+        <li>所在地：<%= gzmakeup.province %>  <%= gzmakeup.city %>
+        <li>评论 <span class="count"><%= gzmakeup.comments_count %></span> / 浏览 <span class="count"><%= gzmakeup.read_count %></span>
+      </ul>
+    </td>
+  </tr>
+</table>
+<% end %>
+<div class="more">&gt;&gt;<%=link_to '浏览广州的全部化妆师',:controller => 'makeups',:action=>'citysearch',:id=>'广州' %></div>
+</div>
+</div>
+
+<div id="preview">
+<div class="big_title">北京化妆师。。。。。。</div>
+<div  id="preview_list">
+<% for bjmakeup in @bjmakeups%>
+<table class="makeup_item">
+  <tr>
+    <td valign="middle" align="center" class="makeup_item_img">
+       <div><%= link_to_avata(bjmakeup)%></div>
+    </td>
+    <td valign="middle" class="makeup_item_info">
+      <div class="preview_name"><%= link_to bjmakeup.name,:controller => 'makeups',:action=>'show',:id=>bjmakeup.id %></div>
+      <div class="rank_star">
+        <ul class="star-rating">
+            <li class="current-rating" style="width:<%= bjmakeup.rank_count > 0 ? bjmakeup.rank*20/bjmakeup.rank_count : 0 %>px;"></li>
+        </ul>
+      </div>
+      <div class="clear"></div> 
+      <ul class="preview_detail">
+        <li>性别：<%= bjmakeup.sex%> cm</li>
+        <li>所在地：<%= bjmakeup.province %>  <%= bjmakeup.city %>
+        <li>评论 <span class="count"><%= bjmakeup.comments_count %></span> / 浏览 <span class="count"><%= bjmakeup.read_count %></span>
+      </ul>
+    </td>
+  </tr>
+</table>
+<% end %>
+<div class="more">&gt;&gt;<%=link_to '浏览北京的全部化妆师',:controller => 'makeups',:action=>'citysearch',:id=>'北京' %></div>
+</div>
+</div>
+
+<div id="preview">
+<div class="big_title">上海化妆师。。。。。。</div>
+<div  id="preview_list">
+<% for shmakeup in @shmakeups%>
+<table class="makeup_item">
+  <tr>
+    <td valign="middle" align="center" class="makeup_item_img">
+       <div><%= link_to_avata(shmakeup)%></div>
+    </td>
+    <td valign="middle" class="makeup_item_info">
+      <div class="preview_name"><%= link_to shmakeup.name,:controller => 'makeups',:action=>'show',:id=>shmakeup.id %></div>
+      <div class="rank_star">
+        <ul class="star-rating">
+            <li class="current-rating" style="width:<%= shmakeup.rank_count > 0 ? shmakeup.rank*20/shmakeup.rank_count : 0 %>px;"></li>
+        </ul>
+      </div>
+      <div class="clear"></div> 
+      <ul class="preview_detail">
+        <li>性别：<%= shmakeup.sex%> cm</li>
+        <li>所在地：<%= shmakeup.province %>  <%= shmakeup.city %>
+        <li>评论 <span class="count"><%= shmakeup.comments_count %></span> / 浏览 <span class="count"><%= shmakeup.read_count %></span>
+      </ul>
+    </td>
+  </tr>
+</table>
+<% end %>
+<div class="more">&gt;&gt;<%=link_to '浏览上海的全部化妆师',:controller => 'makeups',:action=>'citysearch',:id=>'上海' %></div>
+</div>
+</div>
+
+
+</div>
+<div id="sidebar">
+    <div class="featurebox">
+        <% if notice = Notice.find(:first,:conditions=>['controller = ? and action =?',current_controller,current_action],:order=>'created_at DESC') %>
+        <div class="sider_title"><%= notice.title%>。。。。。。</div>
+        <div class="brief"><%= notice.content%></div>
+       <% end %> 
+    </div> 
+    <div class="featurebox">
+    <div class="sider_title">
+    同城化妆师。。。。。。
+    </div>
+    <ul class="sider_list">  
+    <% for city in @city%>
+    <li><span class="news"><%=link_to city.city,:controller => 'makeups',:action=>'citysearch',:id=>city.city %>(<%= city.count%>人)</span></li>
+    <% end %>   
+    </ul>
+    </div>
+    
+    <div class="featurebox">
+        <div class="sider_title">根据标签查找化妆师。。。。。。</div>
+        <div id="tag_cloudy">
+            <% tag_cloud(@tagged_items, %w(x-small small medium large x-large)) do |tag, font_size| %>  <%= link_to(h("#{tag}"), {:action=>'tag',:id => tag}, { :style => "font-size: #{font_size}" } ) -%><% end %>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+<%= error_messages_for 'link' %>
+<div class="edit_user box">
+  <%=
+    form_tag(
+      url_for(:controller => 'links', :action => 'create'),
+      'method' => 'post',
+      'class' => 'two_columns',
+      :multipart => true
+    )
+  %>
+  <fieldset>
+      <table>
+        <%= form_input(:text_field, 'link', 'name', '网站名称', '必填,网站名','class'=>'two_columns') %>
+        <tr class="two_columns">
+          <td class="prompt" valign="top"><label>网址:</label></td>
+          <td class="value"><input class="two_columns" id="link_url" name="link[url]" size="30" type="text" value="http://"/></td>
+        </tr>
+        <tr><td></td><td class="remark ">必填,网址</td></tr>
+        <%= form_input(:text_field, 'link', 'email', 'Email', '建议填写,方便合作联系','class'=>'two_columns') %>
+        <%= form_input(:text_field, 'link', 'tel', '电话', '建议填写,固话或手机','class'=>'two_columns') %>
+        <%= form_input(:text_field, 'link', 'im', 'IM', '建议填写,QQ\MSN\GTalk等','class'=>'two_columns') %>
+        <%= form_input(:submit_button, 'link', 'submit','提交') %> 
+       </table>
+    </fieldset>
+  <%= end_form_tag %>
+</div>

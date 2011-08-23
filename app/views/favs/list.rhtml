@@ -1,0 +1,24 @@
+<div class="tab_content" id="msg_list">
+    <div id="preview">
+        <div class="big_title">我的好友。。。。。。</div>
+        <% if @favs.length > 0 %>
+        <div  id="preview_list">
+            <% for fav in @favs%>
+            <table class="group_item">
+              <tr><td valign="middle" align="center" class="group_item_img">
+                  <%= link_to_avata(User.find(fav.friend_id),'60x60','user','welcome')%>
+              </td></tr>
+              <tr><td valign="middle" align="center" class="group_item_info">
+                  <%= link_to User.find(fav.friend_id).name,:controller => 'user',:action=>'welcome',:id=>fav.friend_id %>               
+             </td></tr>
+            </table>
+            <% end %>
+            <div class="clear"></div>
+        </div>
+        <% else %>
+            <div class="left_sidebar_remark">
+                <p>咦，我怎么会没有好友呢，快去把我的死党统统拉进来……</p>
+            </div>        
+        <% end %>
+</div>
+</div>

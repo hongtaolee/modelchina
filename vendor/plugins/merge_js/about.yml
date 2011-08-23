@@ -1,0 +1,7 @@
+author: Scott Becker
+summary: Easily merge, compress, cache, and version your javascript with Ruby on Rails!
+homepage: http://synthesis.sbecker.net/pages/merge_js
+plugin: http://sbecker.net/shared/plugins/merge_js
+license: MIT
+version: 0.1
+rails_version: 1.0+

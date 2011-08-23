@@ -1,0 +1,70 @@
+﻿<%= error_messages_for 'user' %>
+<div class="edit_user box">
+  <%=
+    form_tag(
+      url_for(:controller => 'user', :action => 'signup'),
+      'method' => 'post',
+      'class' => 'two_columns',
+      :multipart => true
+    )
+  %>
+  <input type="hidden" name="form" value="edit_user" />
+  <%= form_input(:hidden_field, 'user', 'id') %>
+  <fieldset>
+    <div class="legend">基本信息</div>
+    <table>
+    <% if @user.new_record? %>
+        <tr class="two_columns">
+          <td class="prompt" valign="top"><label><%= "用户类型"%>:</label></td>
+          <td>
+            <select name='user[category]' style="width:200px;margin-right:100px;">
+                  <%= options_from_collection_for_select(Const.find(:all, :conditions => ["table_name =? and field_name =? ", "user", "category"]), "field_value", "text_name", @user.category) %>
+            </select>     
+          </td>
+        </tr>
+        <tr><td></td><td class="remark font_red">请认真选择用户类型,不同用户拥有不同的使用功能,注册后不能更改</td></tr>
+        <%= form_input(:text_field, 'user', 'name', "用户名", '必填项：登录使用，注册后不能更改', {'class'=>'two_columns'},'true')%>
+        <%= form_input(:text_field, 'user', 'email', "Email",'必填项：忘记密码时可通过Email找回，注册后不能更改', {'class'=>'two_columns'},'true') %> 
+        <%= form_input(:password_field, 'user', 'password', "密码", '必填项：登陆密码', {'class'=>'two_columns'})%>
+        <%= form_input(:password_field, 'user', 'password_confirmation', "重新输入一次密码",'必填项：将上面的密码再重新输入一次',{ 'class'=>'two_columns'}) %> 
+        <tr class="two_columns">
+          <td class="prompt" valign="top"><label><%= "头像"%>:</label></td>
+          <td class="value" valign="top" id="image_table">
+            <input class="two_columns" id="data" name="data" size="30" type="file" onchange="preview()"/>
+          </td>
+        </tr>
+        <tr><td></td><td class="remark">设置一个新头像,替代默认头像......</td></tr>
+    <% else %>
+        <%= form_input(:read_only_field, 'user', 'name', "用户名", '', 'class'=>'two_columns')%>
+        <%= form_input(:read_only_field, 'user', 'email', "Email",'', 'class'=>'two_columns') %>  
+    <% end %>
+        <tr><td></td><td class="check_box"><%= check_box_tag('auto_login',1,{:size => '5', :CHECKED => true})%> <%= "自动登录"%></td></tr>
+        <tr><td></td><td class="remark">在网吧等公共计算机上网时，请取消该选项</td></tr>
+      </table>
+      <div class="legend bold-line"></div>
+      <table>
+        <%= form_input(:text_field, 'user', 'phone', "电话", '建议填写，方便联系','class'=>'two_columns') %>
+        <%= form_input(:text_field, 'user', 'mobile', "手机", '建议填写，接收在线预约短信通知，无垃圾信息','class'=>'two_columns') %>
+        <%= form_input(:text_field, 'user', 'qq',"QQ", '建议从QQ/MSN中至少选一个填写，方便即时联系','class'=>'two_columns') %>
+        <%= form_input(:text_field, 'user', 'msn', "MSN", '如果您有Msn，就填上吧，方便即时联系','class'=>'two_columns') %>
+        <tr><td></td><td class="check_box"><%= check_box 'user','hide',{:size => '5'},1,0%> <%= "隐藏联系方式"%></td></tr>
+        <tr><td></td><td class="remark font_red">建议自由模特和经纪人等需要进行商务行为的用户公开联系方式……</td></tr>
+      </table>
+      <div class="legend bold-line"></div>
+      <table>
+        <tr>
+          <td class="prompt" valign="top"><label><%= "用户协议"%>:</label></td>
+          <td class="value">请检查以上您输入的用户信息，并阅读以下服务条款</td>
+        </tr>
+        <tr><td></td><td>
+            <div class="agreement">
+            <% @web = Web.find_by_url('user')%>
+            <%=@web.content %>
+            </div>
+         </td></tr>
+         <tr><td></td><td>点击下面的按钮，即表示您同意接受上面的服务条款及隐私政策。</td></tr>
+        <%= form_input(:submit_button, 'user', 'submit', @user.new_record? ? "注册" : "修改") %> 
+       </table>
+    </fieldset>
+  <%= end_form_tag %>
+</div>

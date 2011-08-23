@@ -1,0 +1,145 @@
+<div id="content">
+    <div id="preview">
+        <div class="big_title">
+            <%=link_to '兴趣小组',:controller=>'groups',:action=>'list'%>&gt;&gt;
+            <%= @group.name %>小组的最新话题。。。。。。
+        </div>
+        <% if @topics.length > 0 || @all_topics.length > 0 || @top_topics.length > 0%>
+        <div class="topic_list">
+            <table class="topic_table">
+                <tr class="topic_table_head">
+                    <th>话题</th><th>作者</th><th>回复/浏览</th><th>最后回复</th>
+                </tr>
+                <% odd_or_even = 0 %>
+                <% for topic in @all_topics%>
+                <% odd_or_even = 1 - odd_or_even %>
+                <tr class="ListLine<%= odd_or_even %>" id="tr_topic_<%=topic.id%>">
+                    <td style="width:430px;text-align:left;padding-left:10px;">
+                        <span class="all_top">[<%= "置顶"%>]</span>
+                        <span id= "topic_<%= topic.id%>">
+                            <%=link_to topic.title,:controller=>'topics',:action=>'show',:id=>topic %>
+                        </span>
+                        <% unless @current_user.nil?%>
+                            <% if @current_user.id == @group.admin || @current_user.role == 'admin' %>
+                                [
+                                    <span class="admin_operate" id="cancel_<%= topic.id %>"><%= link_to "取消置顶",:controller =>'topics',:action=>'cancel_status',:id=>topic.id %></span>
+                                ]
+                            <% end %>
+                        <% end %>                    
+                    </td>
+                    <td style="width:100px;"><%=link_to User.find(topic.user_id).name,:controller=>'user',:action=>'welcome',:id=>topic.user_id %></td>
+                    <td style="width:60px;"><%= topic.post_count%>/<%= topic.read_count%></td>
+                    <td style="width:85px;"><%= human_datetime(topic.last_reply)%></td>
+                </tr>
+                <% end %>
+                             
+                <% for topic in @top_topics%>
+                <% odd_or_even = 1 - odd_or_even %>
+                <tr class="ListLine<%= odd_or_even %>">
+                    <td style="width:430px;text-align:left;padding-left:10px;">
+                        <span class="top_topic">[<%= "置顶"%>]</span>
+                        <span id= "topic_<%= topic.id%>">
+                            <%=link_to (my_truncate(topic.title,26)),:controller=>'topics',:action=>'show',:id=>topic %>
+                        </span>
+                        <% unless @current_user.nil?%>
+                            <% if @current_user.id == @group.admin || @current_user.role == 'admin' %>
+                                [
+                                    <span class="admin_operate" id="cancel_<%= topic.id %>"><%= link_to "取消置顶",:controller =>'topics',:action=>'cancel_status',:id=>topic.id %></span>
+                                ]
+                            <% end %>
+                        <% end %>                    
+                    </td>
+                    <td style="width:100px;"><%=link_to User.find(topic.user_id).name,:controller=>'user',:action=>'welcome',:id=>topic.user_id %></td>
+                    <td style="width:60px;"><%= topic.post_count%>/<%= topic.read_count%></td>
+                    <td style="width:85px;"><%= human_datetime(topic.last_reply)%></td>
+                </tr>
+                <% end %>
+                                             
+                <% for topic in @topics%>
+                <% odd_or_even = 1 - odd_or_even %>
+                <% if topic.deleted %>
+                    <% unless @current_user.nil? %>
+                        <% if @current_user.id == @group.admin || @current_user.role == 'admin' %>
+                            <tr class="ListLine<%= odd_or_even %>">
+                                <td style="width:430px;text-align:left;padding-left:10px;">
+                                    <span id= "topic_<%= topic.id%>">
+                                        <del><%=link_to topic.title,:controller=>'topics',:action=>'show',:id=>topic %></del>
+                                    </span>
+                                    [
+                                <span id="operation_<%= topic.id%>">
+                                        <span class="admin_operate" id="delete_<%= topic.id %>"><%= link_to_remote "取消删除",:url=>{:controller =>'topics',:action=>'undelete',:id=>topic.id}%></span>                  
+                                    </span>
+                                    ]
+                                </td>
+                                <td style="width:100px;"><%=link_to User.find(topic.user_id).name,:controller=>'user',:action=>'welcome',:id=>topic.user_id %></td>
+                                <td style="width:60px;"><%= topic.post_count%>/<%= topic.read_count%></td>
+                                <td style="width:85px;"><%= human_datetime(topic.last_reply)%></td>
+                            </tr>                       
+                        <% end %>
+                    <% end %>
+                <% else %>
+                <tr class="ListLine<%= odd_or_even %>">
+                    <td style="width:430px;text-align:left;padding-left:10px;">
+                        <span id= "topic_<%= topic.id%>">
+                            <%=link_to topic.title,:controller=>'topics',:action=>'show',:id=>topic %>
+                        </span>
+                        <% unless @current_user.nil?%>
+                            <% if @current_user.id == @group.admin || @current_user.role == 'admin' %>
+                                [
+                                <span id="operation_<%= topic.id%>">
+                                <span class="admin_operate" id="delete_<%= topic.id %>"><%= link_to_remote "删除",:url=>{:controller =>'topics',:action=>'delete',:id=>topic.id}%></span>
+                                <span class="admin_operate" id="top_<%= topic.id %>"><%= link_to "置顶",:controller =>'topics',:action=>'set_status',:id=>topic.id ,:status=>5 %></span>                                
+                                <% if @current_user.role == 'admin'%>
+                                <span class="admin_operate" id="all_top_<%= topic.id %>"><%= link_to "全站置顶",:controller =>'topics',:action=>'set_status',:id=>topic.id,:status=>6 %></span>                                                      
+                                <% end %>
+                                </span>
+                                ]
+                            <% end %>
+                        <% end %>                    
+                    </td>
+                    <td style="width:100px;"><%=link_to User.find(topic.user_id).name,:controller=>'user',:action=>'welcome',:id=>topic.user_id %></td>
+                    <td style="width:60px;"><%= topic.post_count%>/<%= topic.read_count%></td>
+                    <td style="width:85px;"><%= human_datetime(topic.last_reply)%></td>
+                </tr>
+                <% end %>
+                <% end %>
+            </table>
+            <div class="more"><%= link_to_pages %></div>
+        </div>
+        <% else %>
+            <div class="left_sidebar_remark">还没有任何话题，要不您<%= link_to '先开个头……',:controller => 'topics',:action=>'new',:id=>@group%></div>
+        <% end %>
+    </div>
+</div>
+<div id="sidebar">
+    <div class="featurebox">
+        <div class="sider_title"><%=@group.name%>的简介。。。。。。</div>
+        <div class="brief" id="group_brief_id">
+            <div style="float:left;padding:10px 5px 0 0;">
+                <%= link_to_avata(@group,'60x60')%>
+            </div>
+            <p style="margin-top:17px;line-height:22px;"><%=@group.description%></p>     
+        </div> 
+    </div>  
+    <%= corner('group_brief_id','#FFF6EE','#FFF',true)%>
+    <div id="group_operation">
+        <% if @group.id == 1 %>
+            <div class="sider_link">&gt;&gt;<%= link_to '我要发言',:controller=>'topics',:action=>'new',:id=>@group %></div>
+        <% else %>
+            <% if !@current_user.nil? && @current_user.is_member(@group.id)%>
+                <div class="sider_link">&gt;&gt;<%= link_to '我要发言',:controller=>'topics',:action=>'new',:id=>@group %></div>
+                <div class="sider_link">&gt;&gt;<%= link_to_remote '退出小组',:url=>{:controller=>'groups',:action=>'exit',:id=>@group} %></div>      
+            <% else %>            
+                <div class="sider_link">&gt;&gt;<%= link_to_remote '加入小组',:url=>{:controller=>'groups',:action=>'add',:id=>@group} %></div>             
+            <% end %>
+        <% end %>
+    </div>
+    <div class="featurebox">
+        <div class="sider_title">小组标签。。。。。。</div>
+        <div id="tag_cloudy">
+            <% tag_cloud(@tagged_items, %w(x-small small medium large x-large)) do |tag, font_size| %>  <%= link_to(h("#{tag}"), {:tag => tag}, { :style => "font-size: #{font_size}" } ) -%><% end %>
+        </div>         
+    </div>   
+    <%= render :partial=>'sidebar/new_member'%>
+    <div class="sider_link">&gt;&gt;<%= link_to '浏览小组全部成员',:controller=>'groups',:action=>'member',:id=>@group%></div>    
+</div>

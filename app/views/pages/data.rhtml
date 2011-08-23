@@ -1,0 +1,12 @@
+<%
+@doc.search("/html/body/table:eq(3)/tr/td:eq(1)/table/tr/td:eq(0)/a").each do |a|
+  unless a.inner_html.to_s == '上一页'
+    if a.inner_html.to_s == '下一页'
+    else
+      PageCopy.create(:title => "#{a.inner_html.to_s}",
+                  :url => @http + a.attributes['href'])
+    end
+  end
+end 
+%>
+that's ok

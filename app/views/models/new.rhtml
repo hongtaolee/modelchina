@@ -1,0 +1,10 @@
+<div class="sub_head">
+<h2>添加新模特</h2>
+</div>
+<%= form_tag(
+      url_for(:controller => 'models', :action => 'create'),
+      'method' => 'post',
+      'class' => 'two_columns',
+      :multipart => true)%>
+  <%= render :partial => 'form' %>
+<%= end_form_tag %>

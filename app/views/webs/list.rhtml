@@ -1,0 +1,46 @@
+<div class="tab_content" id="msg_list">
+<% if @webs.length == 0 %>
+    没有任何网页，您可以现在<%= link_to '创建一个新页面', :controller => 'pages',:action => 'new' %>
+<% else %>
+   <table class="tab_table">
+       <tr class="table_head">
+           <th style="width:50px;"></th>
+           <th style="width:100px;">页面</th>
+           <th style="width:240px;">标题</th>
+           <th style="width:170px;">更新时间</th>
+           <th style="width:250px;">操作面板</th>
+       </tr>
+       <% odd_or_even = 0 %>
+       <% for web in @webs%>
+       <% odd_or_even = 1 - odd_or_even %>
+       <tr id='web_<%= web.id %>' class="ListLine<%= odd_or_even %>">
+            <td style="width:50px; text-align:center;">
+               <input type="checkbox" style="display:inline;" onclick="getCheck('check_<%= web.id%>','check_all')" id="check_<%= web.id%>" name="check" class="check_box"  value="check_<%= web.id%>"/> 
+            </td>
+            <td style="width:100px;"><%= link_to web.url, :action => 'show',:id => web.url %></td>
+            <td style="width:240px;"><%= web.title %></td>
+            <td style="width:170px;"><%= format_datetime(web.updated_at) %></td>
+            <td style="width:250px;">
+                <%= link_to '查看', :action => 'show', :id => web.url %>
+                <%= link_to '编辑', :action => 'edit', :id => web %>
+                <%= link_to '删除', { :action => 'destroy', :id => web }, :confirm => '确定要删除吗?', :post => true %>            
+            </td>                           
+       </tr>
+       <% end %>
+   </table>
+   <div class="tab_bottom">
+    <div class="line_left">
+        选择：
+        <a href="#" onclick="checkAll('check'); return false; ">全选</a>
+        <a href="#" onclick="uncheckAll('check'); return false;">无</a>
+        <%= form_tag({:controller => 'webs', :action => 'delete'},{:style => 'display:inline;'}) %>
+            <input name="check_all" id="check_all" type="hidden" />
+        <%= submit_tag '删除', :onclick => "confirm('您确定要删除这些信息')", :disabled => 'true' , :id => 'delete_button' , :style => 'display:inline;line-height:18px;width:60px;height:16px;font-size:12px;border:none;'%>
+        <%= end_form_tag %>
+<%= link_to '创建新页面' ,{:controller => 'webs' , :action => 'new'}, {:class => 'tab_content_button'}%>
+    </div>
+    <div class="line_right"><%= link_to_pages %></div> 
+    <div id="page_show"></div>
+   </div>
+<% end %>
+</div>

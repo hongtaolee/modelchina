@@ -1,0 +1,66 @@
+<div class="tab_content" id="msg_list">
+<% if @models.length == 0 %>
+    没有任何模特资料，您可以<%= link_to '添加一个模特', :controller => 'models',:action => 'new' %>
+<% else %>
+   <table class="tab_table">
+       <tr class="table_head">
+           <th style="width:30px; text-align:center;"></th>
+           <th style="width:80px;">形象照片</th>
+           <th style="width:80px;">姓名</th>
+           <th style="width:25px;">身高</th>
+           <th style="width:80px;">三围</th>
+           <th style="width:120px">统计信息</th>
+           <th style="width:160px;">标签</th>
+           <th style="width:120px;">加入时间</th>
+           <th style="width:100px;">操作</th>
+       </tr>
+       <% odd_or_even = 0 %>
+       <% for model in @models%>
+       <% odd_or_even = 1 - odd_or_even %>
+       <tr id='model_<%= model.id %>' class="ListLine<%= odd_or_even %>">
+            <td style="width:30px; text-align:center;">
+               <input type="checkbox" style="display:inline;" onclick="getCheck('check_<%= model.id%>','check_all')" id="check_<%= model.id%>" name="check" class="check_box"  value="check_<%= model.id%>"/> 
+            </td>
+            <td style="width:80px;">
+                <%=link_to_avata(model,'60x80')%>      
+            </td>
+            <td style="width:80px;"><%= link_to model.name, :action => 'show', :id => model %></td>
+            <td style="width:25px;"><%= model.height%></td>
+            <td style="width:80px;"><%= model.chest%>/<%= model.waist%>/<%= model.hips%></td>
+            <td style="width:120px;text-align:center;" >
+                <span style="padding-left:20px;display:block;">图片：<span class="count"><%= model.pictures_count %></span></span>
+                <span style="text-align:center;padding-left:10px;">评论 <span class="count"><%= model.comments_count %></span></span>/
+                <span style="text-align:center;padding-left:10px;">浏览 <span class="count"><%= model.read_count %></span></span>
+                <div class="rank_star">
+                    <ul class="star-rating">
+                        <li class="current-rating" style="width:<%= model.rank_count > 0 ? model.rank*20/model.rank_count : 0 %>px;"></li>
+                    </ul>
+                </div>   
+            </td>
+            <td style="width:160px;"><%= model.tags %></td>
+            <td style="width:120px;"><%= format_datetime(model.created_at) %></td>
+            <td style="width:100px;">
+                <%= link_to '查看', :action => 'show', :id => model %>
+                <%= link_to '编辑', :action => 'edit', :id => model %>
+                <%= link_to '删除', { :action => 'destroy', :id => model }, :confirm => '确定要删除吗?', :post => true %>
+                <%= link_to '上传照片', :action => 'album', :id => model %>             
+            </td>                
+       </tr>
+       <% end %>
+   </table>
+   <div class="tab_bottom">
+    <div class="line_left">
+        选择：
+        <a href="#" onclick="checkAll('check'); return false; ">全选</a>
+        <a href="#" onclick="uncheckAll('check'); return false;">无</a>
+        <%= form_tag({:controller => 'models', :action => 'delete'},{:style => 'display:inline;'}) %>
+            <input name="check_all" id="check_all" type="hidden" />
+        <%= submit_tag '删除', :onclick => "confirm('您确定要删除这些信息')", :disabled => 'true' , :id => 'delete_button' , :style => 'display:inline;line-height:18px;width:60px;height:16px;font-size:12px;border:none;'%>
+        <%= end_form_tag %>
+<%= link_to '添加模特' ,{:controller => 'models' , :action => 'new'}, {:class => 'tab_content_button'}%>
+    </div>
+    <div class="line_right"><%= link_to_pages %></div> 
+    <div id="model_show"></div>
+   </div>
+<% end %>
+</div>

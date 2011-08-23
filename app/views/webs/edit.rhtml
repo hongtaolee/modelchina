@@ -1,0 +1,11 @@
+<div class="sub_head">
+<h2>编辑网页</h2>
+</div>
+
+<%= start_form_tag :action => 'update', :id => @web %>
+  <%= render :partial => 'form' %>
+  <%= submit_tag 'Edit' %>
+<%= end_form_tag %>
+
+<%= link_to 'Show', :action => 'show', :id => @web %> |
+<%= link_to 'Back', :action => 'list' %>

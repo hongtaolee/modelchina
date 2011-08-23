@@ -1,0 +1,11 @@
+自从您上次访问后,在 "<%= @post.topic.forum.name %>" 板块 "<%= @post.topic.subject %>" 下有一个新的回帖.
+
+主题: <%= @post.subject %>
+作者: <%= @post.get_display_name %>
+
+阅读该信息： <%= @post_url %>.
+
+在您下次访问前，将不会再有新的邮件通知.
+
+关闭该主体的邮件通知功能:
+<%= @disable_notification_url %>

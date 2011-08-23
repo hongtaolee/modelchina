@@ -1,0 +1,15 @@
+<img src="/t/gen_haproxy_image" />
+<table border=1>
+  <tr><td>time</td><td>yobo_pageload</td><td>baidu_pageload</td></tr>
+  <% @yobo_pms.each_with_index do |s,i| %>
+    <tr>
+      <td><%=s.created_at.strftime("%H:%M")%></td>
+      <td><span style="color:<%=(s.duration > 5 ? 'red' : '')%>"><%=s.duration %></span></td>
+      <td>
+        <%if @baidu_pms[i]%>
+          <span style="color:<%=(@baidu_pms[i].duration > 5 ? 'red' : '')%>"><%=@baidu_pms[i].duration %></span>
+        <%end%>
+      </td>	      
+    </tr>
+  <% end %>
+</table>

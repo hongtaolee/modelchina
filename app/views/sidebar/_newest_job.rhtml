@@ -1,0 +1,11 @@
+<div class="featurebox">
+<div class="sider_title">最新模特招聘信息。。。。。。</div>
+    <ul class="sider_list">  
+<!--        <li><span class="news"><a href="http://www.baiger.cn/">百歌在线兼职业务介绍</a></span></li>
+-->
+    <% for new_job in @new_jobs%>
+        <li><span class="news"><%=link_to "#{my_truncate(new_job.work,16)}",:controller => 'jobs',:action=>'show',:id=>new_job %></span></li>
+    <% end %>   
+    </ul>
+    <div style="padding:10px;text-align:right;">&gt;&gt;<%= link_to '查看更多',:controller => 'public',:action=>'job'%></div>
+</div>

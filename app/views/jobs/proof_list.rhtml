@@ -1,0 +1,19 @@
+<h1>招聘信息 (<%=@total_size %>)</h1>
+
+<table border="1">
+  <tr>
+    <th>ID/State</th>
+    <th>work</th>
+    <th>user id</th>
+    <th>content</th>
+  </tr>
+  
+<% for job in @jobs %>
+  <tr id="job_<%=job.id %>">
+    <%=render :partial => "job", :locals => {:job => job} %>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to '上一页', { :page => @job_pages.current.previous } if @job_pages.current.previous %>
+<%= link_to '下一页', { :page => @job_pages.current.next } if @job_pages.current.next %> 

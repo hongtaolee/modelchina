@@ -1,0 +1,6 @@
+<div class="rank_star">
+    <ul class="star-rating">
+        <li class="current-rating" style="width:<%= @model.rank > 0 ? @model.rank*20/@model.rank_count : 0 %>px;">平均得分<%= @model.rank > 0 ? @model.rank/@model.rank_count : 0 %></li>
+    </ul>
+</div>
+<span class="rank_success">评分成功 ！共有<%=@model.rank_count%>人参与评分,平均得分<%=@model.rank/@model.rank_count%>分 ！</span>

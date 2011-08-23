@@ -1,0 +1,18 @@
+<%= error_messages_for 'enterprise' %>
+<fieldset>
+<table>
+<%= form_input(:text_field, 'enterprise', 'name',"企业名")  %>
+<%= form_input(:text_field, 'enterprise', 'office',"办公地址")  %>
+<%= form_input(:text_field, 'enterprise', 'zip',"邮编")  %>
+<%= form_input(:text_field, 'enterprise', 'fax',"传真")  %>
+<%= form_input(:text_field, 'enterprise', 'site',"网址")  %>
+<%= form_input(:text_area, 'enterprise', 'description',"企业简介",'请尽量填写详细的企业介绍' ) %>
+<tr class="two_columns">
+    <td class="prompt"></td><td class="button" colspan="2">
+      <input name="submit" type="submit" value="编辑企业信息" />
+      <%= link_to "返回", :controller => 'user',:action => 'show'%>
+    </td>
+</tr>
+</table>
+</fieldset>
+

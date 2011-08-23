@@ -1,0 +1,4 @@
+联系人：<%=@agency.name%>
+<% unless @current_user.is_friend(@agency.id)%>
+(<%= link_to_remote '加为好友',:url=>{:controller=>'favs',:action=>'new',:id=>@agency.id}%>)
+<% end%>

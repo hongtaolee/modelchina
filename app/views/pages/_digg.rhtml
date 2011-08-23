@@ -1,0 +1,14 @@
+<div id="page_<%=@page.id%>">
+<table style="margin:20px 10px 20px 20px;">
+    <tr><td><div class="digg_count" id="digg_count_<%= @page.id%>"><%= @page.digg%></div>
+            <div class="digg_button"><%= link_to_remote '推荐',:url => {:controller=>'pages',:action=>'digg',:id=>@page,:o => @o }%></div></td>
+        <td>
+            <div class="digg_content">
+                <div class="digg_title"><%= link_to @page.title, :controller=>'pages',:action=>'show',:id=> @page %></div>
+                <div class="digg_brief"><%= h(@page.brief)%></div>
+                <div class="digg_info">类别:<%= link_to (@page.category.blank? ? '暂无分类' : @page.category),:controller => 'pages',:action=>'category',:id=>@page.category %>  |  标签:   </div>
+            </div>
+        </td>
+    </tr>   
+</table>
+</div>

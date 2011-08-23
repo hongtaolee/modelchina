@@ -1,0 +1,103 @@
+<div id="content">
+    <div id="preview">
+        <div class="big_title">
+            <%=link_to '兴趣小组',:controller=>'groups',:action=>'list'%>&gt;&gt;
+            <%=link_to @group.name,:controller=>'groups',:action=>'show',:id=>@group%>&gt;&gt;
+            <%= @topic.title%>。。。。。。
+        </div>
+        <div class="topic_item">
+             <div style="width:80px;height:100px;float:left;margin-bottom:20px;" >
+                <%= link_to_avata(@topic.user,'80x100','user','welcome')%>               
+            </div>
+            <div style=" padding:3px 10px;margin-left:80px;margin-right:10px;color:#999;">
+                <%= link_to @topic.user.name, :controller => 'user', :action => 'welcome', :id=> @topic.user.id %>   发表于   <%= format_datetime(@topic.created_at)%> 
+            </div>
+            <div style="padding:10px;margin-left:80px;margin-right:10px;text-indent:20px;">
+                <%=@topic.posts.first.content%>
+            </div>       
+        </div>
+        <div class="topic_list" id="posts">
+            <% for post in @topic.posts.first.children %>
+            <div class="comment_item" style="clear:both;margin-left:20px;padding:10px;">
+                <div style="width:60px;height60px;float:left;margin:0 10px 10px 10px;" >
+                    <% @poster = User.find(post.user_id) %>
+                    <%= link_to_avata(@poster,'60x60')%>                
+                </div>
+                <div style="background:#F4F4F4; padding:3px 10px;margin-left:90px;margin-right:10px;">
+                    作者：<%= link_to @poster.name, :controller => 'user', :action => 'welcome',:id=> @poster.id %> | 发布时间： <%= format_datetime(post.created_at)%>
+                 <% if @current_user.nil?%>
+                 <% else %>
+                    <% if @current_user.id == @group.admin || @current_user.role == 'admin' %>
+                        <% if post.deleted %>
+                        <span class="admin_operate" id="delete_<%= post.id %>">(<%= link_to_remote "取消删除",:url=>{:controller =>'topics',:action=>'undelete_post',:id=>post.id}%>)</span>
+                        <% else %>
+                        <span class="admin_operate" id="delete_<%= post.id %>">(<%= link_to_remote "删除",:url=>{:controller =>'topics',:action=>'delete_post',:id=>post.id}%>)</span>                        
+                        <% end %>
+                    <% end %>
+                 <% end %>
+                </div>
+                <div style="padding:10px;margin-left:90px;margin-right:10px;text-indent:20px;" id="post_<%= post.id %>">
+                <% if post.deleted %>
+                    <del>
+                    <% if @current_user.nil?%>
+                            该帖子已被管理员删除
+                    <% else %>
+                        <% if @current_user.id == @group.admin || @current_user.role == 'admin'%>
+                        <%=post.content%>
+                        <% else %>
+                             该帖子已被管理员删除                       
+                        <% end %>
+                    <% end %>
+                    </del>             
+                <% else%>
+                    <%=post.content%>
+                <% end %>
+                </div>
+            </div>
+            <% end %>
+        </div>
+        <div class="clear"></div>            
+        <div class="topic_reply">
+            <div class="big_title">我要回一贴。。。。。。</div>           
+            <div class="post_form">
+            <% if @current_user.nil? %>
+               <div class="page_comment_post"><%= link_to '登陆', :controller=>'user', :action=>'login'%>后，才能发表评论……</div>
+            <% else %>
+            <%=form_remote_tag :url => {:controller => 'topics', :action => 'post'},
+                               :before => fckeditor_before_js('post','content')%>
+                <input type="hidden" id="post_topic_id" name="post[topic_id]" value="<%= @topic.id %>">
+                <input type="hidden" id="post_user_id" name="post[user_id]" value="<%= @current_user.id %>">
+                <div id="<%= fckeditor_div_id('post', 'content') %>" style="height:200px;margin-left:20px;">
+                    <%= fckeditor_textarea( "post", "content", :ajax => true,:toolbarSet => 'Simple' ) %> 
+                </div>
+                <input type="submit" value="回一贴" name="commit" class="button">
+            <%= end_form_tag %>
+            <% end %>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="sidebar">
+    <div id="group_operation">
+    <% if @group.id == 1 %>
+        <div class="sider_link">&gt;&gt;<%= link_to '我要发言',:controller=>'topics',:action=>'new',:id=>@group %></div>   
+    <% else %>
+        <% if !@current_user.nil? && @current_user.is_member(@group.id)%>
+            <div class="sider_link">&gt;&gt;<%= link_to '我要发言',:controller=>'topics',:action=>'new',:id=>@group %></div>
+            <div class="sider_link">&gt;&gt;<%= link_to_remote '退出小组',:url=>{:controller=>'groups',:action=>'exit',:id=>@group} %></div>      
+        <% else %>            
+            <div class="sider_link">&gt;&gt;<%= link_to_remote '加入小组',:url=>{:controller=>'groups',:action=>'add',:id=>@group} %></div>             
+        <% end %>   
+   
+    <% end %>
+        <div class="sider_link">&gt;&gt;<%= link_to '返回'+@group.name,:controller=>'groups',:action=>'show',:id=>@group%></div>           
+    </div>   
+    <div class="featurebox">
+        <div class="sider_title">其他主题。。。。。。</div>
+        <ul class="sider_list">  
+        <% for other in @others%>
+            <li><span class="news"><%=link_to other.title,:controller => 'topics',:action=>'show',:id=>other.id %>  (<%= link_to User.find(other.user_id).name,:controller=>'user',:action=>'welcome',:id=>other.user_id%>)</span></li>
+        <% end %>   
+        </ul>
+    </div>
+</div>

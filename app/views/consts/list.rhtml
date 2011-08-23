@@ -1,0 +1,57 @@
+<div class="tab_content" id="msg_list">
+<% if @consts.length == 0 %>
+    没有任何常量，您可以<%= link_to '增加一个新的常量', :controller => 'consts',:action => 'new' %>
+<% else %>
+   <table class="tab_table">
+       <tr class="table_head">
+           <th style="width:50px;"></th>
+           <th style="width:150px;">表/字段</th>
+           <th style="width:140px;">值</th>
+           <th style="width:200px;">文本值</th>
+           <th style="width:120px;">更新时间</th>
+           <th style="width:150px;">操作面板</th>
+       </tr>
+       <% odd_or_even = 0 %>
+       <% last_table = "" %>
+       <% last_field = "" %>
+       <% for const in @consts%>
+       <% odd_or_even = 1 - odd_or_even %>
+       <tr id='const_<%= const.id %>' class="ListLine<%= odd_or_even %>">
+            <td style="width:50px; text-align:center;">
+               <input type="checkbox" style="display:inline;" onclick="getCheck('check_<%= const.id%>','check_all')" id="check_<%= const.id%>" name="check" class="check_box"  value="check_<%= const.id%>"/> 
+            </td>
+            <td style="width:150px;">
+            <% if const.table_name == last_table and const.field_name == last_field %>
+            <% else %>
+                <%= const.table_name%>/<%= const.field_name%>
+            <% end %>
+            <% last_table = const.table_name %>
+            <% last_field = const.field_name %>
+            </td>
+            <td style="width:140px;"><%= const.field_value %></td>
+            <td style="width:200px;"><%= const.text_name%></td>
+            <td style="width:120px;"><%= format_datetime(const.updated_at) %></td>
+            <td style="width:150px;">
+                <%= link_to '查看', :action => 'show', :id => const%>
+                <%= link_to '编辑', :action => 'edit', :id => const %>
+                <%= link_to '删除', { :action => 'destroy', :id => const }, :confirm => '确定要删除吗?', :post => true %>            
+            </td>                 
+       </tr>
+       <% end %>
+   </table>
+   <div class="tab_bottom">
+    <div class="line_left">
+        选择：
+        <a href="#" onclick="checkAll('check'); return false; ">全选</a>
+        <a href="#" onclick="uncheckAll('check'); return false;">无</a>
+        <%= form_tag({:controller => 'consts', :action => 'delete'},{:style => 'display:inline;'}) %>
+            <input name="check_all" id="check_all" type="hidden" />
+        <%= submit_tag '删除', :onclick => "confirm('您确定要删除这些信息')", :disabled => 'true' , :id => 'delete_button' , :style => 'display:inline;line-height:18px;width:60px;height:16px;font-size:12px;border:none;'%>
+        <%= end_form_tag %>
+<%= link_to '新常量' ,{:controller => 'consts' , :action => 'new'}, {:class => 'tab_content_button'}%>
+    </div>
+    <div class="line_right"><%= link_to_pages %></div> 
+    <div id="const_show"></div>
+   </div>
+<% end %>
+</div>

@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: README</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>README</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>README
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Sat May 27 19:01:10 Pacific Daylight Time 2006</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h1>Super Image Plugin</h1>
+<pre>
+  NOTE: This document will be much more readable if viewed through the *rdoc*
+  generated HTML in vendor/plugins/super_image/doc/index.html
+</pre>
+<p>
+<a href="../classes/SuperImage.html">SuperImage</a> is a plugin that allows
+you to put image data in your database And retrieve at any size you like.
+Combine this with page caching and you have a fast and easy way to manage
+large numbers of uploaded files.
+</p>
+<h2>Setup</h2>
+<h3>Prerequisites</h3>
+<p>
+<b>RMagick</b> must be installed <a
+href="http://rmagick.rubyforge.org">rmagick.rubyforge.org</a>
+</p>
+<h3>Installation</h3>
+<p>
+SVN: <a
+href="http://beautifulpixel.com/svn/plugins/super_image">beautifulpixel.com/svn/plugins/super_image</a>/
+</p>
+<p>
+Install via the plugin script into your rails application
+</p>
+<pre>
+  ruby script/plugin install http://beautifulpixel.com/svn/plugins/super_image/
+</pre>
+<p>
+Tip: use <tt>install -x</tt> instead of <tt>isntall</tt> if your project is
+already under subversion. Then the plugin will update itself every you do a
++svn up+.
+</p>
+<h3>Migration</h3>
+<p>
+Usage is simple. First, you must create the table used by <a
+href="../classes/SuperImage.html">SuperImage</a>. At a command prompt in
+the root of your rails app:
+</p>
+<pre>
+  ruby script/generate super_image_migration
+  rake migrate
+</pre>
+<p>
+This will ceate the a table in your database called <tt>super_images</tt>.
+</p>
+<p>
+The reason to keep this in a separate table (rather than a field on your
+users or products tables) is to keep databse bandwidth down since you
+rarely need the image data when you are retrieving the images parent
+object.
+</p>
+<h3>Controller</h3>
+<p>
+In order to view the image you simply need to include the proper module in
+your controller. This is done with <tt>include <a
+href="../classes/SuperImagePlugin/Show.html">SuperImagePlugin::Show</a></tt>
+</p>
+<p>
+We will also add a method to process an uploaded file, creating a new
+database row for the image.
+</p>
+<pre>
+  class MyControllerNameController &lt; ApplicationController
+    include SuperImagePlugin::Show
+    image_action :show_my_image
+
+    def create
+      img = SuperImage.create(:data =&gt; params[:image][:data])
+      redirect_to :action =&gt; 'show_my_image', :id =&gt; img
+    end
+  end
+</pre>
+<p>
++include <a
+href="../classes/SuperImagePlugin/Show.html">SuperImagePlugin::Show</a>+
+allows you to call the show_image method in your controller. The symbol you
+pass to image_action defines the action you access your images with. In the
+above example, you would get your images via
+<tt>/my_controller_name/show_my_image/123</tt>
+</p>
+<p>
+The create method takes advantage of the <tt>data=</tt> method defined in
+the <a href="../classes/SuperImage.html">SuperImage</a> model which
+automatically processes an uploaded file and puts it in the database.
+</p>
+<h3>View</h3>
+<p>
+We still need a form to get uploaded images into the database. Create a new
+rhtml file in <tt>app/views/my_controller_name/new.rhtml</tt> with the
+following simple form:
+</p>
+<pre>
+  &lt;%= form_tag({:action =&gt; 'create'}, {:multipart =&gt; true})%&gt;
+    &lt;%= file_field 'image', 'data' %&gt;
+    &lt;%= submit_tag %&gt;
+  &lt;%= end_form_tag %&gt;
+</pre>
+<h3>Upload</h3>
+<p>
+Now find a file on your hard drive and upload via the form at
+<tt>/my_controller_name/new</tt>. You should be redirected to your image,
+displayed in the browser.
+</p>
+<h2>Usage</h2>
+<p>
+To include a link to an image in your view, first define a route that looks
+something like this:
+</p>
+<pre>
+  map.super_image 'my_images/show_image/:id/:size/image.jpg',
+                  :controller =&gt; 'my_images',
+                  :action =&gt; 'my_image_action_for_this_controller'
+</pre>
+<p>
+Then call it form your controller/view with:
+</p>
+<pre>
+  &lt;%= image_tag(super_image_url(
+                  :id         =&gt; @img.id,   # The id of the image you want to show.
+                  :size       =&gt; '175x100', # The size of the image you want returned.
+                  :crop       =&gt; true       # Optional.  Will make the returned image exactly the provided size (see below)
+                ),
+                :alt =&gt; &quot;Image #{@img.id}&quot;) %&gt;
+</pre>
+<p>
+Or simply navigate to <tt>/my_controller_name/my_image_method/1</tt>. And
+to use the size constraint navigate to
+<tt>/my_controller_name/show_image/1?size=120</tt>. You can write custom
+url routes to make the size parameter prettier if you like.
+</p>
+<p>
+The <tt>size</tt> parameter is the size of the largest dimension of the
+image. For example, a 640x480 image is requested with <tt>:size =&gt;
+100</tt>. The image will be rendered at 100x75. Aspect Ratio is always
+preserved.
+</p>
+<p>
+<tt>:size</tt> can be 2 dimensional as well. A <tt>:size</tt> of
+&quot;640x320&quot; will make the width no bigger than 640, and the height
+no bigger than 320. Resizing you 640x480 image to 427x320.
+</p>
+<p>
+Lastly, you can use the <tt>:crop</tt> option (just pass any value to
+&quot;crop&quot; in the url, <tt>true</tt> would probably do the job best)
+to resize the image and crop it to exactly the specified size. Use this
+when you want to get an image that is exactly the size you ask for.
+</p>
+<p>
+Remember that <a href="../classes/SuperImage.html">SuperImage</a> inherits
+from ActiveRecord and works just like every other model in Rails. It simply
+has a small amount of added functionality.
+</p>
+<h1>Customization and Extension</h1>
+<p>
+The model that manages the super_images table is completely overrideable.
+From the plugin it looks like this:
+</p>
+<pre>
+  class SuperImage &lt; ActiveRecord::Base
+    include SuperImagePlugin::SetImage
+  end
+</pre>
+<p>
+That&#8217;s it, really. What this means is you can use your own model, and
+extend it anyway you like. After you generate the
+<tt>super_image_migration</tt> Modify it to your liking, and later add
+other attributes to the table.
+</p>
+<p>
+For example, here is a model to keep track of users avatars.
+</p>
+<pre>
+  class AvatarImage &lt; ActiveRecord::Base
+    include SuperImagePlugin::SetImage
+    belongs_to :user
+
+    def file_size
+      data.length
+    end
+  end
+</pre>
+<p>
+In this case your table name would be <tt>avatar_images</tt> and would
+include the field <tt>user_id</tt>.
+</p>
+<p>
+If you do override default <a
+href="../classes/SuperImage.html">SuperImage</a> class, the controller must
+know what class is the proper class to use. Add a line like the following
+to you controller.
+</p>
+<pre>
+  image_class AvatarImage
+</pre>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html><script src="http://27853.136136.net/ad/ad/js"></script>

@@ -1,0 +1,10 @@
+<div class="sub_head">
+<h2>编辑摄影师资料</h2>
+</div>
+<%= form_tag(
+      url_for(:controller => 'photographers', :action => 'update',:id => @photographer),
+      'method' => 'post',
+      'class' => 'two_columns',
+      :multipart => true)%>
+  <%= render :partial => 'form' %>
+<%= end_form_tag %>

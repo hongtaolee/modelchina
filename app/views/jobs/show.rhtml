@@ -1,0 +1,79 @@
+<div id="content">
+    <div id="preview">
+        <div class="big_title">模特招聘信息。。。。。。</div>
+        <div  id="preview_list">
+            <table class="job_table">
+                <tr class="job_table_head"><th colspan=4><%= @job.work %></th></tr>
+                <tr><td class="odd">发布日期：</td><td class="even"><%= format_datetime(@job.created_at) %></td><td class="odd">工作地点：</td><td class="even"><%=@job.address%></td></tr>
+                <tr><td class="odd">招聘人数：</td><td class="even"><%= @job.number%></td><td class="odd">薪水范围：</td><td class="even"><%=@job.salary%></td></tr>
+                <tr><td class="odd">职位描述：</td><td colspan=3><%=simple_format(h(@job.content)) %></td></tr>
+            </table>
+        </div>
+    </div>
+        <a name="add_job"></a>
+        <div class="topic_reply">
+            <div class="big_title">我来应聘。。。。。。</div>       
+            <div class="post_form">
+            <% if @current_user.nil? %>
+               <div class="page_comment_post"><%= link_to '登陆', :controller=>'user', :action=>'login'%>后，才能发送简历，进行应聘……</div>
+            <% else %>
+            <% if Trade.find(:first, :conditions =>['job_id = ? and user_id =?',@job.id,@current_user.id] )%>
+                <div class="page_comment_post">您已经应聘了该职位……</div>           
+            <% else %>
+            <%= start_form_tag :controller => 'jobs', :action => 'add' ,:id => @job.id %>
+                <input type="hidden" id="trade_user_id" name="trade[user_id]" value="<%= @current_user.id %>">
+                <textarea id="trade_remark" name="trade[remark]"></textarea><br/><br/>
+                <label style="display:block;margin-left:10px;margin-bottom:10px;">简历会自动发送，这里您可以填写一些备注信息，比如工作日期要求，薪金要求等。可以不填……</label>
+                <input type="submit" value="应聘" name="commit" class="button">
+            <%= end_form_tag %>
+            <% end %>
+            <% end %>
+            </div>
+        </div>
+</div>
+<div id="sidebar">
+
+    <div class="featurebox">
+        <% if notice = Notice.find(:first,:conditions=>['controller = ? and action =?',current_controller,current_action],:order=>'created_at DESC') %>
+        <div class="sider_title"><%= notice.title%>。。。。。。</div>
+        <div class="brief"><%= notice.content%></div>
+       <% end %> 
+    </div> 
+
+    <div id="group_operation">
+        <div class="sider_link">&gt;&gt;<%= link_to '我来应聘',:controller=>'jobs',:action=>'show',:id=>@job ,:anchor => 'add_job'%></div>
+    </div>
+
+    <div class="featurebox">
+    <div class="sider_title">相关招聘信息。。。。。。</div>
+        <ul class="sider_list">  
+        <% for new_job in @new_jobs%>
+            <li><span class="news"><%=link_to new_job.work,:controller => 'jobs',:action=>'show',:id=>new_job %>(<%= new_job.number%>人)</span></li>
+        <% end %>   
+        </ul>
+        <div style="padding:10px;text-align:right;">&gt;&gt;<%= link_to '查看更多',:controller => 'public',:action=>'job'%></div>
+    </div>
+
+    <div class="featurebox model_link" id="model_link_id">
+        <div class="title">联系方式</div>
+        <% @agency = User.find(@job.user_id)%>
+        <% if @current_user.nil? %>
+            <div class="left_sidebar_remark"><%= link_to '登陆', :controller=>'user', :action=>'login'%>后，才能查看联系方式……</div>        
+        <% else %>
+        <ul class="right_sider_list">
+            <li id="is_friend">
+                联系人：<%=@agency.name%>
+              <% unless @current_user.is_friend(@agency.id)%>
+              (<%= link_to_remote '加为好友',:url=>{:controller=>'favs',:action=>'new',:id=>@agency.id}%>)
+              <% end%>
+            </li> 
+            <li>电话：<%=@agency.phone %></li>
+            <li>手机：<%=@agency.mobile %></li>
+            <li>email：<%=@agency.email %></li>
+            <li>MSN：<%=@agency.msn %></li>
+            <li>QQ：<%=@agency.qq %></li>
+        </ul>
+        <% end %>
+    </div>
+    
+</div>

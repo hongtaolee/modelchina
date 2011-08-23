@@ -1,0 +1,8 @@
+<div class="featurebox">
+  <div class="sider_title">同城模特。。。。。。</div>
+  <ul class="sider_list">  
+  <% for city in @city%>
+    <li><span class="news"><%=link_to city.city,:controller => 'models',:action=>'citysearch',:id=>city.city %>(<%= city.count%>人)</span></li>
+  <% end %>    
+  </ul>
+</div>

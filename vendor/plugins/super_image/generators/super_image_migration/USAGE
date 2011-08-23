@@ -1,0 +1,14 @@
+Description:
+    The SuperImage migration generator creates a migration for the SuperImage plugin.
+
+    The generator takes a migration name as its argument.  The migration name may be
+    given in CamelCase or under_score.  'add_super_image_table' is the default.
+
+    The generator creates a migration class in db/migrate prefixed by its number
+    in the queue.
+
+Example:
+    ./script/generate super_image_migration
+
+    With 4 existing migrations, this will create an AddSuperImageTable migration in the
+    file db/migrate/005_add_super_image_table.rb

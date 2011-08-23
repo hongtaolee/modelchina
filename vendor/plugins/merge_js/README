@@ -1,0 +1,117 @@
+= MergeJs
+
+Easily merge, compress, cache, and version your javascript
+with Ruby on Rails!
+
+== Introduction
+
+With the sudden overwhelming desire we web developers feel 
+to write AJAX apps, JavaScript has suddenly jumped to the 
+forefront of our work. The amount of javascript files in 
+our applications is proliferating with no end in sight.
+
+We feel a pang of regret each time we create a new one, 
+knowing we just added one more HTTP request for our end-users, 
+and thus an increase in load time.
+
+Wouldn't it be nice to logically separate our JavaScript files
+into small, meaningful chunks without an extra request to the
+server for each one? Now you can!
+
+== Description
+
+When running in production, instead of sending down a dozen 
+javascript files full of formatting and comments, this plugin
+allows you to merge and compress javascript down into one or
+more files, thus saving download time for your users.
+
+But when in development, it would be nice to use the formatted,
+commented and logically separated versions for ease of 
+development and debugging.
+
+This plugin makes it easy to do both.
+
+Because not all browsers will dependably cache javascript 
+files with query string parameters, we write a datetime stamp
+into the merged file names. Therefore files are correctly 
+cached by the browser AND your users always get the latest 
+version when you re-deploy!
+
+== Credit
+
+This Rails Plugin was inspired by Cal Henderson's article 
+"Serving Javascript Fast" on Vitamin:
+http://www.thinkvitamin.com/features/webapps/serving-javascript-fast
+
+It also uses the Ruby Javascript Minifier created by 
+Douglas Crockford.
+http://www.crockford.com/javascript/jsmin.html
+
+== Key Features
+
+* Merges and compresses javascript when running in production.
+* Uses uncompressed originals when running in development.
+* Handles caching correctly. (No querystring parameters - filename timestamps)
+* Guarantees new version will get downloaded the next time you deploy.
+
+== Components
+
+* Rake Task for merging and compressing javascript files.
+* Helper function for including these javascript files in your RHTML.
+* YAML configuration file for mapping javascript files to merged versions.
+* Rake Task for auto-generating the YAML file from your existing javascript files.
+
+== How to Use:
+
+1. Download and install the plugin:
+   ./script/plugin install http://sbecker.net/shared/plugins/merge_js
+
+2. Run the rake task "generate_js_yml" to generate the /config/js.yml file the first time. You 
+will need to reorder files under 'base' so dependencies are loaded in correct order. Feel free 
+to rename or create new file collections.
+
+Example with multiple merged files:
+
+  --- 
+  source_map: 
+  - rails_base: 
+    - prototype
+    - effects
+    - controls
+    - dragdrop
+  - app_lib: 
+    - application
+    - foo
+    - bar
+  current_version: "20060603144038"
+
+3. Run the rake task "merge_js" to generate the merged javascript files.
+
+4. Use the helper function whenever including these files in your application.
+
+Example:
+  <%= javascript_include_merged 'prototype', 'effects', 'controls', 'dragdrop', 'application' %>
+
+In development, this generates: 
+  <script type="text/javascript" src="/javascripts/prototype.js"></script>
+  <script type="text/javascript" src="/javascripts/effects.js"></script>
+  <script type="text/javascript" src="/javascripts/controls.js"></script>
+  <script type="text/javascript" src="/javascripts/dragdrop.js"></script>
+  <script type="text/javascript" src="/javascripts/application.js"></script>
+
+In production, this generates: 
+  <script type="text/javascript" src="/javascripts/rails_base_20060603144038.js"></script>
+  <script type="text/javascript" src="/javascripts/app_lib_20060603144038.js"></script>
+
+Now supports symbols and :defaults as well:
+<%= javascript_include_merged :defaults %>
+<%= javascript_include_merged :foo, :bar %>
+
+== License
+Copyright (c) 2006 Scott Becker - http://synthesis.sbecker.net
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

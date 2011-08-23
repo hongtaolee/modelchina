@@ -1,0 +1,13 @@
+<div class="comment_item" style="clear:both;" id="comment_item_<%=@comment.id%>">
+    <div style="width:60px;height60px;float:left;margin:0 10px 10px 10px;" >
+        <%= link_to_avata(@comment.user,'60x60','user','welcome')%>            
+    </div>
+    <div style="background:#F4F4F4; padding:3px 10px;margin-left:80px;margin-right:10px;">
+        评论人：<%= link_to @comment.user.name, :controller => 'user', :action => 'welcome',:id => @comment.user %> | 
+        评论时间： <%= format_datetime(@comment.created_at)%> | 
+       <%= link_to_remote '删除',:url=>{:controller=>'makeups',:action=>'delete_comment',:id=>@comment}%>  
+    </div>
+    <div style="padding:10px;margin-left:80px;margin-right:10px;">
+        <%= simple_format(h(@comment.text))%>
+    </div>
+</div>
