@@ -4,3 +4,6 @@ log/*.log
 tmp/**/*
 .DS_Store
 config/database.yml
+public/images/pictures
+public/images/old_pictures
+public/images/avatas
